@@ -18,6 +18,8 @@ controller.listar = (req,res)=>{
             }
             // console.log(litigantes);
             res.render('personas_lista');
+            console.log('Monitor Servidor : Pidieron ver la pagina LISTADO DE PERSONAL');
+            // res.send('Servidor Remoto : Mostrando pagina LISTADO DE PERSONAS');
 
         });
     })
@@ -25,17 +27,39 @@ controller.listar = (req,res)=>{
 
 
 //API
-controller.apiPersona = (req,res)=>{
+controller.apiPersona = (req,res)=>{    
+    // Nose puede el send en GET
+    // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
     req.getConnection((err, conn)=>{
         conn.query('SELECT * from PERSONAS where judiciales like "%NO%"',(err, personas)=>{
             if(err){
                 res.json(err);
             }
-            // console.log(personas);
-            res.send(personas);
-            console.log('Se Envio el listado de personas');
+            res.send(personas);            
+            console.log('Monitor Servidor : LLAMARON API PERSONAS para ver listado');
         });
     })
+};
+
+controller.apiPersonaLitigantesiono = (req,res)=>{
+    console.log(req.body);
+    const CUIL = req.body.CUIL;
+    const VALOR = req.body.VALOR;
+
+    res.send('Servidor Remoto: He Recibido estos datos -> '+req.body.CUIL +' - '+ req.body.VALOR);
+
+    req.getConnection((err, conn)=>{
+        // Nose puede el send en GET
+        // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
+        conn.query('UPDATE PERSONAS SET judiciales = ? WHERE CUIL= ?  ',[VALOR,CUIL],(err, personas)=>{
+            if(err){
+                res.json(err);
+            }
+            console.log('Monitor Servidor : Grabacion... Cambie Estado de Judiciales a SI');
+            // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
+        });
+    })
+    
 };
 
 

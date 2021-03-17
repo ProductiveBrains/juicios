@@ -30,6 +30,7 @@ app.use(myConnection(mysql, {
     database :'UTJUICIOS'
 },'single'));
 app.use(express.urlencoded({extends:false}));//permite entender los datos que vienen de formulario
+app.use(express.json());//escucho jsons
 
 
 

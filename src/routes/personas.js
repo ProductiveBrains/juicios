@@ -13,6 +13,7 @@ router.get('/createpersona', personasController.createpersona);
 
 //API PERSONAS
 router.get('/api/personas', personasController.apiPersona)
+router.post('/api/litigantesiono',personasController.apiPersonaLitigantesiono)
 
 
 //Operaciones Crud con Base de datos

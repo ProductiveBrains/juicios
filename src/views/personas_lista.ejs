@@ -7,7 +7,7 @@
                 <h3 class="text-info">Listado de Personas </h3>
             </div>
         </div>
-        <div class="row">
+        <div class="row animated flipInY">
             <div class="col-12 py-3" style="background-color: #D3D3D5;">
                 <table id="tablaPersonal" class="table table-striped table-bordered dt-responsive nowrap"
                     style="width:100%">
@@ -67,23 +67,14 @@
         $(document).ready(function () {
             let url = `http://190.106.132.189:3500/api/personas`;
 
-            const api = new XMLHttpRequest();
-            api.open('GET', url, true);
-            api.send();
-
-            api.onreadystatechange = function () {
-                if (this.status == 200 && this.readyState == 4) {
-                    console.log(this.responseText);
-                }
-            }
-
-            //datatable
-
-            $("#tablaPersonal").DataTable({
+            tablaPersonal=$("#tablaPersonal").DataTable({
                 ajax: {
-                    url: `http://190.106.132.189:3500/api/personas`,
+                    url: url,
                     dataSrc: "",
                     async: true,
+                    // success: function () {
+                    //     console.log("cargando datatable");
+                    // }
                 },
                 "columns": [
                     {
@@ -312,7 +303,56 @@
         })
     </script>
 
+    <!-- Botones -->
+    <script>
+        //Agregar Litigante
+        $(document).on("click", ".btnHacerLitigante", function () {
+            // console.log("Litigante Activo");
+            fila = $(this).closest("tr");
+            cuil = fila.find("td:eq(1)").text();
+            apellido = fila.find("td:eq(3)").text();
+            nombre = fila.find("td:eq(4)").text();
+
+            Swal.fire({
+                title: "Confirma a esta persona como Litigante?",
+                text: apellido + " " + nombre + " - C.U.I.L.: " + cuil,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, es Litigante!",
+                cancelButtonText: "No, Cancelar!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: `http://190.106.132.189:3500/api/litigantesiono`,
+                        type: "POST",
+                        datatype: "json",
+                        async: true,
+                        data: {
+                            CUIL: cuil,
+                            VALOR: "SI"
+                        },
+                        success: function () {
+                            // console.log("disparar reload de datatable");
+                            tablaPersonal.ajax.reload(null, false);
+                        }
+                    });
+                    Swal.fire(
+                        apellido + " " + nombre + " - C.U.I.L.: " + cuil,
+                        "Ha sido agregado al Listado de Litigantes.",
+                        "success"
+                    );
+                    // CntDocNAVBAR(); ver si funciona el reload
+                    // tablaPersonal.ajax.reload(null, false);
+                }
+            });
+
+        });
+    </script>
 
 
 
+    <!-- <script src="/js/ConfirmarOperacion.js"></script> -->
     <%- include ("partials/_footer") %>
