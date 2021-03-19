@@ -1,7 +1,7 @@
 <%- include ("partials/_header") %>
 
 
-    <div class="container mt-3">
+    <div class="container mt-3" id="cuerpo">
         <div class="row mb-2">
             <div class="col-12">
                 <h3 class="text-info">Listado de Personas </h3>
@@ -15,7 +15,6 @@
                         <tr>
                             <th>Acciones</th>
                             <th>CUIL</th>
-                            <th>DNI</th>
                             <th>Apellido</th>
                             <th>Nombre</th>
                             <th>Localidad</th>
@@ -36,8 +35,17 @@
             padding: 0.2em 0.2em !important;
         }
 
-        tr {
-            text-align: center !important;
+        label{
+            color:#212529 !important;
+        }
+
+        td,
+        th {
+            padding: 15px 5px;
+            display: table-cell;
+            text-align: center; 
+            vertical-align: middle;
+            border-radius: 2px;
         }
 
         .bg-mirage {
@@ -50,31 +58,28 @@
             background-color: #f3f3f3;
         }
 
-        table#jornales.dataTable thead:hover {
+        table#tablaPersonal.dataTable thead:hover {
             background-color: #ffa;
         }
 
-        table#jornales.dataTable td:hover {
+        table#tablaPersonal.dataTable td:hover {
             background-color: #ffa;
         }
 
-        table#jornales.dataTable tr:hover {
+        table#tablaPersonal.dataTable tr:hover {
             background-color: rgb(176, 239, 253);
         }
     </style>
 
     <script>
         $(document).ready(function () {
-            let url = `http://190.106.132.189:3500/api/personas`;
-
-            tablaPersonal=$("#tablaPersonal").DataTable({
+            tablaPersonal = $("#tablaPersonal").DataTable({
                 ajax: {
-                    url: url,
+                    url: `http://190.106.132.189:3500/api/personas`,
                     dataSrc: "",
-                    async: true,
-                    // success: function () {
-                    //     console.log("cargando datatable");
-                    // }
+                    "processing": true,
+                    "serverSide": true,
+                    async: true
                 },
                 "columns": [
                     {
@@ -97,7 +102,6 @@
                             "</div>",
                     },
                     { data: "CUIL" },
-                    { data: "DNI" },
                     { data: "apellido" },
                     { data: "nombre" },
                     { data: "localidad" },
@@ -110,18 +114,18 @@
                 ],
                 "pagingType": "full_numbers",
                 "dom":
-                    "<'row'<'col-md-9'B><'col-md-3 text-right'l>>" +
-                    "<'row'<'col-md-9 text-left'i><'col-md-3'f>>" +
+                    "<'row'<'col-md-6'B><'col-md-6 text-right'lf>>" +
+                    "<'row'<'col-md-9 text-left'i><'col-md-3'>>" +
                     "<'row'<'col-md-12't>><'row'<'col-md-12'p>>",
                 buttons: [
                     {
                         extend: 'copy',
-                        text: ' <i class="material-icons text-white align-middle">scanner</i> Copiar al Portapapeles',
+                        text: ' <i class="material-icons align-middle">scanner</i> Copiar al Portapapeles',
                         titleAttr: 'Mantene la copia copia de registro en memoria, y pegado donde se te raje',
                     },
                     {
                         extend: 'excel',
-                        text: ' <i class="fas fa-file-excel bg-white text-success align-middle"></i> Excel',
+                        text: ' <i class="fas fa-file-excel  text-success align-middle"></i> Excel',
                         titleAttr: 'Descarge un XLS del filtrado realizado',
 
                         orientation: 'landscape',
@@ -132,23 +136,17 @@
                     },
                     {
                         extend: 'pdfHtml5',
-                        text: ' <i class="far fa-file-pdf bg-danger text-white align-middle"></i> PDF',
+                        text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
                     },
                     {
-                        extend: 'print',
-                        // text: '<i class="fas fa-print fa-2x text-info"></i> Imprimir',
-                        text: '<i class="fas fa-print text-info"></i> Imprimir',
-                        titleAttr: 'Muestreo para Imprimir',
-                    },
-                    {
                         extend: 'csv',
-                        text: '<i class="fas fa-file-csv text-warning bg-white"></i> CSV',
+                        text: '<i class="fas fa-file-csv text-warning  align-middle"></i> CSV',
                         titleAttr: 'Exporte a Valores separados por Comas',
                     },
                     {
                         text: 'JSON',
-                        text: '<i class="fab fa-node-js text-warning"></i> Json',
+                        text: '<i class="fab fa-node-js text-warning align-middle"></i> Json',
                         action: function (e, dt, button, config) {
                             var data = dt.buttons.exportData();
 
@@ -158,145 +156,10 @@
                             );
                         },
                         titleAttr: 'Exporte a Formato Json',
-                    }, 'colvis'
+                    },
                 ],
                 "language": {
-                    "processing": "Procesando...",
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "zeroRecords": "No se encontraron resultados",
-                    "emptyTable": "Ningún dato disponible en esta tabla",
-                    "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                    "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                    "search": "Buscar:",
-                    "infoThousands": ",",
-                    "loadingRecords": "Cargando...",
-                    "paginate": {
-                        "first": "Primero",
-                        "last": "Último",
-                        "next": "Siguiente",
-                        "previous": "Anterior"
-                    },
-                    "aria": {
-                        "sortAscending": ": Activar para ordenar la columna de manera ascendente",
-                        "sortDescending": ": Activar para ordenar la columna de manera descendente"
-                    },
-                    "buttons": {
-                        "copy": "Copiar",
-                        "colvis": "Visibilidad",
-                        "collection": "Colección",
-                        "colvisRestore": "Restaurar visibilidad",
-                        "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
-                        "copySuccess": {
-                            "1": "Copiada 1 fila al portapapeles",
-                            "_": "Copiadas %d fila al portapapeles"
-                        },
-                        "copyTitle": "Copiar al portapapeles",
-                        "csv": "CSV",
-                        "excel": "Excel",
-                        "pageLength": {
-                            "-1": "Mostrar todas las filas",
-                            "1": "Mostrar 1 fila",
-                            "_": "Mostrar %d filas"
-                        },
-                        "pdf": "PDF",
-                        "print": "Imprimir"
-                    },
-                    "autoFill": {
-                        "cancel": "Cancelar",
-                        "fill": "Rellene todas las celdas con <i>%d<\/i>",
-                        "fillHorizontal": "Rellenar celdas horizontalmente",
-                        "fillVertical": "Rellenar celdas verticalmentemente"
-                    },
-                    "decimal": ",",
-                    "searchBuilder": {
-                        "add": "Añadir condición",
-                        "button": {
-                            "0": "Constructor de búsqueda",
-                            "_": "Constructor de búsqueda (%d)"
-                        },
-                        "clearAll": "Borrar todo",
-                        "condition": "Condición",
-                        "conditions": {
-                            "date": {
-                                "after": "Despues",
-                                "before": "Antes",
-                                "between": "Entre",
-                                "empty": "Vacío",
-                                "equals": "Igual a",
-                                "not": "No",
-                                "notBetween": "No entre",
-                                "notEmpty": "No Vacio"
-                            },
-                            "moment": {
-                                "after": "Despues",
-                                "before": "Antes",
-                                "between": "Entre",
-                                "empty": "Vacío",
-                                "equals": "Igual a",
-                                "not": "No",
-                                "notBetween": "No entre",
-                                "notEmpty": "No vacio"
-                            },
-                            "number": {
-                                "between": "Entre",
-                                "empty": "Vacio",
-                                "equals": "Igual a",
-                                "gt": "Mayor a",
-                                "gte": "Mayor o igual a",
-                                "lt": "Menor que",
-                                "lte": "Menor o igual que",
-                                "not": "No",
-                                "notBetween": "No entre",
-                                "notEmpty": "No vacío"
-                            },
-                            "string": {
-                                "contains": "Contiene",
-                                "empty": "Vacío",
-                                "endsWith": "Termina en",
-                                "equals": "Igual a",
-                                "not": "No",
-                                "notEmpty": "No Vacio",
-                                "startsWith": "Empieza con"
-                            }
-                        },
-                        "data": "Data",
-                        "deleteTitle": "Eliminar regla de filtrado",
-                        "leftTitle": "Criterios anulados",
-                        "logicAnd": "Y",
-                        "logicOr": "O",
-                        "rightTitle": "Criterios de sangría",
-                        "title": {
-                            "0": "Constructor de búsqueda",
-                            "_": "Constructor de búsqueda (%d)"
-                        },
-                        "value": "Valor"
-                    },
-                    "searchPanes": {
-                        "clearMessage": "Borrar todo",
-                        "collapse": {
-                            "0": "Paneles de búsqueda",
-                            "_": "Paneles de búsqueda (%d)"
-                        },
-                        "count": "{total}",
-                        "countFiltered": "{shown} ({total})",
-                        "emptyPanes": "Sin paneles de búsqueda",
-                        "loadMessage": "Cargando paneles de búsqueda",
-                        "title": "Filtros Activos - %d"
-                    },
-                    "select": {
-                        "1": "%d fila seleccionada",
-                        "_": "%d filas seleccionadas",
-                        "cells": {
-                            "1": "1 celda seleccionada",
-                            "_": "$d celdas seleccionadas"
-                        },
-                        "columns": {
-                            "1": "1 columna seleccionada",
-                            "_": "%d columnas seleccionadas"
-                        }
-                    },
-                    "thousands": "."
+                    "url": "/json/lenguajedatatables.json"
                 },
             });
 
@@ -310,8 +173,8 @@
             // console.log("Litigante Activo");
             fila = $(this).closest("tr");
             cuil = fila.find("td:eq(1)").text();
-            apellido = fila.find("td:eq(3)").text();
-            nombre = fila.find("td:eq(4)").text();
+            apellido = fila.find("td:eq(2)").text();
+            nombre = fila.find("td:eq(3)").text();
 
             Swal.fire({
                 title: "Confirma a esta persona como Litigante?",
@@ -349,6 +212,50 @@
                 }
             });
 
+        });
+    </script>
+
+    <!-- //Waiting ajax -->
+    <img src="/img/loading.gif" id="loading-indicator" style="display:none" />
+    <h1 id="cargando" style="display:none">Esperando al Servidor</h1>
+    <style>
+        #loading-indicator {
+            position: absolute;
+            z-index: 100;
+            /* display: block; */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #cargando {
+            left: 0;
+            line-height: 200px;
+            margin-top: -100px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 100%;
+            color: white;
+            z-index: 101;
+        }
+    </style>
+
+    <script>
+        $(document).ajaxSend(function (event, request, settings) {
+            $('.navbar').hide();
+            $('#cuerpo').hide();
+            $('.footer-section').hide();
+            $('#loading-indicator').show();
+            $('#cargando').show();
+        });
+
+        $(document).ajaxStop(function (event, request, settings) {
+            $('#loading-indicator').hide();
+            $('#cargando').hide();
+            $('.navbar').show();
+            $('#cuerpo').show();
+            $('.footer-section').show();
         });
     </script>
 

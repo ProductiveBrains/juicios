@@ -1,0 +1,25 @@
+
+subir archivo
+uniqid
+
+ID tipo de documento
+crear tabla prueba de subida de datos
+
+validacion de campos
+
+tabla audiciencias
+
+
+Campos requeridos para la carga de AUDIENCIAS
+
+ID
+CUIL
+FECHAINGSISTEMA
+FECHAEMISION
+FECHAAUDIENCIA
+HORAPROGRAMADA
+RECLAMO
+COMENTARIO
+URLCARTELLONE
+URLPB
+

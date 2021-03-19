@@ -1,10 +1,21 @@
 // Este archivo ejecuta todo el servidor
 
-const express = require ('express');
-const path = require ('path');
-const morgan = require ('morgan');
-const mysql = require ('mysql');
-const myConnection = require ('express-myconnection');
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const mysql = require('mysql');
+const myConnection = require('express-myconnection');
+
+const multer = require('multer');
+
+const { uuid } = require('uuidv4');
+
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, 'public/uploads'),
+    filename: (req, file, cb) => {
+        cb(null, uuid() + path.extname(file.originalname));
+    }
+})
 
 
 
@@ -15,8 +26,8 @@ const personasRoutes = require('./routes/personas');
 
 //Setting
 app.set('port', process.env.PORT || 3500);
-app.set('view engine','ejs');
-app.set('views',path.join(__dirname,'views'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
 
@@ -24,26 +35,56 @@ app.set('views',path.join(__dirname,'views'));
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
     host: '190.106.132.189',
-    user:'root',
+    user: 'root',
     password: 'blackmagic',
-    port : 3306,
-    database :'UTJUICIOS'
-},'single'));
-app.use(express.urlencoded({extends:false}));//permite entender los datos que vienen de formulario
+    port: 3306,
+    database: 'UTJUICIOS'
+}, 'single'));
+app.use(express.urlencoded({ extends: false }));//permite entender los datos que vienen de formulario
 app.use(express.json());//escucho jsons
+
+app.use(multer({
+    storage,
+    dest: path.join(__dirname, 'public/uploads')
+}).single('archivoupload'));//escucho jsons
 
 
 
 //Routes
 app.use('/', personasRoutes);
 
+app.get('/test1', (req, res) => {
+    res.render('uploadtest');
+});
+
+app.post('/test1recibo', (req, res) => {
+    // console.log(req.file);
+    // console.log(req.body);
+
+    console.log(req.body['ID']);
+    console.log(req.body['CUIL']);
+    console.log(req.body['FECHAINGSISTEMA']);
+    console.log(req.body['FECHAEMISION']);
+    console.log(req.body['FECHAAUDIENCIA']);
+    console.log(req.body['HORAPROGRAMADA']);
+    console.log(req.body['RECLAMO']);
+    console.log(req.body['COMENTARIO']);
+    console.log(req.body['URLCARTELLONE']);
+    console.log(req.body['URLPB']);
+
+    res.send('Nombre del archivo: ' + req.file.filename);
+});
+
+
+
+
 // static files
-app.use(express.static (path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
 //Iniciando el servidor
-app.listen(app.get('port'),()=> {
+app.listen(app.get('port'), () => {
     console.log('Servidor activo en puerto 3500');
 });
 

@@ -12,13 +12,13 @@ router.get('/list_personas', personasController.listar);
 router.get('/createpersona', personasController.createpersona);
 
 //API PERSONAS
-router.get('/api/personas', personasController.apiPersona)
-router.post('/api/litigantesiono',personasController.apiPersonaLitigantesiono)
+router.get('/api/personas', personasController.apiPersona);
+router.post('/api/litigantesiono',personasController.apiPersonaLitigantesiono);
 
+router.get('/api/litigantes', personasController.apiLitigantes);
 
 //Operaciones Crud con Base de datos
 router.post('/saveNewPerson', personasController.saveNewPerson);
-
 
 //Paginas Generales
 router.get('/resumen', personasController.mostrarResumen);

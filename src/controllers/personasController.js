@@ -26,12 +26,24 @@ controller.listar = (req,res)=>{
 };
 
 
+
 //API
+controller.apiLitigantes = (req,res)=>{        
+    req.getConnection((err, conn)=>{
+        conn.query('SELECT * from VIEWLITIGANTES',(err, personas)=>{
+            if(err){
+                res.json(err);
+            }
+            res.send(personas);            
+            console.log('Monitor Servidor : LLAMARON API LITIGANTES para ver listado');
+        });
+    })
+};
 controller.apiPersona = (req,res)=>{    
     // Nose puede el send en GET
     // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
     req.getConnection((err, conn)=>{
-        conn.query('SELECT * from PERSONAS where judiciales like "%NO%"',(err, personas)=>{
+        conn.query('SELECT * from VIEWPERSONAS',(err, personas)=>{
             if(err){
                 res.json(err);
             }
@@ -67,7 +79,7 @@ controller.apiPersonaLitigantesiono = (req,res)=>{
 //Formulario de Carga
 controller.createpersona = (req,res)=>{
     // res.send('Hola Mundo listar');
-    res.render('personas_Create');
+    res.render('audiencia_Create');
 }
 
 
