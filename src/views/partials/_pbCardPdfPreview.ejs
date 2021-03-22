@@ -1,0 +1,75 @@
+<style>
+    .pb_icon:hover {
+        color: rgb(235, 240, 141);
+        cursor: pointer;
+        margin-right: 3px;
+        margin-top: 5px;
+    }
+
+    .vertical-center {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    #divPDF {
+        background-color: #DDDDDD;
+        height: 300px;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    .divheader {
+        background-color: rgb(53, 97, 10);
+        border-radius: 8px 8px 0 0;
+        height: 30px;
+        color: white;
+    }
+
+    .espaciado {
+        margin: 20px;
+    }
+
+    .ancho {
+        width: 360px;
+    }
+
+    .card .card-image .pb_card-title {
+        color: #fff;
+        background-color: #000;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        padding-left: 5px;
+        padding-bottom: 2px;
+        border-radius: 0 5px 0 0;
+    }
+
+    input[type="file"] {
+        /* border: 1px solid red; */
+        white-space: normal;
+        word-wrap: break-word;
+        width: 100%;
+        overflow: auto;
+    }
+</style>
+
+
+
+<div class="card">
+    <div class="card-image">
+        <div id="divPDF" class=""></div>
+        <span class="pb_card-title">Vista Preliminar &nbsp</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light pulse btn-floating">
+            <i class="material-icons tooltipped pb_icon " data-position="left" data-tooltip="Maximizar"
+                onclick="fullscreen()">remove_red_eye</i></a>
+    </div>
+    <div class="card-content">
+        <div class="">
+            <input type="file" name="archivoupload" id="muestreo">
+        </div>
+    </div>
+</div>

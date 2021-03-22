@@ -15,134 +15,125 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="/css/form.css">
+    <script src="js/pdfobject.js"></script>
 </head>
 
 
 
 <body>
 
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s12 m12 ">
+                <div class="card  caja" style="background-color: #D6E0D3;">
+                    <form action="/test1recibo" method="POST" enctype="multipart/form-data">
+                        <!-- HEADER CARD -->
+                        <div>
+                            <h5 class="pb-CardHeader pb-bg-alta" id="idTitulo">Titulo</h5>
+                        </div>
+                        <!-- Titulo CARD -->
+                        <div>
+                            <p class="pb-Operario" id="idOperario">OPERARIO</p>
+                        </div>
+
+                        <hr class="style-one" style="margin-bottom: 10px;">
+
+                        <!-- CONTENT CARD -->
+                        <div class="card-content">
+                            <div class="row" style="flex-wrap:wrap;">
+
+                                <div class="input-field col s12 m6 l3 x3">
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">bookmark</i>
+                                        <input id="idDataBase" type="text" class="validate">
+                                        <label for="idDataBase">ID</label>
+                                    </div>
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">today</i>
+                                        <input id="idFechaSistema" type="text" class=" datepicker">
+                                        <label for="idFechaSistema">Fecha Carga en Sistema</label>
+                                    </div>
 
 
 
-<div class="container">
-    <div class="row">
-        <div class="col s12 m12 ">
-            <div class="card  caja" style="background-color: #D6E0D3;">
-                <form action="/test1recibo" method="POST" enctype="multipart/form-data">
-                    <!-- HEADER CARD -->
-                    <div>
-                        <h5 class="pb-CardHeader pb-bg-alta" id="idTitulo">Titulo</h5>
-                    </div>
-                    <!-- Titulo CARD -->
-                    <div>
-                        <p class="pb-Operario" id="idOperario">OPERARIO</p>
-                    </div>
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">today</i>
+                                        <input id="fechaemidoc" type="text" class="validate datepicker">
+                                        <label for="fechaemidoc">Fecha Emision</label>
+                                    </div>
 
-                    <hr class="style-one" style="margin-bottom: 10px;">
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">today</i>
+                                        <input id="fechadoc" type="text" class="validate datepicker">
+                                        <label for="fechadoc">Fecha Audiencia</label>
+                                    </div>
 
-                    <!-- CONTENT CARD -->
-                    <div class="card-content">
-                        <div class="row" style="flex-wrap:wrap;">
-
-                            <div class="input-field col s12 m6 l3 x3">
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">bookmark</i>
-                                    <input id="idDataBase" type="text" class="validate">
-                                    <label for="idDataBase">ID</label>
-                                </div>
-                                
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">today</i>
-                                    <input id="idFechaSistema" type="text" class=" datepicker">
-                                    <label for="idFechaSistema">Fecha Carga en Sistema</label>
-                                </div>
-
-                                
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">today</i>
-                                    <input id="fechaemidoc" type="text" class="validate datepicker">
-                                    <label for="fechaemidoc">Fecha Emision</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">today</i>
-                                    <input id="fechadoc" type="text" class="validate datepicker">
-                                    <label for="fechadoc">Fecha Audiencia</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">alarm</i>
-                                    <input id="idHora" type="text" class="validate timepicker">
-                                    <label for="idHora">Hora Programada</label>
-                                </div>
-                            </div>
-
-                            <div class="input-field col s12 m6 l9 x9">
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">event_note</i>
-                                    <input id="idReclamo" type="text" class="validate">
-                                    <label for="idReclamo">Tipo de Reclamo</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">mode_edit</i>
-                                    <textarea id="idComentario" class="materialize-textarea" style="height: 80px;" data-length="120"></textarea>
-                                    <label for="idComentario">Comentarios de este Documento</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">cloud</i>
-                                    <textarea id="idlinkcartellone" class="materialize-textarea"
-                                        data-length="120"></textarea>
-                                    <label for="idlinkcartellone">Cartellone Cloud</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <i class="material-icons prefix">http</i>
-                                    <textarea id="idlinkProductiveBrains" class="materialize-textarea"
-                                        data-length="120"></textarea>
-                                    <label for="idlinkProductiveBrains">PB Cloud</label>
-                                </div>
-
-                                <div class="input-field col s12 m12 l12 xl12">
-
-                                    <div class="file-field input-field col s12 m7 l7 xl9">
-                                        <div class="btn">
-                                            <span>Seleccionar PDF</span>
-                                            <input type="file" name="archivoupload">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text">
-                                        </div>
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">alarm</i>
+                                        <input id="idHora" type="text" class="validate timepicker">
+                                        <label for="idHora">Hora Programada</label>
                                     </div>
                                 </div>
 
+                                <div class="input-field col s12 m6 l4 x4">
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">event_note</i>
+                                        <input id="idReclamo" type="text" class="validate">
+                                        <label for="idReclamo">Tipo de Reclamo</label>
+                                    </div>
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">mode_edit</i>
+                                        <textarea id="idComentario" class="materialize-textarea" style="height: 80px;"
+                                            data-length="120"></textarea>
+                                        <label for="idComentario">Comentarios de este Documento</label>
+                                    </div>
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">cloud</i>
+                                        <textarea id="idlinkcartellone" class="materialize-textarea"
+                                            data-length="120"></textarea>
+                                        <label for="idlinkcartellone">Cartellone Cloud</label>
+                                    </div>
+
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <i class="material-icons prefix">http</i>
+                                        <textarea id="idlinkProductiveBrains" class="materialize-textarea"
+                                            data-length="120"></textarea>
+                                        <label for="idlinkProductiveBrains">PB Cloud</label>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="input-field col s12 m6 l5 x5">
+                                    <div class="input-field col s12 m12 l12 xl12">
+                                        <div class=" center-align">
+                                            <%- include ("partials/_pbCardPdfPreview.ejs") %>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- FOOTER CARD -->
-                    <div class="card-action grey darken-3" style="text-align: right;">
-                        <a class="btn pink darken-4 pb-btnFooter" id="botonGrabar">
-                            <i class="material-icons right">save</i>reset
-                        </a>
-                        <a class="btn blue darken-4 pb-btnFooter">
-                            <i class="material-icons right ">cancel</i>Cancelar
-                        </a>
-                        <button type="submit"  value="Submit">Submit</button>
-                    </div>
-                </form>
+                        <!-- FOOTER CARD -->
+                        <div class="card-action grey darken-3" style="text-align: right;">
+                            <a class="btn pink darken-4 pb-btnFooter" id="botonGrabar">
+                                <i class="material-icons right">save</i>reset
+                            </a>
+                            <a class="btn blue darken-4 pb-btnFooter">
+                                <i class="material-icons right ">cancel</i>Cancelar
+                            </a>
+                            <button type="submit" value="Submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
         </div>
     </div>
-
-
-
-</div>
 
 
 
@@ -152,6 +143,7 @@
 
     <script>
         $(document).ready(function () {
+            $('.tooltipped').tooltip({ delay: 50 });
             InicializoFechas_id('fechaemidoc');
             InicializoFechas_id('fechadoc');
             AsignarFechaActual_id('idFechaSistema');
@@ -162,13 +154,14 @@
         $("#idFechaSistema").prop('disabled', true);
 
 
-        $("#botonGrabar").click(function() {
+        $("#botonGrabar").click(function () {
             $('#myForm').trigger("reset");
             AsignarFechaActual_id('idFechaSistema');
         })
-
-
     </script>
+
+
+    <script src="js/divPDFscript.js"></script>
 
 
 

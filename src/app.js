@@ -7,7 +7,6 @@ const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 
 const multer = require('multer');
-
 const { uuid } = require('uuidv4');
 
 const storage = multer.diskStorage({
@@ -53,12 +52,17 @@ app.use(multer({
 //Routes
 app.use('/', personasRoutes);
 
-app.get('/test1', (req, res) => {
-    res.render('uploadtest');
+
+app.get('/test2', (req, res) => {
+    res.render('audiencia_Create');
+});
+
+app.get('/pdftest', (req, res) => {
+    res.render('pdftest');
 });
 
 app.post('/test1recibo', (req, res) => {
-    // console.log(req.file);
+    console.log(req.file);
     // console.log(req.body);
 
     console.log(req.body['ID']);
