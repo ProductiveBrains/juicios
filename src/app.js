@@ -65,16 +65,16 @@ app.post('/test1recibo', (req, res) => {
     console.log(req.file);
     // console.log(req.body);
 
-    console.log(req.body['ID']);
-    console.log(req.body['CUIL']);
-    console.log(req.body['FECHAINGSISTEMA']);
-    console.log(req.body['FECHAEMISION']);
-    console.log(req.body['FECHAAUDIENCIA']);
-    console.log(req.body['HORAPROGRAMADA']);
-    console.log(req.body['RECLAMO']);
-    console.log(req.body['COMENTARIO']);
-    console.log(req.body['URLCARTELLONE']);
-    console.log(req.body['URLPB']);
+    // console.log(req.body['ID']);
+    // console.log(req.body['CUIL']);
+    console.log(req.body['idFechaSistema']);
+    console.log(req.body['idFechaEmision']);
+    console.log(req.body['idFechaAudiencia']);
+    console.log(req.body['idHora']);
+    console.log(req.body['idTipoReclamo']);
+    console.log(req.body['idComentario']);
+    console.log(req.body['idCartellone']);
+    // console.log(req.body['URLPB']);
 
     res.send('Nombre del archivo: ' + req.file.filename);
 });

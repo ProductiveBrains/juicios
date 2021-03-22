@@ -26,18 +26,18 @@
         <div class="row">
             <div class="col s12 m12 ">
                 <div class="card  caja" style="background-color: #D6E0D3;">
-                    <form action="/test1recibo" method="POST" enctype="multipart/form-data" id="myForm">
+                    <form action="/test1recibo" method="POST" enctype="multipart/form-data" id="idMiFormulario">
                         <!-- HEADER CARD -->
                         <div>
                             <h5 class="pb-CardHeader pb-bg-alta" id="idTitulo">
                                 ALTA AUDIENCIA - C.U.I.L. :
-                                    <span id="idCUIL">xxx</span> - <span id="idNombreApellidoRecibido">yyy</span>
+                                <span id="idCUIL">xxx</span> - <span id="idNombreApellidoRecibido">yyy</span>
 
                             </h5>
                         </div>
-                        
+
                         <!-- CONTENT CARD -->
-                        <div class="card-content"style="margin-top:10px;" >
+                        <div class="card-content" style="margin-top:10px;">
                             <div class="row" style="flex-wrap:wrap;">
 
                                 <div class="input-field col s12 m6 l3 x3">
@@ -50,7 +50,7 @@
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">today</i>
-                                        <input id="idFechaSistema" type="text" class=" datepicker">
+                                        <input id="idFechaSistema" name="idFechaSistema" type="text" class=" datepicker">
                                         <label for="idFechaSistema">Fecha Carga en Sistema</label>
                                     </div>
 
@@ -58,19 +58,19 @@
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">today</i>
-                                        <input id="idFechaEmision" type="text" class="validate datepicker">
+                                        <input id="idFechaEmision" name="idFechaEmision"type="text" class="validate datepicker">
                                         <label for="idFechaEmision">Fecha Emision</label>
                                     </div>
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">today</i>
-                                        <input id="idFechaAudiencia" type="text" class="validate datepicker">
+                                        <input id="idFechaAudiencia" name="idFechaAudiencia" type="text" class="validate datepicker">
                                         <label for="idFechaAudiencia">Fecha Audiencia</label>
                                     </div>
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">alarm</i>
-                                        <input id="idHora" type="text" class="validate timepicker">
+                                        <input id="idHora" name="idHora" type="text" class="validate timepicker">
                                         <label for="idHora">Hora Programada</label>
                                     </div>
                                 </div>
@@ -79,20 +79,20 @@
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">event_note</i>
-                                        <input id="idTipoReclamo" type="text" class="validate">
+                                        <input id="idTipoReclamo"  name="idTipoReclamo" type="text" class="validate">
                                         <label for="idTipoReclamo">Tipo de Reclamo</label>
                                     </div>
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">mode_edit</i>
-                                        <textarea id="idComentario" class="materialize-textarea" style="height: 106px;"
+                                        <textarea id="idComentario"  name="idComentario" class="materialize-textarea" style="height: 106px;"
                                             data-length="120"></textarea>
                                         <label for="idComentario">Comentarios de este Documento</label>
                                     </div>
 
                                     <div class="input-field col s12 m12 l12 xl12">
                                         <i class="material-icons prefix">cloud</i>
-                                        <textarea id="idCartellone" class="materialize-textarea"
+                                        <textarea id="idCartellone"  name="idCartellone"  class="materialize-textarea"
                                             data-length="120"></textarea>
                                         <label for="idCartellone">Cartellone Cloud</label>
                                     </div>
@@ -121,13 +121,11 @@
                         <!-- FOOTER CARD -->
                         <div class="card-action grey darken-3" style="text-align: right;">
                             <a class="btn pink darken-4 pb-btnFooter" id="botonGrabar" type="submit">
-                                <i class="material-icons right">save</i>reset
+                                <i class="material-icons right">save</i>Grabar
                             </a>
                             <a class="btn blue darken-4 pb-btnFooter">
                                 <i class="material-icons right ">cancel</i>Cancelar
                             </a>
-                            <button type="submit" value="Submit">Submit</button>
-                            <input type="submit" value="Subir Archivo" id="btnSubmit" />
                         </div>
                     </form>
                 </div>
@@ -143,7 +141,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#myForm').trigger("reset");
+            $('#idMiFormulario').trigger("reset");
             $('.tooltipped').tooltip({ delay: 50 });
             InicializoFechas_id('idFechaEmision');
             InicializoFechas_id('idFechaAudiencia');
@@ -155,10 +153,53 @@
         $("#idFechaSistema").prop('disabled', true);
 
 
-        $("#botonGrabar").click(function () {
-            $('#myForm').trigger("reset");
-            AsignarFechaActual_id('idFechaSistema');
-        })
+        $("#botonGrabar").click(function (event) {            
+            event.preventDefault();//stop submit the form, we will post it manually.            
+            var form = $('#idMiFormulario')[0];// Get form
+           
+            var data = new FormData(form); // Create an FormData object 
+            // If you want to add an extra field for the FormData
+            // data.append("ID", $("#id_ID").val());
+            // data.append("CUIL", $("#id_CUIL").val());
+            // data.append("idFechaSistema", $("#idFechaSistema").val());
+            // data.append("idFechaEmision", $("#idFechaEmision").val());
+            // data.append("idFechaSistema", $("#idFechaAudiencia").val());
+            // data.append("HORAPROGRAMADA", $("#idHora").val());
+            // data.append("RECLAMO", $("#idTipoReclamo").val());
+            // data.append("COMENTARIO", $("#idComentario").val());
+            // data.append("URLCARTELLONE", $("#idCartellone").val());
+            // data.append("URLPB", $("#id_URLPB").val());
+
+            // disabled the submit button
+            $("#btnSubmit").prop("disabled", true);
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "/test1recibo",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+
+                    $("#result").text(data);
+                    console.log("SUCCESS : ", data);
+                    $("#btnSubmit").prop("disabled", false);
+
+                },
+                error: function (e) {
+
+                    $("#result").text(e.responseText);
+                    console.log("ERROR : ", e);
+                    $("#btnSubmit").prop("disabled", false);
+
+                }
+            });
+
+        });
+
     </script>
 
 
