@@ -32,6 +32,35 @@ function GetTodayDate() {
     var currentDate = yyyy + "-" + (MM + 1) + "-" + dd;
     return currentDate;
 };
+function GetTodayDateV2() {
+    const SistemaFecha = new Date();
+    var diaactual="";
+    var mesactual="";
+    var anioactual= SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2){
+        diaactual =  "0" + (SistemaFecha.getDate());
+    }else{diaactual =  SistemaFecha.getDate();}
+    if (SistemaFecha.getMonth().toString().length < 2){
+        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    }
+    fechafinal = diaactual + '-' + mesactual + '-' + anioactual;
+    return fechafinal;
+};
+
+function GetTodayDateV3() {
+    const SistemaFecha = new Date();
+    var diaactual="";
+    var mesactual="";
+    var anioactual= SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2){
+        diaactual =  "0" + (SistemaFecha.getDate());
+    }else{diaactual =  SistemaFecha.getDate();}
+    if (SistemaFecha.getMonth().toString().length < 2){
+        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    }
+    fechafinal2 = anioactual  + '-' + mesactual + '-' + diaactual;
+    return fechafinal2;
+};
 function InicializoFechas_id(idfecha) {
     $(`#${idfecha}`).datepicker({
         firstDay: true,

@@ -30,8 +30,10 @@ var elem = document.getElementById("divPDF"); function fullscreen() {
 var options = {
     pdfOpenParams: { view: 'Fit', scrollbar: '1', toolbar: '1', statusbar: '1', messages: '1', navpanes: '1', highlight: '0,0,0,0' }
 };
-PDFObject.embed(false, "#divPDF", options);
+
 
 $("input[type=file]").change(function (event) {
     PDFObject.embed(URL.createObjectURL(event.target.files[0]), "#divPDF", options);
+    console.log(event.target.files[0]);
+    
 });
