@@ -8,7 +8,6 @@
     <title>Probando Materilize</title>
     <!-- <link rel="shortcut icon" type="image/jpg" href="media/índice.png" /> -->
 
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -23,17 +22,14 @@
 
 
 <body>
-    <button id="myBtn">Open Modal</button>
+
+    <button id="btnAbrirModal">Open Modal</button>
     <!-- The Modal -->
     <div id="myModal" class="modal-pb ">
-
-
         <!-- Modal content -->
         <div class="modal-content-Alta-pb caja">
             <form id="idMiFormulario">
                 <div class="modal-header-Alta-pb pb-bg-alta pb-CardHeader">
-                    <!-- <span class="close">x</span> -->
-                    <!-- <h2>Modal Header</h2> -->
                     <h5 style="margin:0;">ALTA AUDIENCIA - C.U.I.L. :
                         <span id="idCUIL">xxx</span> - <span id="idNombreApellidoRecibido">yyy</span>
                     </h5>
@@ -41,7 +37,6 @@
                 <br>
                 <div class="modal-body-Alta-pb  card-content">
                     <div class="row" style="flex-wrap:wrap;">
-
                         <div class="col s12 m6 l6 x6">
 
                             <!-- <div class="input-field col s12 m12 l12 xl12">
@@ -85,10 +80,10 @@
                                 <label for="idTipoReclamo">Tipo de Reclamo</label>
                             </div>
 
+
                             <div class="input-field col s12 m12 l12 xl12">
                                 <i class="material-icons prefix">mode_edit</i>
-                                <textarea id="idComentario" name="idComentario" class="materialize-textarea"
-                                    style="height: 106px;" data-length="120"></textarea>
+                                <textarea id="idComentario" name="idComentario" class="materialize-textarea" data-length="120"></textarea>
                                 <label for="idComentario">Comentarios de este Documento</label>
                             </div>
                         </div>
@@ -122,13 +117,9 @@
                     </div>
                 </div>
                 <div class="modal-footer-Alta-pb card-action grey darken-3" style="text-align: right;">
-                    <!-- <a class="btn pink darken-4 pb-btnFooter" id="botonGrabar" type="submit">
-            <i class="material-icons right">save</i>Grabar
-        </a>                             -->
                     <a class="btn pink darken-4 pb-btnFooter" id="botonGrabar" type="submit">
                         <i class="material-icons right">save</i>Grabar
                     </a>
-
                     <a class="btn blue darken-4 pb-btnFooter" id="CerrarModal">
                         <i class="material-icons right ">cancel</i>Cancelar
                     </a>
@@ -140,26 +131,7 @@
 
     <script>
 
-        var modal = document.getElementById("myModal");// Get the modal
-        var btnAbrirModal = document.getElementById("myBtn");// Get the button that opens the modal        
-        var btnCerrarModal = document.getElementById("CerrarModal");// Get the CerrarModal element that closes the modal
 
-        // When the user clicks the button, open the modal 
-        btnAbrirModal.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-            btnCerrarModal.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
     </script>
 
 
@@ -168,41 +140,40 @@
 
 
     <script>
-        var fechaactualmysql = '';
         $(document).ready(function () {
             PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", { pdfOpenParams: { view: 'Fit' } });
-
             $('#idMiFormulario').trigger("reset");
             $('.tooltipped').tooltip({ delay: 50 });
-            // InicializoFechas_id('idFechaEmision');
-            // InicializoFechas_id('idFechaAudiencia');
-            // AsignarFechaActual_id('idFechaSistema');
-            // document.getElementById("mytext").value = "My value";
-            // console.log(document.getElementById("idFechaSistema").value);
             document.getElementById("idFechaSistema").value = GetTodayDateV2();
-            // InicializoHora_id('idHora');
+            document.getElementById("idFechaSistema").disabled = true;
+            $("#idDataBase").prop('disabled', true);
             // Materialize.updateTextFields();
-
+            // Deshabilitacion de ID`s innecesarios
         });
 
-        // Deshabilitacion de ID`s innecesarios
-        $("#idDataBase").prop('disabled', true);
-        // $("#idFechaSistema").prop('disabled',true);
-        document.getElementById("idFechaSistema").disabled = true;
+        // MODAL CONTROL ----------------------------------------------------------------------------------------------------        
+        var modal = document.getElementById("myModal");// Get the modal
+        var btnAbrirModal = document.getElementById("btnAbrirModal");// Get the button that opens the modal        
+        var btnCerrarModal = document.getElementById("CerrarModal");// Get the CerrarModal element that closes the modal
+        btnCerrarModal.onclick = function () { modal.style.display = "none"; }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) { if (event.target == modal) { modal.style.display = "none"; } }
+        // MODAL CONTROL ----------------------------------------------------------------------------------------------------
+        btnAbrirModal.onclick = function () {
+            modal.style.display = "block";
+            document.getElementById("idCUIL").innerHTML = "2326512845";
+            document.getElementById("idNombreApellidoRecibido").innerHTML = "Acosta Stelzer Sebastian Javier";
 
-        $("#botontest").click(function () {
-            alert($("#idFechaSistema").val());
-        })
+        }
+
 
 
         $("#botonGrabar").click(function (event) {
-            event.preventDefault();//stop submit the form, we will post it manually.            
+
+            
+            event.preventDefault();//stop submit the form, we will post it manually.
             var form = $('#idMiFormulario')[0];// Get form
-
-            var data = new FormData(form); // Create an FormData object 
-
-
-            // If you want to add an extra field for the FormData
+            var data = new FormData(form); // Create an FormData object
 
             // data.append("ID", $("#id_ID").val()); id en caso de update
             // data.append("CUIL", $("#id_CUIL").val());
@@ -215,10 +186,6 @@
             data.append("idComentario", $("#idComentario").val());
             data.append("idCartellone", $("#idCartellone").val());
 
-
-            // disabled the submit button
-            // $("#botonGrabar").prop("disabled", true);
-
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
@@ -229,21 +196,14 @@
                 cache: false,
                 timeout: 600000,
                 success: function (data) {
-
                     $("#result").text(data);
                     console.log("SUCCESS : ", data);
-                    // $("#btnSubmit").prop("disabled", false);
-
                 },
                 error: function (e) {
-
                     $("#result").text(e.responseText);
                     console.log("ERROR : ", e);
-                    // $("#btnSubmit").prop("disabled", false);
-
                 }
             });
-
         });
 
     </script>

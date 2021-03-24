@@ -58,16 +58,15 @@
 
 .modal-header-Alta-pb {
   padding-left: 20px ;
-  background-color: #5cb85c;
-  color: white;
+  padding-bottom: 10px ;
 }
 
 .modal-body-Alta-pb {padding: 2px 16px;}
 
 .modal-footer-Alta-pb {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right: 20px ;
 }
 
 
