@@ -6,24 +6,51 @@ controller.principal=(req,res)=>{
 
 }
 
-//Listado de Datos
-//Personas
-//Litigantes
-controller.listar = (req,res)=>{
-    // res.send('Hola Mundo listar');
+
+// NAVBAR LINKS
+controller.listarPersonas = (req,res)=>{
+    res.render('personas_lista');
+};
+controller.listarLitigantes = (req,res)=>{
+    res.render('litigantes_lista');
+}
+controller.litigantesDocs = (req,res)=> {
+    res.render ('litigantes_docs');
+}
+
+controller.litigantesCDxCUIT = (req,res)=> {
+    // res.render ('litigantes_docs');
+    // res.send(req.params.cuit);
+    const CUIL = req.params.cuit;
     req.getConnection((err, conn)=>{
-        conn.query('SELECT * from PERSONAS where judiciales like "%SI%"',(err, litigantes)=>{
+        conn.query('SELECT * from CARTADOCUMENTO WHERE CUIL= ?',[CUIL],(err, CDxCUIT)=>{
             if(err){
                 res.json(err);
             }
-            // console.log(litigantes);
-            res.render('personas_lista');
-            console.log('Monitor Servidor : Pidieron ver la pagina LISTADO DE PERSONAL');
-            // res.send('Servidor Remoto : Mostrando pagina LISTADO DE PERSONAS');
-
+            res.send(CDxCUIT);            
+            console.log('Monitor Servidor : LLAMARON API CARTADOCUMENTO para ver listado');
         });
     })
-};
+}
+
+controller.litigantesCOxCUIT = (req,res)=> {
+    // res.render ('litigantes_docs');
+    // res.send(req.params.cuit);
+    const CUIL = req.params.cuit;
+    req.getConnection((err, conn)=>{
+        conn.query('SELECT * from CONTESTACIONES WHERE CUIL= ?',[CUIL],(err, CDxCUIT)=>{
+            if(err){
+                res.json(err);
+            }
+            res.send(CDxCUIT);            
+            console.log('Monitor Servidor : LLAMARON API CONTESTACIONES para ver listado');
+        });
+    })
+}
+
+controller.CreateAudiencia= (req,res)=> {
+    res.render ('audiencia_Create');
+}
 
 
 
@@ -104,10 +131,7 @@ controller.saveNewPerson = (req,res) =>{
 
 //Paginas Generales
 
-controller.mostrarResumen = (req,res)=>{
-    // res.send('Hola Mundo listar');
-    res.render('resumen');
-}
+
 
 
 

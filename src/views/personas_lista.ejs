@@ -75,7 +75,7 @@
         $(document).ready(function () {
             tablaPersonal = $("#tablaPersonal").DataTable({
                 ajax: {
-                    url: `http://190.106.132.189:3500/api/personas`,
+                    url: `api/personas`,
                     dataSrc: "",
                     "processing": true,
                     "serverSide": true,
@@ -189,7 +189,7 @@
                 if (result.isConfirmed) {
 
                     $.ajax({
-                        url: `http://190.106.132.189:3500/api/litigantesiono`,
+                        url: `api/litigantesiono`,
                         type: "POST",
                         datatype: "json",
                         async: true,
