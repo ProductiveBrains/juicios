@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 const app = express();
 
 //Importando rutas
-const personasRoutes = require('./routes/personas');
+const personasRoutes = require('./routes/personasRouter');
 
 //Setting
 app.set('port', process.env.PORT || 3500);
@@ -51,16 +51,12 @@ app.use(multer({
 
 //Routes
 app.use('/', personasRoutes);
-
-
 app.get('/test2', (req, res) => {
     res.render('audiencia_Create');
 });
-
 app.get('/pdftest', (req, res) => {
     res.render('pdftest');
 });
-
 app.post('/test1recibo', (req, res) => {
     console.log(req.file);
     // console.log(req.body);
@@ -84,9 +80,6 @@ app.post('/test1recibo', (req, res) => {
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
 //Iniciando el servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor activo en puerto 3500');

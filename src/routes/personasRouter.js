@@ -10,10 +10,13 @@ router.get('/', personasController.principal);
 
 router.get('/list_Personas', personasController.listarPersonas);
 router.get('/list_Litigantes', personasController.listarLitigantes);
-router.get('/litigantes_Docs', personasController.litigantesDocs)
 
-router.get('/litigantesCDxCUIT/:cuit', personasController.litigantesCDxCUIT)
-router.get('/litigantesCOxCUIT/:cuit', personasController.litigantesCOxCUIT)
+router.get('/litigantes_Docs/', personasController.litigantesDocs);
+
+// router.get('/litigantes_Docs/:cuit', personasController.litigantesDocs);
+router.get('/litigantesCDxCUIT/:cuit', personasController.litigantesCDxCUIT);
+router.get('/litigantesCOxCUIT/:cuit', personasController.litigantesCOxCUIT);
+router.get('/litigantesAUxCUIT/:cuit', personasController.litigantesCAxCUIT);
 // router.get('/createpersona', personasController.createpersona);
 
 router.get('/litigantes_CreateAudiencia', personasController.CreateAudiencia);

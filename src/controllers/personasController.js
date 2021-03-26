@@ -18,9 +18,9 @@ controller.litigantesDocs = (req,res)=> {
     res.render ('litigantes_docs');
 }
 
+
+// Consulta a Base de Datos para Ajax fetch o HttpxmlRequest
 controller.litigantesCDxCUIT = (req,res)=> {
-    // res.render ('litigantes_docs');
-    // res.send(req.params.cuit);
     const CUIL = req.params.cuit;
     req.getConnection((err, conn)=>{
         conn.query('SELECT * from CARTADOCUMENTO WHERE CUIL= ?',[CUIL],(err, CDxCUIT)=>{
@@ -32,21 +32,37 @@ controller.litigantesCDxCUIT = (req,res)=> {
         });
     })
 }
-
 controller.litigantesCOxCUIT = (req,res)=> {
-    // res.render ('litigantes_docs');
-    // res.send(req.params.cuit);
     const CUIL = req.params.cuit;
     req.getConnection((err, conn)=>{
-        conn.query('SELECT * from CONTESTACIONES WHERE CUIL= ?',[CUIL],(err, CDxCUIT)=>{
+        conn.query('SELECT * from CONTESTACIONES WHERE CUIL= ?',[CUIL],(err, COxCUIT)=>{
             if(err){
                 res.json(err);
+                console.log(err);
             }
-            res.send(CDxCUIT);            
+            res.send(COxCUIT);            
             console.log('Monitor Servidor : LLAMARON API CONTESTACIONES para ver listado');
         });
     })
 }
+controller.litigantesCAxCUIT = (req,res)=> {
+    const CUIL = req.params.cuit;
+    req.getConnection((err, conn)=>{
+        conn.query('SELECT * from AUDIENCIAS WHERE CUIL= ?',[CUIL],(err, AUxCUIT)=>{
+            if(err){
+                res.json(err);
+                console.log(err);
+            }
+            res.send(AUxCUIT);            
+            console.log('Monitor Servidor : LLAMARON API AUDIENCIAS para ver listado');
+        });
+    })
+}
+
+
+
+
+
 
 controller.CreateAudiencia= (req,res)=> {
     res.render ('audiencia_Create');
@@ -100,6 +116,9 @@ controller.apiPersonaLitigantesiono = (req,res)=>{
     })
     
 };
+
+
+
 
 
 
