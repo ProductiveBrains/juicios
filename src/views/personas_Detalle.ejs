@@ -1,0 +1,269 @@
+<style>
+    /* Modal Content */
+    .modal-content-Detalle-Pesona-pb {
+        position: relative;
+        /* background-color: #6a946a !important; */
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    .modal-content {
+        background-color: #b3b8b3;
+    }
+
+    .caja {
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
+    }
+
+    .caja:hover {
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 1px rgba(250, 238, 72, 0.9);
+    }
+
+    .pb-CardHeader {
+        border-radius: 10px 10px 0 0;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px
+    }
+
+    .pb-bg-Detalle-Pesona {
+        background: rgb(5, 32, 82);
+        background: linear-gradient(0deg, rgba(5, 32, 82, 1) 0%, rgb(41, 39, 172) 67%, rgb(116, 167, 245) 100%);
+        color: white;
+    }
+
+    .pb-btnFooter {
+        border-radius: 5px;
+    }
+
+    .pb-btnFooter:hover {
+        border-radius: 10px;
+        color: rgba(242, 255, 4, 0.9);
+        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
+        font-weight: bold;
+    }
+
+    .modal-header-Detalle-Pesona-pb {
+        padding-left: 20px;
+        padding-bottom: 10px;
+    }
+
+    .modal-body-Detalle-Pesona-pb {
+        padding: 2px 16px;
+    }
+
+    .modal-footer-Detalle-Pesona-pb {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+    }
+</style>
+
+
+
+<div class="modal fade modal-DetallePersona" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
+        <div class="modal-content caja">
+            <form id="id-form-persona-detalle">
+                <div class="modal-header-Detalle-Pesona-pb pb-bg-Detalle-Pesona pb-CardHeader">
+                    <h5 style="margin:0;color: rgb(255, 255, 255)" id="cl-cuil">Detalles de C.U.I.L. :
+                        <span class="demo-class-cuil">xxx</span> - <span class="demo-class-apenom">yyy</span>
+                    </h5>
+                </div>
+                <br>
+                <div class="modal-body-Detalle-Pesona-pb  card-content">
+                    <div class="container">
+                        <div class="row" style="flex-wrap:wrap;">
+                            <div class="col s12 m6 l6 x6">
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="legajo">Legajo</label>
+                                        <input type="text" class="form-control" id="legajo">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="idcode">IdCode</label>
+                                        <input type="text" class="form-control" id="idcode">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="CUIL">C.U.I.L.</label>
+                                        <input type="text" class="form-control" id="CUIL">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="DNI">D.N.I.</label>
+                                        <input type="text" class="form-control" id="DNI">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="apellido">Apellido</label>
+                                        <input type="text" class="form-control" id="apellido">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="funcion">Funcion</label>
+                                        <input type="text" class="form-control" id="funcion">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="sector">Sector</label>
+                                        <input type="text" class="form-control" id="sector">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="inicio">Inicio</label>
+                                        <input type="date" class="form-control" id="inicio">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="iniciocovid">Inicio Covid</label>
+                                        <input type="date" class="form-control" id="iniciocovid">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="condicion">Condicion</label>
+                                        <input type="text" class="form-control" id="condicion">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="localidad">Localidad</label>
+                                        <input type="text" class="form-control" id="localidad">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="provincia">Provincia</label>
+                                        <input type="text" class="form-control" id="provincia">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="barrio">Barrio</label>
+                                        <input type="text" class="form-control" id="barrio">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="calle">Calle</label>
+                                        <input type="text" class="form-control" id="calle">
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="numero">Num</label>
+                                        <input type="text" class="form-control" id="numero">
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="piso">Piso</label>
+                                        <input type="text" class="form-control" id="piso">
+                                    </div>
+                                    <div class="form-group col-md-1">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="depto">Depto</label>
+                                        <input type="text" class="form-control" id="depto">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="domolavarria">Domicilio Olavarria</label>
+                                        <input type="text" class="form-control" id="domolavarria">
+                                    </div>
+                                    <div class="form-group col-md-2 ">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="codpostal">Cod. Postal</label>
+                                        <input type="text" class="form-control" id="codpostal">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="telcasa">Tel. Casa</label>
+                                        <input type="text" class="form-control" id="telcasa">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="telcelular">Tel. Celular</label>
+                                        <input type="text" class="form-control" id="telcelular">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="nacimiento">Fecha Nac.</label>
+                                        <input type="date" class="form-control" id="nacimiento">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="nacionalidad">Nacionalidad</label>
+                                        <input type="text" class="form-control" id="nacionalidad">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="estadocivil">Estado Civil</label>
+                                        <input type="text" class="form-control" id="estadocivil">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="cbu">C.B.U.</label>
+                                        <input type="text" class="form-control" id="cbu">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="fode">Fondo de Desempleo</label>
+                                        <input type="text" class="form-control" id="fode">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="altaafip">Alta Afip</label>
+                                        <input type="date" class="form-control" id="altaafip">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="categoria">Categoria</label>
+                                        <input type="text" class="form-control" id="categoria">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="convenio">Convenio</label>
+                                        <input type="text" class="form-control" id="convenio">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="obrasocial">Obra Social</label>
+                                        <input type="text" class="form-control" id="obrasocial">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <i class="material-icons prefix text-success pbicon1">today</i>
+                                        <label for="judiciales">Judiciales</label>
+                                        <input type="text" class="form-control" id="judiciales">
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer-Detalle-Pesona-pb d-flex align-items-center justify-content-end"
+                    style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        style="background-color: #0D47A1;color:white;margin-left:10px;">
+                        <i class="material-icons right  pbicon1">cancel</i>
+                        CERRAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

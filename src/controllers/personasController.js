@@ -16,6 +16,13 @@ controller.listarLitigantes = (req,res)=>{
 }
 controller.litigantesDocs = (req,res)=> {
     res.render ('litigantes_docs');
+    console.log(' ');
+    console.log('****************************************************************');
+    console.log('***   Monitor Servidor : LLAMARON API Ver Documentos');
+    console.log('****************************************************************');
+    console.log('***   '+ JSON.stringify(req.query));
+    console.log('****************************************************************');
+    console.log(' ');
 }
 
 

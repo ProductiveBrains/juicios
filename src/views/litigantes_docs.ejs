@@ -1,87 +1,23 @@
 <%- include ("partials/_header") %>
 
-<style>
-    /* Modal Content */
-    .modal-content-Alta-pb {
-        position: relative;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 80%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
-    }
 
-    .caja {
-        border-radius: 10px;
-        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
-    }
-
-    .caja:hover {
-        border-radius: 10px;
-        box-shadow: 2px 2px 2px 1px rgba(250, 238, 72, 0.9);
-    }
-
-    .pb-CardHeader {
-        border-radius: 10px 10px 0 0;
-        padding-left: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px
-    }
-
-    .pb-bg-alta {
-        background: rgb(5, 82, 34);
-        background: linear-gradient(0deg, rgba(5, 82, 34, 1) 0%, rgba(9, 96, 25, 1) 67%, rgba(101, 219, 100, 1) 100%);
-        color: white;
-    }
-
-    .pb-btnFooter {
-        border-radius: 5px;
-    }
-
-    .pb-btnFooter:hover {
-        border-radius: 10px;
-        color: rgba(242, 255, 4, 0.9);
-        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
-        font-weight: bold;
-    }
-
-    .modal-header-Alta-pb {
-        padding-left: 20px;
-        padding-bottom: 10px;
-    }
-
-    .modal-body-Alta-pb {
-        padding: 2px 16px;
-    }
-
-    .modal-footer-Alta-pb {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 20px;
-    }
-
-    /* .modal-footer-Alta-pb {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 20px;
-    } */
-</style>
+<!-- Modales -->
+<%- include ("personas_Detalle") %>
 
 
 
+
+
+
+<!-- MODAL -->
 <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:10px!important;" role="document">
+    <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
             <form id="idMiFormulario">
                 <div class="modal-header-Alta-pb pb-bg-alta pb-CardHeader">
                     <h5 style="margin:0;color: rgb(255, 255, 255)">ALTA AUDIENCIA - C.U.I.L. :
-                        <span id="idCUIL_modal">xxx</span> - <span id="idNombreApellidoRecibido_modal">yyy</span>
+                        <span class="demo-class-cuil">xxx</span> - <span class="demo-class-apenom">yyy</span>
                     </h5>
                 </div>
                 <br>
@@ -166,11 +102,11 @@
                     style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
                     <a class="btn pb-btnFooter" id="botonGrabar" type="submit"
                         style="background-color: #880E4F;color:white">
-                        <i class="material-icons right">save</i>Grabar
+                        <i class="material-icons right pbicon1">save</i>Grabar
                     </a>
                     <a class="btn  pb-btnFooter" id="CerrarModal"
                         style="background-color: #0D47A1;color:white;margin-left:10px;">
-                        <i class="material-icons right ">cancel</i>Cancelar
+                        <i class="material-icons right pbicon1">cancel</i>Cancelar
                     </a>
                 </div>
         </div>
@@ -178,15 +114,86 @@
     </div>
 </div>
 </div>
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        // $('#myInput').trigger('focus')
-        // alert('holka');
-        // document.getElementById("idCUIL").innerHTML = "2326512845";
-        // document.getElementById("idNombreApellidoRecibido").innerHTML = "Acosta Stelzer Sebastian Javier";
-    })
+<!-- CSS MODAL -->
+<style>
+    /* Modal Content */
+    .modal-content-Alta-pb {
+        position: relative;
+        /* background-color: #6a946a !important; */
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
 
+    .modal-content {
+        background-color: #b3b8b3;
+    }
+
+    .caja {
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
+    }
+
+    .caja:hover {
+        border-radius: 10px;
+        box-shadow: 2px 2px 2px 1px rgba(250, 238, 72, 0.9);
+    }
+
+    .pb-CardHeader {
+        border-radius: 10px 10px 0 0;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px
+    }
+
+    .pb-bg-alta {
+        background: rgb(5, 82, 34);
+        background: linear-gradient(0deg, rgba(5, 82, 34, 1) 0%, rgba(9, 96, 25, 1) 67%, rgba(101, 219, 100, 1) 100%);
+        color: white;
+    }
+
+    .pb-btnFooter {
+        border-radius: 5px;
+    }
+
+    .pb-btnFooter:hover {
+        border-radius: 10px;
+        color: rgba(242, 255, 4, 0.9);
+        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
+        font-weight: bold;
+    }
+
+    .modal-header-Alta-pb {
+        padding-left: 20px;
+        padding-bottom: 10px;
+    }
+
+    .modal-body-Alta-pb {
+        padding: 2px 16px;
+    }
+
+    .modal-footer-Alta-pb {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+    }
+
+    /* .modal-footer-Alta-pb {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+    } */
+</style>
+<!-- BOTONES MODAL -->
+<script>
     $('#CerrarModal').on("click", function (e) {
+        // $("#myModal").modal('dispose');
         $("#myModal").modal("hide");
         e.stopPropagation();
     });
@@ -194,30 +201,99 @@
 
 
 
+<style>
+    .boxtitulo {
+        border-radius: 20px;
+        background: #0f0c29;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        position: sticky;
+        top: 10px;
+        border: 2px solid #000000;
+        display: inline-block;
+        z-index: 10;
+
+        -webkit-box-shadow: 0px 10px 20px 5px rgba(131, 204, 252, 1);
+        -moz-box-shadow: 0px 10px 20px 5px rgba(131, 204, 252, 1);
+        box-shadow: 0px 10px 20px 5px rgba(131, 204, 252, 1)
+    }
+
+    .pbicon1 {
+        vertical-align: middle;
+        margin-right: 5px;
+    }
+
+    .pbbotonfloat {
+        float: right;
+        position: absolute;
+        top: -2px;
+        right: 10px;
+    }
+
+    .pbbotonVolver {
+        float: right;
+        position: absolute;
+        top: 30px;
+        right: 10px;
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #084e8c;
+        border-color: #000;
+    }
+</style>
 
 
+
+
+<!-- DATATABLES -->
 <div class="container-fluid mt-3" id="cuerpo">
 
-    <h1 style="color:white">
-        Documentos Asociados a Litigante
-    </h1>
-    <h3 class="text-info">
-        CUIL :&nbsp<span id="idCUIL"  style="color:yellow"></span> - Apellido y Nombre :&nbsp<span id="idNombreApellidoRecibido"  style="color:yellow"></span>
-    </h3>
+    <div class="col-12 boxtitulo mb-5">
+        <div class="text-center">
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large
-        modal</button>
+            <h1 style="color:white">
+                Documentos Asociados al Litigante
+            </h1>
 
+            <h3 class="text-info">
+                CUIL :&nbsp<span class="demo-class-cuil btnInformacionPersona" data-toggle='tooltip' data-placement='top'
+                title='Ver: Informacion completa'></span> Apellido y Nombre :&nbsp
+
+                <span class="demo-class-apenom btnInformacionPersona" data-toggle='tooltip' data-placement='top'
+                title='Ver: Informacion completa'></span>
+            </h3>
+            <div class="pbbotonVolver">
+                <button class="btn btn-danger" onclick="history.go(-1);">
+                    <b><i class="material-icons left text-white pbicon1">chevron_left</i> </b>
+                </button>
+            </div>
+        </div>
+    </div>
     <!-- TABLA CARTA DOCUMENTO -->
-    <div class="row">
+    <div class="row mt-3">
         <div class="col s12 m6 l6 x6">
             <div class="col-12">
-                <div class="row mt-1 mb-1">
-                    <button type="button" class="btn btn-success" id="id_btnAddCartaDocumento   "><i
-                            class="material-icons left">add_circle</i>Agregar Carta Documento</button>
-                </div>
                 <div class="row animated flipInY">
-                    <div class="col-12 py-3" style="background-color: #D3D3D5;">
+                    <div class="col-12 py-3" style="background-color: #b9b9df;">
+                        <div class="row mb-1">
+                            <div class="col-12 text-center">
+                                <h2 style="color:black;font-weight: bold;">
+                                    CARTAS DOCUMENTOS - RECIBIDAS
+                                </h2>
+                                <div class="pbbotonfloat">
+                                    <button type="button " class="btn bg-dark text-white " id="id_btnAddCartaDocumento">
+                                        <i class="material-icons left text-success pbicon1">add_circle</i>
+                                        Agregar Carta Documento
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <table id="tablaCartaDocumento" class="table table-striped table-bordered dt-responsive nowrap"
                             style="width:100%">
                             <thead>
@@ -225,8 +301,8 @@
                                     <th>ID</th>
                                     <th>Opciones</th>
                                     <th>CUIL</th>
-                                    <th>Fecha Legal</th>
                                     <th>Fecha Sistema</th>
+                                    <th>Fecha Emision</th>
                                     <th>Reclamo</th>
                                 </tr>
                             </thead>
@@ -239,15 +315,25 @@
         </div>
     </div>
     <!-- TABLA CONTESTACIONES -->
-    <div class="row">
+    <div class="row mt-3">
         <div class="col s12 m6 l6 x6">
             <div class="col-12">
-                <div class="row mt-1 mb-1">
-                    <button type="button" class="btn btn-success" id="id_btnAddContestacion"><i
-                            class="material-icons left">add_circle</i>Agregar Contestacion</button>
-                </div>
+
                 <div class="row animated flipInY">
-                    <div class="col-12 py-3" style="background-color: #D3D3D5;">
+                    <div class="col-12 py-3" style="background-color: #b9b9df;">
+                        <div class="row mb-1">
+                            <div class="col-12 text-center">
+                                <h2 style="color:black;font-weight: bold;">
+                                    CARTAS DOCUMENTO - EMITIDAS
+                                </h2>
+                                <div class="pbbotonfloat">
+                                    <button type="button " class="btn bg-dark text-white " id="id_btnAddContestacion">
+                                        <i class="material-icons left text-success pbicon1">add_circle</i>
+                                        Agregar Contestaciones
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                         <table id="tablaContestaciones" class="table table-striped table-bordered dt-responsive nowrap"
                             style="width:100%">
                             <thead>
@@ -255,8 +341,8 @@
                                     <th>ID</th>
                                     <th>Opciones</th>
                                     <th>CUIL</th>
-                                    <th>Fecha Legal</th>
                                     <th>Fecha Sistema</th>
+                                    <th>Fecha Emision</th>
                                     <th>Reclamo</th>
                                 </tr>
                             </thead>
@@ -269,15 +355,26 @@
         </div>
     </div>
     <!-- TABLA AUDIENCIAS -->
-    <div class="row">
+    <div class="row mt-3">
         <div class="col s12 m6 l6 x6">
             <div class="col-12">
-                <div class="row mt-1 mb-1">
-                    <button type="button" class="btn btn-success" id="id_btnAddContestacion"><i
-                            class="material-icons left">add_circle</i>Agregar Audiencia</button>
-                </div>
                 <div class="row animated flipInY">
-                    <div class="col-12 py-3" style="background-color: #D3D3D5;">
+                    <div class="col-12 py-3" style="background-color: #b9b9df;">
+                        <div class="row mb-1">
+                            <div class="col-12 text-center">
+                                <h2 style="color:black;font-weight: bold;">
+                                    AUDIENCIAS
+                                </h2>
+                                <div class="pbbotonfloat">
+                                    <button type="button " class="btn bg-dark text-white " id="id_btnAddAudiencia"
+                                        data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        <i class="material-icons left text-success pbicon1">add_circle</i>
+                                        Agregar Audiencia
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <table id="tablaAudiencias" class="table table-striped table-bordered dt-responsive nowrap"
                             style="width:100%">
                             <thead>
@@ -285,8 +382,10 @@
                                     <th>ID</th>
                                     <th>Opciones</th>
                                     <th>CUIL</th>
-                                    <th>Fecha Legal</th>
                                     <th>Fecha Sistema</th>
+                                    <th>Fecha Emision</th>
+                                    <th>Fecha Audiciencia</th>
+                                    <th>Hora Audiencia</th>
                                     <th>Reclamo</th>
                                 </tr>
                             </thead>
@@ -300,8 +399,18 @@
     </div>
 
 </div>
+<!-- CSS TITULO STICKY -->
+<style>
+    .btnInformacionPersona{
+        cursor: pointer;
+        color:yellow;
+    }
+    .btnInformacionPersona:hover{
+        color:red;
 
-
+    }
+</style>
+<!-- CSS DATATABLES -->
 <style>
     td {
         padding: 0.2em 0.2em !important;
@@ -358,14 +467,16 @@
         const urlParams = new URLSearchParams(parametros);
         const CUITparams = urlParams.get('cuil');
         const PERSONAparams = urlParams.get('persona');
-        // alert(parametros);
-        // alert(CUITparams);
-        // alert(PERSONAparams);
-        document.getElementById("idCUIL").innerHTML=CUITparams;
-        document.getElementById("idNombreApellidoRecibido").innerHTML = PERSONAparams;
-        document.getElementById("idCUIL_modal").innerHTML=CUITparams;
-        document.getElementById("idNombreApellidoRecibido_modal").innerHTML = PERSONAparams;
-        
+
+        const demoClasses = document.querySelectorAll('.demo-class-cuil');
+        demoClasses.forEach(element => {
+            element.textContent = CUITparams;
+        });
+        const demoClasses1 = document.querySelectorAll('.demo-class-apenom');
+        demoClasses1.forEach(element => {
+            element.textContent = PERSONAparams;
+        });
+
 
 
         // Carga de pdf en modal
@@ -384,43 +495,58 @@
         // Materialize.updateTextFields();
         // Deshabilitacion de ID`s innecesarios
 
-        
+
 
         tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
             ajax: {
-                url: 'litigantesCDxCUIT/'+CUITparams+'',
+                url: 'litigantesCDxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
                 async: true
             },
-            "autoWidth":false,
+            "autoWidth": false,
             columnDefs: [{
-                targets: 3,
-                render: function (data) {
-                    return moment(data).format('L');
-                }
-            }, {
-                targets: 4,
-                render: function (data) {
-                    return moment(data).format('L');
-                }
-            },{
-                bSortable: false, targets: [1,3,4]
-            },
-            { "width": "30px", "targets": 0 },
-            { "width": "100px", "targets": 1 },
-            { "width": "110px", "targets": 2 },
-            { "width": "110px", "targets": 3 },
-            { "width": "110px", "targets": 4 }
-        ],
-            "columns": [
+                    targets: 3,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    }
+                }, {
+                    targets: 4,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    }
+                }, {
+                    bSortable: false,
+                    targets: [1, 3, 4]
+                },
                 {
+                    "width": "30px",
+                    "targets": 0
+                },
+                {
+                    "width": "100px",
+                    "targets": 1
+                },
+                {
+                    "width": "110px",
+                    "targets": 2
+                },
+                {
+                    "width": "110px",
+                    "targets": 3
+                },
+                {
+                    "width": "110px",
+                    "targets": 4
+                }
+            ],
+            "columns": [{
                     data: "ID"
                 },
                 {
                     defaultContent: "<div class='text-center'>" +
-                        "<div class='btn-group'>" +                        
+                        "<div class='btn-group'>" +
                         "<button class='btn btn-warning btn-sm btn_CD_VER'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
                         "<i class='far fa-eye'></i>" +
                         "</button>" +
@@ -437,10 +563,10 @@
                     data: "CUIL"
                 },
                 {
-                    data: "FECHADOC"
+                    data: "FECHAING"
                 },
                 {
-                    data: "FECHAING"
+                    data: "FECHADOC"
                 },
                 {
                     data: "RECLAMO"
@@ -503,34 +629,49 @@
 
         tablaContestaciones = $("#tablaContestaciones").DataTable({
             ajax: {
-                url: 'litigantesCOxCUIT/'+CUITparams+'',
+                url: 'litigantesCOxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
                 async: true
-            },   
-            "autoWidth":false,         
-            columnDefs: [{
-                targets: 3,
-                render: function (data) {
-                    return moment(data).format('L');
-                },
-            }, {
-                targets: 4,
-                render: function (data) {
-                    return moment(data).format('L');
-                }
-            },{
-                bSortable: false, targets: [1,3,4]
             },
-            { "width": "30px", "targets": 0 },
-            { "width": "100px", "targets": 1 },
-            { "width": "110px", "targets": 2 },
-            { "width": "110px", "targets": 3 },
-            { "width": "110px", "targets": 4 }
-         ],
-            "columns": [
+            "autoWidth": false,
+            columnDefs: [{
+                    targets: 3,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    },
+                }, {
+                    targets: 4,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    }
+                }, {
+                    bSortable: false,
+                    targets: [1, 3, 4]
+                },
                 {
+                    "width": "30px",
+                    "targets": 0
+                },
+                {
+                    "width": "100px",
+                    "targets": 1
+                },
+                {
+                    "width": "110px",
+                    "targets": 2
+                },
+                {
+                    "width": "110px",
+                    "targets": 3
+                },
+                {
+                    "width": "110px",
+                    "targets": 4
+                }
+            ],
+            "columns": [{
                     data: "ID"
                 },
                 {
@@ -552,10 +693,10 @@
                     data: "CUIL"
                 },
                 {
-                    data: "FECHADOC"
+                    data: "FECHAING"
                 },
                 {
-                    data: "FECHAING"
+                    data: "FECHADOC"
                 },
                 {
                     data: "RECLAMO"
@@ -616,37 +757,65 @@
             },
         });
 
-      
         tablaAudiencias = $("#tablaAudiencias").DataTable({
             ajax: {
-                url: 'litigantesAUxCUIT/'+CUITparams+'',
+                url: 'litigantesAUxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
                 async: true
-            },   
-            "autoWidth":false,         
-            columnDefs: [{
-                targets: 3,
-                render: function (data) {
-                    return moment(data).format('L');
-                },
-            }, {
-                targets: 4,
-                render: function (data) {
-                    return moment(data).format('L');
-                }
-            },{
-                bSortable: false, targets: [1,3,4]
             },
-            { "width": "30px", "targets": 0 },
-            { "width": "100px", "targets": 1 },
-            { "width": "110px", "targets": 2 },
-            { "width": "110px", "targets": 3 },
-            { "width": "110px", "targets": 4 }
-         ],
-            "columns": [
+            "autoWidth": false,
+            columnDefs: [{
+                    targets: 3,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    },
+                }, {
+                    targets: 4,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    }
+                },
                 {
+                    targets: 5,
+                    render: function (data) {
+                        return moment(data).format('L');
+                    }
+                }, {
+                    bSortable: false,
+                    targets: [1, 3, 4]
+                },
+                {
+                    "width": "30px",
+                    "targets": 0
+                },
+                {
+                    "width": "100px",
+                    "targets": 1
+                },
+                {
+                    "width": "110px",
+                    "targets": 2
+                },
+                {
+                    "width": "110px",
+                    "targets": 3
+                },
+                {
+                    "width": "110px",
+                    "targets": 4
+                },
+                {
+                    "width": "110px",
+                    "targets": 5
+                },
+                {
+                    "width": "110px",
+                    "targets": 6
+                }
+            ],
+            "columns": [{
                     data: "ID"
                 },
                 {
@@ -668,10 +837,16 @@
                     data: "CUIL"
                 },
                 {
+                    data: "FECHAING"
+                },
+                {
                     data: "FECHADOC"
                 },
                 {
-                    data: "FECHAING"
+                    data: "FECHAAUDI"
+                },
+                {
+                    data: "HORAAUDI"
                 },
                 {
                     data: "RECLAMO"
@@ -737,51 +912,14 @@
 
 <!-- Botones -->
 <script>
-    //Agregar Litigante
-    $(document).on("click", ".btnHacerLitigante", function () {
-        // console.log("Litigante Activo");
-        fila = $(this).closest("tr");
-        cuil = fila.find("td:eq(1)").text();
-        apellido = fila.find("td:eq(2)").text();
-        nombre = fila.find("td:eq(3)").text();
 
-        Swal.fire({
-            title: "Confirma a esta persona como Litigante?",
-            text: apellido + " " + nombre + " - C.U.I.L.: " + cuil,
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, es Litigante!",
-            cancelButtonText: "No, Cancelar!",
-        }).then((result) => {
-            if (result.isConfirmed) {
 
-                $.ajax({
-                    url: `api/litigantesiono`,
-                    type: "POST",
-                    datatype: "json",
-                    async: true,
-                    data: {
-                        CUIL: cuil,
-                        VALOR: "SI"
-                    },
-                    success: function () {
-                        // console.log("disparar reload de datatable");
-                        tablaCartaDocumento.ajax.reload(null, false);
-                    }
-                });
-                Swal.fire(
-                    apellido + " " + nombre + " - C.U.I.L.: " + cuil,
-                    "Ha sido agregado al Listado de Litigantes.",
-                    "success"
-                );
-                // CntDocNAVBAR(); ver si funciona el reload
-                // tablaCartaDocumento.ajax.reload(null, false);
-            }
-        });
+    $(document).on("click", ".btnInformacionPersona", function () {
+        $('.modal-DetallePersona').modal('show');
+    })
 
-    });
+
+
 </script>
 
 
