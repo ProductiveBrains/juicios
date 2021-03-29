@@ -1,0 +1,11 @@
+"filename", "language", "Babel JavaScript", "JSON", "comment", "blank", "total"
+"/home/darkninja/hosting/www/clients/juicios/src/app.js", "Babel JavaScript", 54, 0, 10, 24, 88
+"/home/darkninja/hosting/www/clients/juicios/src/controllers/personasController.js", "Babel JavaScript", 132, 0, 16, 42, 190
+"/home/darkninja/hosting/www/clients/juicios/src/public/js/ConfirmarOperacion.js", "Babel JavaScript", 97, 0, 10, 19, 126
+"/home/darkninja/hosting/www/clients/juicios/src/public/js/divPDFscript.js", "Babel JavaScript", 34, 0, 1, 4, 39
+"/home/darkninja/hosting/www/clients/juicios/src/public/js/es.js", "Babel JavaScript", 107, 0, 4, 7, 118
+"/home/darkninja/hosting/www/clients/juicios/src/public/js/funcionfechas.js", "Babel JavaScript", 102, 0, 2, 4, 108
+"/home/darkninja/hosting/www/clients/juicios/src/public/js/pdfobject.js", "Babel JavaScript", 183, 0, 75, 91, 349
+"/home/darkninja/hosting/www/clients/juicios/src/public/json/lenguajedatatables.json", "JSON", 0, 138, 0, 0, 138
+"/home/darkninja/hosting/www/clients/juicios/src/routes/personasRouter.js", "Babel JavaScript", 18, 0, 8, 28, 54
+"Total", "-", 727, 138, 126, 219, 1210

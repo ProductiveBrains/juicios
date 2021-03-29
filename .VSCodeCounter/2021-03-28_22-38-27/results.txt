@@ -1,0 +1,39 @@
+Date : 2021-03-28 22:38:27
+Directory : /home/darkninja/hosting/www/clients/juicios/src
+Total : 9 files,  865 codes, 126 comments, 219 blanks, all 1210 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Babel JavaScript |          8 |        727 |        126 |        219 |      1,072 |
+| JSON             |          1 |        138 |          0 |          0 |        138 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                   |          9 |        865 |        126 |        219 |      1,210 |
+| controllers                                                                         |          1 |        132 |         16 |         42 |        190 |
+| public                                                                              |          6 |        661 |         92 |        125 |        878 |
+| public/js                                                                           |          5 |        523 |         92 |        125 |        740 |
+| public/json                                                                         |          1 |        138 |          0 |          0 |        138 |
+| routes                                                                              |          1 |         18 |          8 |         28 |         54 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                            | language         | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /home/darkninja/hosting/www/clients/juicios/src/app.js                              | Babel JavaScript |         54 |         10 |         24 |         88 |
+| /home/darkninja/hosting/www/clients/juicios/src/controllers/personasController.js   | Babel JavaScript |        132 |         16 |         42 |        190 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/js/ConfirmarOperacion.js     | Babel JavaScript |         97 |         10 |         19 |        126 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/js/divPDFscript.js           | Babel JavaScript |         34 |          1 |          4 |         39 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/js/es.js                     | Babel JavaScript |        107 |          4 |          7 |        118 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/js/funcionfechas.js          | Babel JavaScript |        102 |          2 |          4 |        108 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/js/pdfobject.js              | Babel JavaScript |        183 |         75 |         91 |        349 |
+| /home/darkninja/hosting/www/clients/juicios/src/public/json/lenguajedatatables.json | JSON             |        138 |          0 |          0 |        138 |
+| /home/darkninja/hosting/www/clients/juicios/src/routes/personasRouter.js            | Babel JavaScript |         18 |          8 |         28 |         54 |
+| Total                                                                               |                  |        865 |        126 |        219 |      1,210 |
++-------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

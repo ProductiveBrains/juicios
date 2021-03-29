@@ -2,7 +2,11 @@
 
 
 <!-- Modales -->
-<%- include ("personas_Detalle") %>
+<%- include ("modal_personas_Detalle") %>
+
+
+
+<%- include ("cd_re_Create") %>
 
 
 
@@ -10,7 +14,7 @@
 
 
 <!-- MODAL -->
-<div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+<div id="myModal" class="modal fade modal_Add_Audiencia" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
@@ -104,10 +108,11 @@
                         style="background-color: #880E4F;color:white">
                         <i class="material-icons right pbicon1">save</i>Grabar
                     </a>
-                    <a class="btn  pb-btnFooter" id="CerrarModal"
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         style="background-color: #0D47A1;color:white;margin-left:10px;">
-                        <i class="material-icons right pbicon1">cancel</i>Cancelar
-                    </a>
+                        <i class="material-icons right  pbicon1">cancel</i>
+                        CERRAR
+                    </button>
                 </div>
         </div>
         </form>
@@ -191,13 +196,7 @@
     } */
 </style>
 <!-- BOTONES MODAL -->
-<script>
-    $('#CerrarModal').on("click", function (e) {
-        // $("#myModal").modal('dispose');
-        $("#myModal").modal("hide");
-        e.stopPropagation();
-    });
-</script>
+
 
 
 
@@ -262,15 +261,15 @@
             </h1>
 
             <h3 class="text-info">
-                CUIL :&nbsp<span class="demo-class-cuil btnInformacionPersona" data-toggle='tooltip' data-placement='top'
-                title='Ver: Informacion completa'></span> Apellido y Nombre :&nbsp
+                CUIL :&nbsp<span class="demo-class-cuil btn_Detalle_Persona" data-toggle='tooltip' data-placement='top'
+                    title='Ver: Informacion completa'></span> Apellido y Nombre :&nbsp
 
-                <span class="demo-class-apenom btnInformacionPersona" data-toggle='tooltip' data-placement='top'
-                title='Ver: Informacion completa'></span>
+                <span class="demo-class-apenom btn_Detalle_Persona" data-toggle='tooltip' data-placement='top'
+                    title='Ver: Informacion completa'></span>
             </h3>
             <div class="pbbotonVolver">
                 <button class="btn btn-danger" onclick="history.go(-1);">
-                    <b><i class="material-icons left text-white pbicon1">chevron_left</i> </b>
+                    <b><i class="material-icons left text-white pbicon1">chevron_left</i> Volver </b>
                 </button>
             </div>
         </div>
@@ -366,8 +365,8 @@
                                     AUDIENCIAS
                                 </h2>
                                 <div class="pbbotonfloat">
-                                    <button type="button " class="btn bg-dark text-white " id="id_btnAddAudiencia"
-                                        data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    <button type="button " class="btn bg-dark text-white btn_Add_Audiencia"
+                                        data-toggle='tooltip' data-placement='top' title='Agregar: Nueva Audiencia'>
                                         <i class="material-icons left text-success pbicon1">add_circle</i>
                                         Agregar Audiencia
                                     </button>
@@ -401,12 +400,13 @@
 </div>
 <!-- CSS TITULO STICKY -->
 <style>
-    .btnInformacionPersona{
+    .btn_Detalle_Persona {
         cursor: pointer;
-        color:yellow;
+        color: yellow;
     }
-    .btnInformacionPersona:hover{
-        color:red;
+
+    .btn_Detalle_Persona:hover {
+        color: red;
 
     }
 </style>
@@ -459,14 +459,17 @@
 </style>
 
 <script>
+    // Variable Global
+    var CUITparams = '';
+    var PERSONAparams = '';
     $(document).ready(function () {
 
         // const parametrosrecibidos=windows.location.search;
         // alert(parametrosrecibodos);
         var parametros = location.search;
         const urlParams = new URLSearchParams(parametros);
-        const CUITparams = urlParams.get('cuil');
-        const PERSONAparams = urlParams.get('persona');
+        CUITparams = urlParams.get('cuil');
+        PERSONAparams = urlParams.get('persona');
 
         const demoClasses = document.querySelectorAll('.demo-class-cuil');
         demoClasses.forEach(element => {
@@ -907,19 +910,51 @@
             },
         });
 
+
+
+        $(document).on("click", ".btn_Detalle_Persona", function () {
+            $('.modal_Detalle_Persona').modal('show');
+            PersonaDetalleRead(CUITparams);
+        })
+
+        $(document).on("click", "#id_btnAddCartaDocumento", function () {
+            alert('Agregar Carta Documento');
+             $('.cl_modal_CD_RE_CREATE').modal('show');
+            // PersonaDetalleRead(CUITparams);
+        })
+
     })
 </script>
 
 <!-- Botones -->
 <script>
+    $(document).on("click", ".btn_Add_Audiencia", function () {
+        $('.modal_Add_Audiencia').modal('show');
+        // Deshabilitar todos los inputs
+        toggleFormElements(false);
 
-
-    $(document).on("click", ".btnInformacionPersona", function () {
-        $('.modal-DetallePersona').modal('show');
     })
 
 
-
+    // Deshabilitar elementos del formulario parametro a recibir (true/false)
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = bDisabled;
+        }
+        var selects = document.getElementsByTagName("select");
+        for (var i = 0; i < selects.length; i++) {
+            selects[i].disabled = bDisabled;
+        }
+        var textareas = document.getElementsByTagName("textarea");
+        for (var i = 0; i < textareas.length; i++) {
+            textareas[i].disabled = bDisabled;
+        }
+        // var buttons = document.getElementsByTagName("button");
+        // for (var i = 0; i < buttons.length; i++) {
+        //     buttons[i].disabled = bDisabled;
+        // }
+    }
 </script>
 
 

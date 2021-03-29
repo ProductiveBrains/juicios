@@ -14,7 +14,10 @@ router.get('/litigantes_Docs/', personasController.litigantesDocs);
 //Filtrado de Documentos por CUIL
 router.get('/litigantesCDxCUIT/:cuit', personasController.litigantesCDxCUIT);
 router.get('/litigantesCOxCUIT/:cuit', personasController.litigantesCOxCUIT);
-router.get('/litigantesAUxCUIT/:cuit', personasController.litigantesCAxCUIT);
+router.get('/litigantesAUxCUIT/:cuit', personasController.litigantesAUxCUIT);
+
+
+router.get('/personasDetalle/:cuit', personasController.personasDetalle );
 
 
 //API PERSONAS
