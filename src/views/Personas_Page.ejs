@@ -80,7 +80,7 @@
     $(document).ready(function () {
         tablaPersonal = $("#tablaPersonal").DataTable({
             ajax: {
-                url: `api/personas`,
+                url: `Query_Select_ListaPersonas`,
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -199,7 +199,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: `api/litigantesiono`,
+                    url: `Query_Update_Judiciales`,
                     type: "POST",
                     datatype: "json",
                     async: true,

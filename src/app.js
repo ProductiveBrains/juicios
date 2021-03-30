@@ -51,6 +51,10 @@ app.use(multer({
 
 //Routes
 app.use('/', personasRoutes);
+
+
+
+
 app.get('/test2', (req, res) => {
     res.render('audiencia_Create');
 });

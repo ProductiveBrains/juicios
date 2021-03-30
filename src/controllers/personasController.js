@@ -1,32 +1,14 @@
 const controller = {};
 
-//Pagina Principal
-controller.principal = (req, res) => {
-    res.render('principal');
 
-}
 
 
 // NAVBAR LINKS
-controller.listarPersonas = (req, res) => {
-    res.render('personas_lista');
-};
-controller.listarLitigantes = (req, res) => {
-    res.render('litigantes_lista');
-}
-controller.litigantesDocs = (req, res) => {
-    res.render('litigantes_docs');
-    console.log(' ');
-    console.log('****************************************************************');
-    console.log('***   Monitor Servidor : LLAMARON API Ver Documentos');
-    console.log('****************************************************************');
-    console.log('***   ' + JSON.stringify(req.query));
-    console.log('****************************************************************');
-    console.log(' ');
-}
 
 
-// Consulta a Base de Datos para Ajax fetch o HttpxmlRequest
+
+
+// Consulta a Base de Datos para Ajax fetch o HttpxmlRequest  // Reponse  Rows Data Packet
 controller.litigantesCDxCUIT = (req, res) => {
     const CUIL = req.params.cuit;
     req.getConnection((err, conn) => {
@@ -66,26 +48,7 @@ controller.litigantesAUxCUIT = (req, res) => {
     })
 }
 
-controller.personasDetalle = (req, res) => {
-    const CUIL = req.params.cuit;
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [CUIL], (err, DETALLEPERSONA) => {
-            if (err) {
-                res.json(err);
-                console.log(err);
-            }
-            res.send(DETALLEPERSONA);
-            console.log(' ');
-            console.log('****************************************************************');
-            console.log('***   Monitor Servidor : LLAMARON API Ver Detalle Persona');
-            console.log('****************************************************************');
-            console.log('***   ' + JSON.stringify(DETALLEPERSONA));
-            console.log('****************************************************************');
-            console.log(' ');
-            
-        });
-    })
-}
+
 
 
 
@@ -98,52 +61,9 @@ controller.CreateAudiencia = (req, res) => {
 
 
 //API
-controller.apiLitigantes = (req, res) => {
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * from VIEWLITIGANTES', (err, personas) => {
-            if (err) {
-                res.json(err);
-            }
-            res.send(personas);
-            console.log('Monitor Servidor : LLAMARON API LITIGANTES para ver listado');
-        });
-    })
-};
-controller.apiPersona = (req, res) => {
-    // Nose puede el send en GET
-    // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * from VIEWPERSONAS', (err, personas) => {
-            if (err) {
-                res.json(err);
-            }
-            res.send(personas);
-            console.log(JSON.stringify(personas));
-            console.log('Monitor Servidor : LLAMARON API PERSONAS para ver listado');
-        });
-    })
-};
 
-controller.apiPersonaLitigantesiono = (req, res) => {
-    console.log(req.body);
-    const CUIL = req.body.CUIL;
-    const VALOR = req.body.VALOR;
 
-    res.send('Servidor Remoto: He Recibido estos datos -> ' + req.body.CUIL + ' - ' + req.body.VALOR);
 
-    req.getConnection((err, conn) => {
-        // Nose puede el send en GET
-        // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
-        conn.query('UPDATE PERSONAS SET judiciales = ? WHERE CUIL= ?  ', [VALOR, CUIL], (err, personas) => {
-            if (err) {
-                res.json(err);
-            }
-            console.log('Monitor Servidor : Grabacion... Cambie Estado de Judiciales a SI');
-            // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
-        });
-    })
-
-};
 
 
 
@@ -155,9 +75,6 @@ controller.createpersona = (req, res) => {
     // res.send('Hola Mundo listar');
     res.render('audiencia_Create');
 }
-
-
-
 //Operaciones CRUD
 controller.saveNewPerson = (req, res) => {
     // console.log(req.body);
@@ -177,6 +94,114 @@ controller.saveNewPerson = (req, res) => {
 
 
 //Paginas Generales
+
+
+//Pagina Principal
+controller.principal = (req, res) => {
+    res.render('principal');
+}
+
+// QUERY TO DB TO FILL DATATABLES
+controller.View_ListaPersonas = (req, res) => {
+    res.render('Personas_Page');
+};
+controller.Query_Select_ListaPersonas = (req, res) => {
+    // Nose puede el send en GET
+    // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * from VIEWPERSONAS', (err, personas) => {
+            if (err) {
+                res.json(err);
+            }
+            res.send(personas);
+            console.log(JSON.stringify(personas));
+            console.log('Monitor Servidor : LLAMARON API PERSONAS para ver listado');
+        });
+    })
+};
+controller.View_ListaLitigantes = (req, res) => {
+    res.render('Litigantes_Page');
+    console.log(' ');
+    console.log('****************************************************************');
+    console.log('***   Monitor Servidor : Lista de Litigantes');
+    console.log('****************************************************************');
+    console.log('***   ' + JSON.stringify(req.query));
+    console.log('****************************************************************');
+    console.log(' ');
+}
+controller.Query_Select_ListaLitigantes = (req, res) => {
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * from VIEWLITIGANTES', (err, personas) => {
+            if (err) {
+                res.json(err);
+            }
+            res.send(personas);
+            console.log('');
+            console.log('****************************************************************');
+            console.log('***   Monitor Servidor : Select DB Litigantes');
+            console.log('****************************************************************');
+            console.log('***   ' + JSON.stringify(req.query));
+            console.log('****************************************************************');
+            console.log(' ');
+        });
+    })
+};
+// CHANGES STATUS VALUE OF JUDICIALES (SI/No)
+controller.Query_Update_Judiciales = (req, res) => {
+    console.log(req.body);
+    const CUIL = req.body.CUIL;
+    const VALOR = req.body.VALOR;
+
+    res.send('Servidor Remoto: He Recibido estos datos -> ' + req.body.CUIL + ' - ' + req.body.VALOR);
+
+    req.getConnection((err, conn) => {
+        // Nose puede el send en GET
+        // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
+        conn.query('UPDATE PERSONAS SET judiciales = ? WHERE CUIL= ?  ', [VALOR, CUIL], (err, personas) => {
+            if (err) {
+                res.json(err);
+            }
+            console.log('Monitor Servidor : Grabacion... Cambie Estado de Judiciales a SI');
+            // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
+        });
+    })
+
+};
+// Call DATA of  Persona  by CUIL
+controller.Query_Select_CUIL_Personas = (req, res) => {
+    const CUIL = req.params.cuit;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [CUIL], (err, DETALLEPERSONA) => {
+            if (err) {
+                res.json(err);
+                console.log(err);
+            }
+            res.send(DETALLEPERSONA);
+            console.log(' ');
+            console.log('****************************************************************');
+            console.log('***   Monitor Servidor : LLAMARON API Ver Detalle Persona');
+            console.log('****************************************************************');
+            // console.log('***   ' + JSON.stringify(DETALLEPERSONA));
+            console.log('***   ' + CUIL);
+            console.log('****************************************************************');
+            console.log(' ');
+
+        });
+    })
+}
+
+
+
+controller.View_Litigantes_Docs = (req, res) => {
+    res.render('Litigantes_Docs');
+    console.log(' ');
+    console.log('****************************************************************');
+    console.log('***   Monitor Servidor : LLAMARON API Ver Documentos');
+    console.log('****************************************************************');
+    console.log('***   ' + JSON.stringify(req.query));
+    console.log('****************************************************************');
+    console.log(' ');
+}
 
 
 

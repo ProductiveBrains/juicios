@@ -143,7 +143,7 @@
     $(document).ready(function () {
         tablaLitigantes = $("#tablaLitigantes").DataTable({
             ajax: {
-                url: `api/litigantes`,
+                url: `Query_Select_ListaLitigantes`,
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -225,7 +225,7 @@
         const persona = apellido + ' ' + nombre;
         // alert (persona);
         // alert(cuil);
-        window.open('litigantes_Docs?cuil=' + cuil + '&persona=' + persona + '', '_self')
+        window.open('View_Litigantes_Docs?cuil=' + cuil + '&persona=' + persona + '', '_self')
     });
     
     $(document).on("click", ".btnQuitarLitigante", function () {
@@ -248,7 +248,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: `api/litigantesiono`,
+                    url: `Query_Update_Judiciales`,
                     type: "POST",
                     datatype: "json",
                     async: true,
