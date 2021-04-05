@@ -1,7 +1,9 @@
 <%- include ("partials/_header") %>
 
 <!-- Modales -->
-<%- include ("modal_personas_Detalle") %>
+<%- include ("READmodules/modal_personas_Detalle") %>
+
+
 
 
 <div class="container mt-3" id="cuerpo">
@@ -32,7 +34,7 @@
 
 </div>
 
-
+<!-- Style of DATATABLE -->
 <style>
     td {
         padding: 0.2em 0.2em !important;
@@ -80,7 +82,7 @@
     $(document).ready(function () {
         tablaPersonal = $("#tablaPersonal").DataTable({
             ajax: {
-                url: `Query_Select_ListaPersonas`,
+                url: `DB/all_Personas`,
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -178,7 +180,7 @@
 
 <!-- BOTONES -->
 <script>
-    //Agregar Litigante
+    //AGREGAR LITIGANTE
     $(document).on("click", ".btnHacerLitigante", function () {
         // console.log("Litigante Activo");
         fila = $(this).closest("tr");
@@ -199,7 +201,7 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: `Query_Update_Judiciales`,
+                    url: `DB/Update_Judiciales`,
                     type: "POST",
                     datatype: "json",
                     async: true,
@@ -224,59 +226,16 @@
 
     });
 
+    // VER DETALLE PERSONA
     $(document).on("click", ".btnView", function () {
         fila = $(this).closest("tr");
         cuil = fila.find("td:eq(1)").text();
         $('.modal_Detalle_Persona').modal('show');
         PersonaDetalleRead(cuil); 
     });
-
 </script>
 
-<!-- //Waiting ajax -->
-<img src="/img/loading.gif" id="loading-indicator" style="display:none" />
-<h1 id="cargando" style="display:none">Esperando al Servidor</h1>
-<style>
-    #loading-indicator {
-        position: absolute;
-        z-index: 100;
-        /* display: block; */
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    #cargando {
-        left: 0;
-        line-height: 200px;
-        margin-top: -100px;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        width: 100%;
-        color: white;
-        z-index: 101;
-    }
-</style>
-
-<script>
-    $(document).ajaxSend(function (event, request, settings) {
-        $('.navbar').hide();
-        $('#cuerpo').hide();
-        $('.footer-section').hide();
-        $('#loading-indicator').show();
-        $('#cargando').show();
-    });
-
-    $(document).ajaxStop(function (event, request, settings) {
-        $('#loading-indicator').hide();
-        $('#cargando').hide();
-        $('.navbar').show();
-        $('#cuerpo').show();
-        $('.footer-section').show();
-    });
-</script>
-
+<%- include ("partials/_ajaxAnimation.ejs") %>
 
 
 <!-- <script src="/js/ConfirmarOperacion.js"></script> -->

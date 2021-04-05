@@ -1,9 +1,10 @@
 <!-- MODAL -->
-<div id="id_Modal_CD_RE_CREATE" class="modal fade cl_modal_CD_RE_CREATE" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
+<div id="id_Modal_CD_RE_CREATE" class="modal fade cl_modal_CD_RE_CREATE" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
-            <form id="idMiFormulario">
+            <!-- <form action="/test1recibo" method="POST" enctype="multipart/form-data" id="myForm"> -->
+            <form id="idMiFormulario" name="myForm">
                 <div class="modal-header-Alta-pb pb-bg-alta pb-CardHeader">
                     <h5 style="margin:0;color: rgb(255, 255, 255)">ALTA CARTA DOCUMENTO - RECIBIDA - C.U.I.L. :
                         <span class="demo-class-cuil">xxx</span> - <span class="demo-class-apenom">yyy</span>
@@ -15,12 +16,12 @@
                         <div class="row" style="flex-wrap:wrap;">
                             <div class="col s12 m6 l6 x6">
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2" hidden>
                                         <i class="material-icons prefix text-danger">flag</i>
                                         <label for="idDataBase">ID</label>
                                         <input type="text" class="form-control" id="idDataBase">
                                     </div>
-                                    <div class="form-group col-md-5">
+                                    <div class="form-group col-md-5" hidden>
                                         <i class="material-icons prefix text-danger">today</i>
                                         <label for="idFechaSistema">Ingresado en Sistema</label>
                                         <input type="date" class="form-control" id="idFechaSistema">
@@ -28,21 +29,26 @@
 
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-success">today</i>
-                                        <label for="idFechaEmision">Fecha de Emision</label>
-                                        <input type="date" class="form-control" id="idFechaEmision">
+                                        <label for="idFechaEmision">Fecha Emision</label>
+                                        <input id="idFechaEmision" name="idFechaEmision" type="date"
+                                            class="form-control validate" required="" aria-required="true">
+                                        <input type="text" class=" form-control" name="idnamecuil" id="idnamecuil"
+                                            hidden>
                                     </div>
                                 </div>
 
-                                <div class="form-row">              
+                                <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-success">event_note</i>
                                         <label for="idTipoReclamo">Tipo de Reclamo</label>
-                                        <input type="text" class="form-control" id="idTipoReclamo">
+                                        <input id="idTipoReclamo" name="idTipoReclamo" type="text"
+                                            class="form-control validate" required="" aria-required="true">
                                     </div>
                                     <div class="form-group col-md-7">
                                         <i class="material-icons prefix text-success">event_note</i>
                                         <label for="idEstudioJuridico">Estudio Juridico</label>
-                                        <input type="text" class="form-control" id="idEstudioJuridico">
+                                        <input id="idEstudioJuridico" name="idEstudioJuridico" type="text"
+                                            class="form-control validate" required="" aria-required="true">
                                     </div>
                                 </div>
 
@@ -50,7 +56,7 @@
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
                                         <label for="idComentario">Comentario</label>
-                                        <textarea id="idComentario" class="form-control" rows="4"
+                                        <textarea id="idComentario" name="idComentario" class="form-control" rows="4"
                                             placeholder="Descripcion detallada optativa"></textarea>
                                     </div>
                                 </div>
@@ -60,21 +66,23 @@
                                         <label for="idCartellone">Cartellone Cloud
                                             <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                                 sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="idCartellone">
+                                        <input type="text" class="form-control" id="idCartellone" name="idCartellone">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col s12 m6 l6 x6">
                                 <div class="form-row">
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-12" hidden>
                                         <i class="material-icons prefix text-danger">cloud</i>
                                         <label for="idProductiveBrains">PB Cloud
-                                            <span style="font-size: 12px;color:rgb(12, 9, 211)"">(Generacion Automatica al subir el PDF y Confirmar)</span> </label>
-                                            <input type=" text" class="form-control" id="idProductiveBrains">
+                                            <span style="font-size: 12px;color:rgb(12, 9, 211)">(Generacion Automatica
+                                                al subir el PDF y Confirmar)</span> </label>
+                                        <input type=" text" class="form-control" id="idProductiveBrains"
+                                            name="idProductiveBrains">
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <%- include ("partials/_pbCardPdfPreview.ejs") %>
+                                        <%- include ("../partials/_pbCardPdfPreview.ejs") %>
                                     </div>
                                 </div>
                             </div>
@@ -87,17 +95,18 @@
                         style="background-color: #880E4F;color:white">
                         <i class="material-icons right pbicon1">save</i>Grabar
                     </a>
+                    <!-- <input type="submit" value="Submit"> -->
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         style="background-color: #0D47A1;color:white;margin-left:10px;">
                         <i class="material-icons right  pbicon1">cancel</i>
                         CERRAR
                     </button>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
 </div>
-</div>
+
 <!-- CSS MODAL -->
 <style>
     /* Modal Content */
@@ -175,3 +184,90 @@
     } */
 </style>
 <!-- BOTONES MODAL -->
+
+<script>
+    // $('#idMiFormulario').submit(function () {
+    //     $('.cl_modal_CD_RE_CREATE').modal('hide');
+    //     return false;
+    // });
+
+    $("#botonGrabar").click(function (event) {
+
+        var validaciones = false;
+
+        if (document.myForm.idFechaEmision.value == "") {
+            alert("Ingrese la Fecha de Emision de la Carta Documento!");
+            document.myForm.idFechaEmision.focus();
+            validaciones = false;
+        } else {
+            validaciones = true;
+        }
+
+        if (document.myForm.idTipoReclamo.value == "") {
+            alert("Coloque el Tipo de Reclamo");
+            document.myForm.idTipoReclamo.focus();
+            validaciones = false;
+        } else {
+            validaciones = true;
+        }
+
+        if (document.myForm.idEstudioJuridico.value == "") {
+            alert("Coloque el Estudio Juridico del Demandante");
+            document.myForm.idEstudioJuridico.focus();
+            validaciones = false;
+        } else {
+            validaciones = true;
+        }
+
+        if (document.myForm.id_file_pdf.value == "") {
+            alert("Debe Seleccionar el PDF del original");
+            document.myForm.idEstudioJuridico.focus();
+            validaciones = false;
+        } else {
+            validaciones = true;
+        }
+
+        if (validaciones) {
+            event.preventDefault(); //stop submit the form, we will post it manually.
+            var form = $('#idMiFormulario')[0]; // Get form
+            var data = new FormData(form); // Create an FormData object
+            data.append("idnamecuil", $(".demo-class-cuil").val());
+            data.append("idFechaEmision", $("#idTipoReclamo").val());
+            data.append("idTipoReclamo", $("#idTipoReclamo").val());
+            data.append("idEstudioJuridico", $("#idEstudioJuridico").val());
+            data.append("idTipoReclamo", $("#idTipoReclamo").val());
+            data.append("idComentario", $("#idComentario").val());
+            data.append("idCartellone", $("#idCartellone").val());
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "UPFILE/CD_RE",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    // $("#result").text(data);
+                    console.log("SUCCESS : ", data);
+                    $('.cl_modal_CD_RE_CREATE').modal('hide');
+                    $('#idMiFormulario').trigger("reset");
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Se ha Grabado su Documento',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error: function (e) {
+                    // $("#result").text(e.responseText);
+                    console.log("ERROR : ", e);
+                }
+            });
+
+        }
+
+    });
+</script>

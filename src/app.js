@@ -12,7 +12,7 @@ const { uuid } = require('uuidv4');
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'),
     filename: (req, file, cb) => {
-        cb(null, uuid() + path.extname(file.originalname));
+        cb(null, file.originalname.split('.').slice(0, -1).join('.')+'__' + uuid() + path.extname(file.originalname));
     }
 })
 
@@ -21,7 +21,10 @@ const storage = multer.diskStorage({
 const app = express();
 
 //Importando rutas
-const personasRoutes = require('./routes/personasRouter');
+const viewsRouter = require('./routes/viewsRouter');
+const dataBaseRouter = require('./routes/dataBaseRouter');
+const uploadRouter = require('./routes/uploadRouter');
+
 
 //Setting
 app.set('port', process.env.PORT || 3500);
@@ -44,40 +47,58 @@ app.use(express.json());//escucho jsons
 
 app.use(multer({
     storage,
-    dest: path.join(__dirname, 'public/uploads')
+    dest: path.join(__dirname, 'public/uploads') //probablemente halla que sacarlo por recplicacion
 }).single('archivoupload'));//escucho jsons
 
 
 
 //Routes
-app.use('/', personasRoutes);
+app.use('/', viewsRouter);
+app.use('/DB', dataBaseRouter);
+app.use('/UPFILE', uploadRouter);
 
 
 
 
-app.get('/test2', (req, res) => {
-    res.render('audiencia_Create');
-});
-app.get('/pdftest', (req, res) => {
-    res.render('pdftest');
-});
-app.post('/test1recibo', (req, res) => {
-    console.log(req.file);
-    // console.log(req.body);
+// app.get('/test2', (req, res) => {
+//     res.render('audiencia_Create');
+// });
+// app.get('/pdftest', (req, res) => {
+//     res.render('pdftest');
+// });
+// app.post('/test1recibo', (req, res) => {
+//     console.log(req.file);
+//     // console.log(req.body);
 
-    // console.log(req.body['ID']);
-    // console.log(req.body['CUIL']);
+//     // console.log(req.body['ID']);
+//     // console.log(req.body['CUIL']);
       
-    console.log(req.body.aver);
-    console.log(req.body.idFechaEmision[0]);
-    console.log(req.body.idFechaAudiencia[0]);
-    console.log(req.body.idHora[0]);
-    console.log(req.body.idTipoReclamo[0]);
-    console.log(req.body.idComentario[0]);
-    console.log(req.body.idCartellone[0]);
+//     console.log(req.body.aver);
+//     console.log(req.body.idFechaEmision[0]);
+//     console.log(req.body.idFechaAudiencia[0]);
+//     console.log(req.body.idHora[0]);
+//     console.log(req.body.idTipoReclamo[0]);
+//     console.log(req.body.idComentario[0]);
+//     console.log(req.body.idCartellone[0]);
 
-    res.send('Nombre del archivo: ' + req.file.filename);
-});
+//     res.send('Nombre del archivo: ' + req.file.filename);
+// });
+
+// app.post('/recibo_CD_RE', (req, res) => {
+//     console.log(req.file);
+//     console.log(req.body['idDataBase']); // solo en el update
+//     console.log(req.body['idFechaSistema']); // resolver en el server // no mostrar en create
+//     console.log(req.body['idFechaEmision']);
+//     console.log(req.body['idFechaEmision']);
+//     console.log(req.body['idTipoReclamo']);
+//     console.log(req.body['idEstudioJuridico']);
+//     console.log(req.body['idComentario']);
+//     console.log(req.body['idCartellone']);
+//     console.log(req.body['idProductiveBrains']);
+//     console.log(req.file.filename);
+
+//     res.send('Nombre del archivo: ' + req.file.filename);
+// });
 
 
 

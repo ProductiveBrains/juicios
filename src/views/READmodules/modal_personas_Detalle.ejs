@@ -274,7 +274,7 @@
         // Deshabilitar todos los inputs (true)habilitar(false)
         toggleFormElements(true);
         $.ajax({
-            url: 'Query_Select_CUIL_Personas/' + cuitrecibido + '',
+            url: 'DB/detail_Persona/' + cuitrecibido + '',       
             dataType: 'json',
             success: function (data) {
 

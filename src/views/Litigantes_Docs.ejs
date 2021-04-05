@@ -1,15 +1,8 @@
 <%- include ("partials/_header") %>
 
-
 <!-- Modales -->
-<%- include ("modal_personas_Detalle") %>
-
-
-
-<%- include ("cd_re_Create") %>
-
-
-
+<%- include ("READmodules/modal_personas_Detalle") %>
+<%- include ("CREATEmodules/cd_re_Create") %>
 
 
 
@@ -475,13 +468,15 @@
         demoClasses.forEach(element => {
             element.textContent = CUITparams;
         });
+        
         const demoClasses1 = document.querySelectorAll('.demo-class-apenom');
         demoClasses1.forEach(element => {
             element.textContent = PERSONAparams;
         });
 
-
-
+     
+        
+        
         // Carga de pdf en modal
         PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
             pdfOpenParams: {
@@ -492,17 +487,18 @@
         $('.tooltipped').tooltip({
             delay: 50
         });
-        document.getElementById("idFechaSistema").value = GetTodayDateV2();
+        // document.getElementById("idFechaSistema").value = GetTodayDateV2();
         document.getElementById("idFechaSistema").disabled = true;
+        document.getElementById("idnamecuil").value = CUITparams;
         $("#idDataBase").prop('disabled', true);
         // Materialize.updateTextFields();
         // Deshabilitacion de ID`s innecesarios
-
-
-
+        
+        
+        
         tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
             ajax: {
-                url: 'litigantesCDxCUIT/' + CUITparams + '',
+                url: 'DB/litigantesCDxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -632,7 +628,7 @@
 
         tablaContestaciones = $("#tablaContestaciones").DataTable({
             ajax: {
-                url: 'litigantesCOxCUIT/' + CUITparams + '',
+                url: 'DB/litigantesCOxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -762,7 +758,7 @@
 
         tablaAudiencias = $("#tablaAudiencias").DataTable({
             ajax: {
-                url: 'litigantesAUxCUIT/' + CUITparams + '',
+                url: 'DB/litigantesAUxCUIT/' + CUITparams + '',
                 dataSrc: "",
                 "processing": true,
                 "serverSide": true,
@@ -918,9 +914,7 @@
         })
 
         $(document).on("click", "#id_btnAddCartaDocumento", function () {
-            alert('Agregar Carta Documento');
              $('.cl_modal_CD_RE_CREATE').modal('show');
-            // PersonaDetalleRead(CUITparams);
         })
 
     })
@@ -955,7 +949,10 @@
         //     buttons[i].disabled = bDisabled;
         // }
     }
-</script>
+
+
+
+    </script>
 
 
 
