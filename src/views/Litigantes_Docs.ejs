@@ -3,6 +3,7 @@
 <!-- Modales -->
 <%- include ("READmodules/modal_personas_Detalle") %>
 <%- include ("CREATEmodules/cd_re_Create") %>
+<%- include ("READmodules/cd_re_Read") %>
 
 
 
@@ -468,15 +469,13 @@
         demoClasses.forEach(element => {
             element.textContent = CUITparams;
         });
-        
+
         const demoClasses1 = document.querySelectorAll('.demo-class-apenom');
         demoClasses1.forEach(element => {
             element.textContent = PERSONAparams;
         });
 
-     
-        
-        
+
         // Carga de pdf en modal
         PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
             pdfOpenParams: {
@@ -493,9 +492,7 @@
         $("#idDataBase").prop('disabled', true);
         // Materialize.updateTextFields();
         // Deshabilitacion de ID`s innecesarios
-        
-        
-        
+
         tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
             ajax: {
                 url: 'DB/litigantesCDxCUIT/' + CUITparams + '',
@@ -546,7 +543,7 @@
                 {
                     defaultContent: "<div class='text-center'>" +
                         "<div class='btn-group'>" +
-                        "<button class='btn btn-warning btn-sm btn_CD_VER'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
+                        "<button class='btn btn-warning btn-sm btn_CD_RE_READ'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
                         "<i class='far fa-eye'></i>" +
                         "</button>" +
                         "<button class='btn btn-info btn-sm btn_CD_EDITAR'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
@@ -915,6 +912,14 @@
 
         $(document).on("click", "#id_btnAddCartaDocumento", function () {
              $('.cl_modal_CD_RE_CREATE').modal('show');
+        })
+
+        // Carta Documento Recibidas
+
+        $(document).on("click", ".btn_CD_RE_READ", function () {
+            // alert('mostrar modal');
+             $('.cl_modal_CD_RE_READ').modal('show');
+             mostrarregistro(this) ;
         })
 
     })

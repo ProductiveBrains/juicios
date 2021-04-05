@@ -16,4 +16,8 @@ routerdataBase.get('/litigantesAUxCUIT/:cuit', DB_Controller.litigantesAUxCUIT);
 //Cambio de Estado
 routerdataBase.post('/Update_Judiciales', DB_Controller.Update_Judiciales);
 
+//Mostrar Carta documento Recibida x Usuario
+routerdataBase.get('/CD_RE_CUIL/:parametros', DB_Controller.cd_re_cuil);
+
+
 module.exports = routerdataBase;

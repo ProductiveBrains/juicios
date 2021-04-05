@@ -37,20 +37,20 @@ controller.Query_Select_ListaLitigantes = (req, res) => {
 controller.PersonaByCUIL = (req, res) => {
     const CUIL = req.params.cuit
     req.getConnection((err, conn) => {
-                conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [CUIL], (err, DETALLEPERSONA) => {
-                    if (err) {
-                        res.json(err);
-                        console.log(err);
-                    }
-                    res.send(DETALLEPERSONA);
-                    console.log(' ');
-                    console.log('****************************************************************');
-                    console.log('***   Monitor Servidor : LLAMARON API Ver Detalle Persona');
-                    console.log('****************************************************************');
-                    // console.log('***   ' + JSON.stringify(DETALLEPERSONA));
-                    console.log('***   ' + CUIL);
-                    console.log('****************************************************************');
-                    console.log(' ');
+        conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [CUIL], (err, DETALLEPERSONA) => {
+            if (err) {
+                res.json(err);
+                console.log(err);
+            }
+            res.send(DETALLEPERSONA);
+            console.log(' ');
+            console.log('****************************************************************');
+            console.log('***   Monitor Servidor : LLAMARON API Ver Detalle Persona');
+            console.log('****************************************************************');
+            // console.log('***   ' + JSON.stringify(DETALLEPERSONA));
+            console.log('***   ' + CUIL);
+            console.log('****************************************************************');
+            console.log(' ');
         });
     })
 };
@@ -120,6 +120,30 @@ controller.Update_Judiciales = (req, res) => {
 };
 
 
+//traer CD RE x CUIL
+controller.cd_re_cuil = (req, res) => {
+    // const CUIL = req.params;
+    // const parametrosrecibidos = JSON.parse(req.params.parametros);
+    // console.log(req.params);
+    // console.log(req.params.parametros);
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    // console.log(parametrosrecibidos);
+    const id=parametrosrecibidos.id;
+    const cuil=parametrosrecibidos.cuil;
+
+    console.log(id);
+    console.log(cuil);
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        // conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [cuil], (err, DETALLEPERSONA) => {
+        // conn.query(`SELECT * from CARTADOCUMENTO WHERE CUIL=? and ID=?`, [cuil,id], (err, result, fields) => {
+            conn.query(`SELECT * from CARTADOCUMENTO WHERE  ID=?`, [id], (err, result, fields) => {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    })
+}
 
 
 module.exports = controller;
