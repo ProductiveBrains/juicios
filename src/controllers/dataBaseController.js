@@ -122,21 +122,10 @@ controller.Update_Judiciales = (req, res) => {
 
 //traer CD RE x CUIL
 controller.cd_re_cuil = (req, res) => {
-    // const CUIL = req.params;
-    // const parametrosrecibidos = JSON.parse(req.params.parametros);
-    // console.log(req.params);
-    // console.log(req.params.parametros);
-    const parametrosrecibidos = JSON.parse(req.params.parametros);
-    // console.log(parametrosrecibidos);
-    const id=parametrosrecibidos.id;
-    const cuil=parametrosrecibidos.cuil;
-
-    console.log(id);
-    console.log(cuil);
+    const parametrosrecibidos = JSON.parse(req.params.parametros);    
+    const id=parametrosrecibidos.id;    
     req.getConnection((err, conn) => {
-        if (err) throw err;
-        // conn.query('SELECT * from PERSONAS WHERE CUIL= ?', [cuil], (err, DETALLEPERSONA) => {
-        // conn.query(`SELECT * from CARTADOCUMENTO WHERE CUIL=? and ID=?`, [cuil,id], (err, result, fields) => {
+        if (err) throw err;        
             conn.query(`SELECT * from CARTADOCUMENTO WHERE  ID=?`, [id], (err, result, fields) => {
             if (err) throw err;
             console.log(result);

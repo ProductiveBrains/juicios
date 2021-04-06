@@ -16,70 +16,67 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <i class="material-icons prefix text-danger">flag</i>
-                                    <label for="idDataBase">ID</label>
-                                    <input type="text" class="form-control" id="idDataBase">
+                                    <label for="id_Read_DataBase">ID</label>
+                                    <input type="text" class="form-control" id="id_Read_DataBase" disabled>
                                 </div>
                                 <div class="form-group col-md-5">
                                     <i class="material-icons prefix text-danger">today</i>
-                                    <label for="idFechaSistema">Ingresado en Sistema</label>
-                                    <input type="date" class="form-control" id="idFechaSistema">
+                                    <label for="id_Read_FechaSistema">Ingresado en Sistema</label>
+                                    <input type="text" class="form-control" id="id_Read_FechaSistema" disabled>
                                 </div>
 
                                 <div class="form-group col-md-5">
                                     <i class="material-icons prefix text-success">today</i>
-                                    <label for="idFechaEmision">Fecha Emision</label>
-                                    <input id="idFechaEmision" name="idFechaEmision" type="date"
-                                        class="form-control validate" required="" aria-required="true">
-                                    <input type="text" class=" form-control" name="idnamecuil" id="idnamecuil" hidden>
+                                    <label for="id_Read_FechaEmision">Fecha Emision</label>
+                                    <input type="text" class="form-control" id="id_Read_FechaEmision" disabled>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-5">
                                     <i class="material-icons prefix text-success">event_note</i>
-                                    <label for="idTipoReclamo">Tipo de Reclamo</label>
-                                    <input id="idTipoReclamo" name="idTipoReclamo" type="text"
-                                        class="form-control validate" required="" aria-required="true">
+                                    <label for="id_Read_TipoReclamo">Tipo de Reclamo</label>
+                                    <input id="id_Read_TipoReclamo" name="idTipoReclamo" type="text"
+                                        class="form-control" disabled>
+                                    <p id="test"></p>
                                 </div>
                                 <div class="form-group col-md-7">
                                     <i class="material-icons prefix text-success">event_note</i>
-                                    <label for="idEstudioJuridico">Estudio Juridico</label>
-                                    <input id="idEstudioJuridico" name="idEstudioJuridico" type="text"
-                                        class="form-control validate" required="" aria-required="true">
+                                    <label for="id_Read_EstudioJuridico">Estudio Juridico</label>
+                                    <input id="id_Read_EstudioJuridico" name="idEstudioJuridico" type="text"
+                                        class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <i class="material-icons prefix text-warning">mode_edit</i>
-                                    <label for="idComentario">Comentario</label>
-                                    <textarea id="idComentario" name="idComentario" class="form-control" rows="4"
-                                        placeholder="Descripcion detallada optativa"></textarea>
+                                    <label for="id_Read_Comentario">Comentario</label>
+                                    <textarea id="id_Read_Comentario" name="idComentario" class="form-control" rows="4"
+                                        placeholder="Descripcion detallada optativa" disabled></textarea>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <i class="material-icons prefix text-warning">cloud</i>
-                                    <label for="idCartellone">Cartellone Cloud
+                                    <label for="id_Read_Cartellone">Cartellone Cloud
                                         <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                             sus hosting en la nube)</span> </label>
-                                    <input type="text" class="form-control" id="idCartellone" name="idCartellone">
+                                    <input type="text" class="form-control" id="id_Read_Cartellone" name="idCartellone"
+                                        disabled>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col s12 m6 l6 x6">
-                            <div class="form-row">
-                                <div class="form-group col-md-12" hidden>
-                                    <i class="material-icons prefix text-danger">cloud</i>
-                                    <label for="idProductiveBrains">PB Cloud
-                                        <span style="font-size: 12px;color:rgb(12, 9, 211)">(Generacion Automatica
-                                            al subir el PDF y Confirmar)</span> </label>
-                                    <input type=" text" class="form-control" id="idProductiveBrains"
-                                        name="idProductiveBrains">
-                                </div>
+                            <div class="form-row">                                
                                 <div class="form-group col-md-12">
-                                    <%- include ("../partials/_pbCardPdfPreview.ejs") %>
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <div id="divPDFRead" class=""></div>
+                                            <span class="botonFullscreen" onclick="fullscreen2()">Vista Maximizada &nbsp</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -180,10 +177,8 @@
     function mostrarregistro(rowregistro) {
         fila = $(rowregistro).closest("tr");
         send_ID = fila.find("td:eq(0)").text();
-        send_CUIL = fila.find("td:eq(2)").text();
         const parametros = JSON.stringify({
-            id: send_ID,
-            cuil: send_CUIL
+            id: send_ID
         })
         fetch('DB/CD_RE_CUIL/' + parametros + '')
             .then(res => res.json())
@@ -199,8 +194,104 @@
                 console.log(json[0].COMENTARIO);
                 console.log(json[0].LINK1);
                 console.log(json[0].LINK2);
+
+                $("#id_Read_DataBase").val(json[0].ID);
+                $("#id_Read_FechaSistema").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                $("#id_Read_FechaEmision").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
+                $("#id_Read_TipoReclamo").val(json[0].RECLAMO);
+                $("#id_Read_EstudioJuridico").val(json[0].ESTUDIO);
+                $("#id_Read_Comentario").val(json[0].COMENTARIO);
+                $("#id_Read_Cartellone").val(json[0].LINK1);
+                
+                const RutaPDF="/uploads/"+json[0].LINK2;
+                PDFObject.embed(RutaPDF, "#divPDFRead", { pdfOpenParams: { view: 'Fit' } });
             })
-
-
     };
+</script>
+
+<style>
+
+    #divPDFRead {
+        background-color: #DDDDDD;
+        height: 450px;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    .botonFullscreen {
+        color: #fff;
+        background-color: rgb(214, 16, 16);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        padding-left: 5px;
+        margin-left: 15px;
+        margin-bottom: 10px;
+        padding-bottom: 2px;
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        -webkit-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        -moz-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        cursor: pointer;
+
+    }
+    .botonFullscreen:hover {
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+        -webkit-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+        -moz-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+    }
+
+</style>
+
+
+
+
+
+<script>
+    var elem2 = document.getElementById("divPDFRead");
+
+    function fullscreen2() {
+        var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+            (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+            (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+            (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+        if (!isInFullScreen) {
+            if (elem2.requestFullscreen) {
+                elem2.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem2.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullScreen) {
+                elem2.webkitRequestFullScreen();
+            } else if (elem.msRequestFullscreen) {
+                elem2.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
+    // Previsualizacion de PDF
+    var options = {
+        pdfOpenParams: {
+            view: 'Fit',
+            scrollbar: '1',
+            toolbar: '1',
+            statusbar: '1',
+            messages: '1',
+            navpanes: '1',
+            highlight: '0,0,0,0'
+        }
+    };
+
+
 </script>
