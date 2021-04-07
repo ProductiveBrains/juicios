@@ -4,10 +4,11 @@
     <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
             <!-- <form action="/test1recibo" method="POST" enctype="multipart/form-data" id="myForm"> -->
-            <form id="idMiFormulario" name="myForm">
+            <form id="idMiFormularioUpdate" name="myForm">
                 <div class="modal-header-Actualizar-pb pb-bg-Actualizar pb-CardHeader">
                     <h5 style="margin:0;color: rgb(255, 255, 255)">ACTUALIZAR CARTA DOCUMENTO - RECIBIDA - C.U.I.L. :
-                        <span class="demo-class-cuil"id="cuilpersona">xxx</span> - <span class="demo-class-apenom">yyy</span>
+                        <span class="demo-class-cuil" id="cuilpersona">xxx</span> - <span
+                            class="demo-class-apenom">yyy</span>
                     </h5>
                 </div>
                 <br>
@@ -16,12 +17,12 @@
                         <div class="row" style="flex-wrap:wrap;">
                             <div class="col s12 m6 l6 x6">
                                 <div class="form-row">
-                                    <div class="form-group col-md-2" >
+                                    <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-danger">flag</i>
                                         <label for="id_Update_DataBase">ID</label>
                                         <input type="text" class="form-control" id="id_Update_DataBase" disabled>
                                     </div>
-                                    <div class="form-group col-md-5" >
+                                    <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-danger">today</i>
                                         <label for="id_Update_FechaSistema">Ingresado en Sistema</label>
                                         <input type="date" class="form-control" id="id_Update_FechaSistema" disabled>
@@ -45,8 +46,8 @@
                                     <div class="form-group col-md-7">
                                         <i class="material-icons prefix text-success">event_note</i>
                                         <label for="id_Update_EstudioJuridico">Estudio Juridico</label>
-                                        <input id="id_Update_EstudioJuridico" name="id_Update_EstudioJuridico" type="text"
-                                            class="form-control validate" required="" aria-required="true">
+                                        <input id="id_Update_EstudioJuridico" name="id_Update_EstudioJuridico"
+                                            type="text" class="form-control validate" required="" aria-required="true">
                                     </div>
                                 </div>
 
@@ -54,7 +55,8 @@
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
                                         <label for="id_Update_Comentario">Comentario</label>
-                                        <textarea id="id_Update_Comentario" name="id_Update_Comentario" class="form-control" rows="4"
+                                        <textarea id="id_Update_Comentario" name="id_Update_Comentario"
+                                            class="form-control" rows="4"
                                             placeholder="Descripcion detallada optativa"></textarea>
                                     </div>
                                 </div>
@@ -64,53 +66,56 @@
                                         <label for="id_Update_Cartellone">Cartellone Cloud
                                             <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                                 sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="id_Update_Cartellone" name="id_Update_Cartellone">
+                                        <input type="text" class="form-control" id="id_Update_Cartellone"
+                                            name="id_Update_Cartellone">
                                     </div>
                                 </div>
                             </div>
 
                             <<div class="col s12 m6 l6 x6">
-                                <div class="form-row">                                
+                                <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <div class="card">
                                             <div class="card-image">
                                                 <div id="divPDFUpdate" class=""></div>
-                                                <span class="pb_card-title" onclick="fullscreenFUNCTION(document.getElementById('divPDFUpdate'))">Vista Maximizada &nbsp</span>
+                                                <span class="pb_card-title"
+                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDFUpdate'))">Vista
+                                                    Maximizada &nbsp</span>
                                             </div>
-                                            <div class="card-content"style="margin-top:10px;">
+                                            <div class="card-content" style="margin-top:10px;">
                                                 <div class="">
-                                                    <input type="file" name="archivoupload" id="id_file_pdf" accept=".pdf,.jpg" class="validate" required="" aria-required="true">
+                                                    <input type="file" onchange="file_changed()" name="archivoupload" id="id_file_pdf_update"
+                                                        accept=".pdf,.jpg" class="validate" required=""
+                                                        aria-required="true">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer-Actualizar-pb d-flex align-items-center justify-content-end"
-                    style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
-                    <a class="btn pb-btnFooter" id="botonActualizar" type="submit"
-                        style="background-color: #880E4F;color:white">
-                        <i class="material-icons right pbicon1">save</i>Actualizar
-                    </a>
-                    <!-- <input type="submit" value="Submit"> -->
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        style="background-color: #0D47A1;color:white;margin-left:10px;">
-                        <i class="material-icons right  pbicon1">cancel</i>
-                        CERRAR
-                    </button>
-                </div>
-            </form>
         </div>
+        <div class="modal-footer-Actualizar-pb d-flex align-items-center justify-content-end"
+            style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
+            <a class="btn pb-btnFooter" id="botonActualizar" type="submit"
+                style="background-color: #880E4F;color:white">
+                <i class="material-icons right pbicon1">save</i>Actualizar
+            </a>
+            <!-- <input type="submit" value="Submit"> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                style="background-color: #0D47A1;color:white;margin-left:10px;">
+                <i class="material-icons right  pbicon1">cancel</i>
+                CERRAR
+            </button>
+        </div>
+        </form>
     </div>
+</div>
 </div>
 
 <!-- CSS MODAL -->
 <style>
-
-
     .modal-content {
         background-color: #b3b8b3;
     }
@@ -169,51 +174,47 @@
 <script>
     $("#botonActualizar").click(function (event) {
 
-        var validaciones =0;
+        var validaciones = 0;
 
-        if ($("#idFechaEmision").val() == "") {
+        if ($("#id_Update_FechaEmision").val() == "") {
             alert("Ingrese la Fecha de Emision de la Carta Documento!");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
 
-        if ($("#idTipoReclamo").val() == "") {
+        if ($("#id_Update_TipoReclamo").val() == "") {
             alert("Coloque el Tipo de Reclamo");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
 
-        if ($("#idEstudioJuridico").val() == "") {
+        if ($("#id_Update_EstudioJuridico").val() == "") {
             alert("Coloque el Estudio Juridico del Demandante");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
-        
-        if ($("#id_file_pdf").val() == "") {
-            alert("Debe Seleccionar el PDF del original");
-            validaciones = 0;
-        } else {
-            validaciones = validaciones+1;
-        }            
 
-        if (validaciones == 4) {
+
+
+        if (validaciones == 3) {
             // hago invisible el boton grabar para evitar la replicacion de la grabacion
             $('.cl_modal_CD_RE_UPDATE').modal('hide');
             event.preventDefault(); //stop submit the form, we will post it manually.
-            var form = $('#idMiFormulario')[0]; // Get form
-            var data = new FormData(form); // Create an FormData object
-            data.append("numerocuil", $("#cuilpersona").text());
-            data.append("idFechaEmision", $("#idFechaEmision").val());
-            data.append("idTipoReclamo", $("#idTipoReclamo").val());
-            data.append("idEstudioJuridico", $("#idEstudioJuridico").val());
-            data.append("idComentario", $("#idComentario").val());
-            data.append("idCartellone", $("#idCartellone").val());
+            var form = $('#idMiFormularioUpdate')[0]; // Get form
+            var data = new FormData(form); // Create an FormData object+
+
+            data.append("id", $("#id_Update_DataBase").val());
+            data.append("FechaEmision", $("#id_Update_FechaEmision").val());
+            data.append("TipoReclamo", $("#id_Update_TipoReclamo").val());
+            data.append("EstudioJuridico", $("#id_Update_EstudioJuridico").val());
+            data.append("Comentario", $("#id_Update_Comentario").val());
+            data.append("Cartellone", $("#id_Update_Cartellone").val());
 
             $.ajax({
-                type: "POST",
+                type: "PUT",
                 enctype: 'multipart/form-data',
                 url: "UPFILE/CD_RE",
                 data: data,
@@ -223,8 +224,8 @@
                 timeout: 600000,
                 success: function (data) {
                     console.log("SUCCESS : ", data);
-                    
-                    
+
+
                     $('#idMiFormulario').trigger("reset");
                     Swal.fire({
                         position: 'center',
@@ -244,7 +245,6 @@
         }
 
     });
-
 </script>
 
 <!-- Funcion Consultar API y traer los datos del Registro consultado -->
@@ -260,6 +260,7 @@
         fetch('DB/CD_RE_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
+                $('#idMiFormularioUpdate').trigger("reset");
                 console.log(json);
                 console.log(json[0].ID);
                 console.log(json[0].CUIL);
@@ -271,18 +272,44 @@
                 console.log(json[0].LINK1);
                 console.log(json[0].LINK2);
 
-                $("#id_Update_DataBase").val(json[0].ID);                
+                $("#id_Update_DataBase").val(json[0].ID);
                 $("#id_Update_FechaSistema").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHAING)));
                 $("#id_Update_FechaEmision").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHADOC)));
                 $("#id_Update_TipoReclamo").val(json[0].RECLAMO);
                 $("#id_Update_EstudioJuridico").val(json[0].ESTUDIO);
                 $("#id_Update_Comentario").val(json[0].COMENTARIO);
                 $("#id_Update_Cartellone").val(json[0].LINK1);
-                
-                const RutaPDF="/uploads/"+json[0].LINK2;
-                PDFObject.embed(RutaPDF, "#divPDFUpdate", { pdfOpenParams: { view: 'Fit' } });
-                
+
+                const RutaPDF2 = "/uploads/" + json[0].LINK2;
+                PDFObject.embed(RutaPDF2, "#divPDFUpdate", {
+                    pdfOpenParams: {
+                        view: 'Fit'
+                    }
+                });
+
+
             })
     };
 </script>
 
+<script>
+    // Previsualizacion de PDF
+    var options = {
+        pdfOpenParams: {
+            view: 'Fit',
+            scrollbar: '1',
+            toolbar: '1',
+            statusbar: '1',
+            messages: '1',
+            navpanes: '1',
+            highlight: '0,0,0,0'
+        }
+    };
+
+
+    function file_changed () {
+        PDFObject.embed(URL.createObjectURL(event.target.files[0]), "#divPDFUpdate", options);
+        console.log(event.target.files[0]);
+
+    };
+</script>
