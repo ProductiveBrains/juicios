@@ -293,40 +293,7 @@
         apellido = fila.find("td:eq(2)").text();
         nombre = fila.find("td:eq(3)").text();
 
-        Swal.fire({
-            title: "Desea ver los datos de:",
-            html: '<b>Apellido y Nombre : </b>' + apellido + " " + nombre  +'<br>' +
-                '<b>C.U.I.L. : </b>' + cuil ,
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Si, Mostrar!",
-            cancelButtonText: "   No, Cancelar!   ",
-        }).then((result) => {
-            if (result.isConfirmed) {
 
-                // $.ajax({
-                //     url: `api/litigantesiono`,
-                //     type: "POST",
-                //     datatype: "json",
-                //     async: true,
-                //     data: {
-                //         CUIL: cuil,
-                //         VALOR: "NO"
-                //     },
-                //     success: function () {
-                //         tablaLitigantes.ajax.reload(null, false);
-
-                //     }
-                // });
-                Swal.fire(
-                    "Mostrar modal",
-                    "Anexar a este archivo el modal"
-                );
-
-            }
-        });
     });
 </script>
 

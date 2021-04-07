@@ -18,7 +18,7 @@ controller.recibo_CD_RE = (req, res) => {
 
 
     console.log(req.file);
-    console.log(req.body.idnamecuil[0]);
+    console.log(req.body.numerocuil);
     console.log(funcionfechas.FechaActual()+ ' ** Fecha actual BACKEND');
     console.log(req.body.idFechaEmision[0]);
     console.log(req.body.idTipoReclamo[0]);
@@ -27,8 +27,12 @@ controller.recibo_CD_RE = (req, res) => {
     console.log(req.body.idCartellone[0]);
     console.log(req.file.filename);
 
+    console.log('***********************************');
+    console.log(req.body);
+    console.log('***********************************');
+
     
-    var CUIL= parseInt(req.body.idnamecuil[0]);
+    var CUIL= req.body.numerocuil;
     var FECHAING=funcionfechas.FechaActual();
     var FECHADOC=req.body.idFechaEmision[0];
     var RECLAMO=req.body.idTipoReclamo[0];

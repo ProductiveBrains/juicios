@@ -134,5 +134,25 @@ controller.cd_re_cuil = (req, res) => {
     })
 }
 
+// Borrar Registro
+controller.CD_DLT = (req, res) => {
+    const parametrosrecibidos = JSON.parse(req.params.parametros);    
+    const id=parametrosrecibidos.id;   
+    const tabla=parametrosrecibidos.tabla;  
+    console.log('***************************************************************');
+    console.log(`Se Borrara el registro : ${id} de la tabla : ${tabla}`);
+    console.log('***************************************************************');
+    req.getConnection((err, conn) => {
+        if (err) throw err;        
+            conn.query(`DELETE FROM ${tabla} WHERE  ID=${id}`, (err, result, fields) => {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    })
+}
+
+
+
 
 module.exports = controller;

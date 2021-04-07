@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<!-- CSS MODAL -->
+<!-- CSS CONTENEDOR MODAL -->
 <style>
     /* Modal Content */
     .modal-content-Ver-pb {
@@ -165,16 +165,13 @@
         padding-right: 20px;
     }
 
-    /* .modal-footer-Ver-pb {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 20px;
-    } */
 </style>
-<!-- BOTONES MODAL -->
 
+<!-- Funcion Consultar API y traer los datos del Registro consultado -->
 <script>
-    function mostrarregistro(rowregistro) {
+    function ShowMODAL_CDRE(rowregistro) {
+        $('.cl_modal_CD_RE_READ').modal('show');
+
         fila = $(rowregistro).closest("tr");
         send_ID = fila.find("td:eq(0)").text();
         const parametros = JSON.stringify({
@@ -183,7 +180,6 @@
         fetch('DB/CD_RE_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
-                console.log("First user in the array:");
                 console.log(json);
                 console.log(json[0].ID);
                 console.log(json[0].CUIL);
@@ -205,50 +201,22 @@
                 
                 const RutaPDF="/uploads/"+json[0].LINK2;
                 PDFObject.embed(RutaPDF, "#divPDFRead", { pdfOpenParams: { view: 'Fit' } });
+                
             })
     };
 </script>
 
+<!-- Contenedor DIV PDF -->
 <style>
-
     #divPDFRead {
         background-color: #DDDDDD;
         height: 450px;
         border-radius: 5px;
         display: flex;
     }
-
-    .botonFullscreen {
-        color: #fff;
-        background-color: rgb(214, 16, 16);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        max-width: 100%;
-        padding-left: 5px;
-        margin-left: 15px;
-        margin-bottom: 10px;
-        padding-bottom: 2px;
-        border-radius: 5px 5px 5px 5px;
-        box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
-        -webkit-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
-        -moz-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
-        cursor: pointer;
-
-    }
-    .botonFullscreen:hover {
-        border-radius: 5px 5px 5px 5px;
-        box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
-        -webkit-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
-        -moz-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
-    }
-
 </style>
 
-
-
-
-
+<!-- Boton Maximizar -->
 <script>
     var elem2 = document.getElementById("divPDFRead");
 
@@ -280,18 +248,31 @@
             }
         }
     }
-    // Previsualizacion de PDF
-    var options = {
-        pdfOpenParams: {
-            view: 'Fit',
-            scrollbar: '1',
-            toolbar: '1',
-            statusbar: '1',
-            messages: '1',
-            navpanes: '1',
-            highlight: '0,0,0,0'
-        }
-    };
-
-
 </script>
+<style>
+    .botonFullscreen {
+        color: #fff;
+        background-color: rgb(49, 45, 45);
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        padding-left: 5px;
+        margin-left: 25px;
+        margin-bottom: 10px;
+        padding-bottom: 2px;
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        -webkit-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        -moz-box-shadow: 3px 3px 6px 0px rgba(105, 202, 72, 0.44);
+        cursor: pointer;
+
+    }
+    .botonFullscreen:hover {
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+        -webkit-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+        -moz-box-shadow: 5px 5px 6px 0px rgba(105, 202, 72, 0.95);
+    }
+</style>

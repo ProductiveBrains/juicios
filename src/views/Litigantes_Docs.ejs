@@ -6,194 +6,6 @@
 <%- include ("READmodules/cd_re_Read") %>
 
 
-
-<!-- MODAL -->
-<div id="myModal" class="modal fade modal_Add_Audiencia" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
-        <div class="modal-content caja">
-            <form id="idMiFormulario">
-                <div class="modal-header-Alta-pb pb-bg-alta pb-CardHeader">
-                    <h5 style="margin:0;color: rgb(255, 255, 255)">ALTA AUDIENCIA - C.U.I.L. :
-                        <span class="demo-class-cuil">xxx</span> - <span class="demo-class-apenom">yyy</span>
-                    </h5>
-                </div>
-                <br>
-                <div class="modal-body-Alta-pb  card-content">
-                    <div class="container">
-                        <div class="row" style="flex-wrap:wrap;">
-                            <div class="col s12 m6 l6 x6">
-                                <div class="form-row">
-                                    <div class="form-group col-md-2">
-                                        <i class="material-icons prefix text-danger">flag</i>
-                                        <label for="idDataBase">ID</label>
-                                        <input type="text" class="form-control" id="idDataBase">
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                        <i class="material-icons prefix text-danger">today</i>
-                                        <label for="idFechaSistema">Ingresado en Sistema</label>
-                                        <input type="date" class="form-control" id="idFechaSistema">
-                                    </div>
-
-                                    <div class="form-group col-md-5">
-                                        <i class="material-icons prefix text-success">today</i>
-                                        <label for="idFechaEmision">Fecha de Emision</label>
-                                        <input type="date" class="form-control" id="idFechaEmision">
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <i class="material-icons prefix text-success">today</i>
-                                        <label for="idFechaAudiencia">Fecha Audiencia</label>
-                                        <input type="date" class="form-control" id="idFechaAudiencia">
-                                    </div>
-
-                                    <div class="form-group col-md-3 ">
-                                        <i class="material-icons prefix text-success">alarm</i>
-                                        <label for="idHora">Hora </label>
-                                        <input type="time" class="form-control" id="idHora">
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                        <i class="material-icons prefix text-success">event_note</i>
-                                        <label for="idTipoReclamo">Tipo de Reclamo</label>
-                                        <input type="text" class="form-control" id="idTipoReclamo">
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <i class="material-icons prefix text-warning">mode_edit</i>
-                                        <label for="idComentario">Comentario</label>
-                                        <textarea id="idComentario" class="form-control" rows="5"
-                                            placeholder="Descripcion detallada optativa"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <i class="material-icons prefix text-warning">cloud</i>
-                                        <label for="idCartellone">Cartellone Cloud
-                                            <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
-                                                sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="idCartellone">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m6 l6 x6">
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <i class="material-icons prefix text-danger">cloud</i>
-                                        <label for="idProductiveBrains">PB Cloud
-                                            <span style="font-size: 12px;color:rgb(12, 9, 211)"">(Generacion Automatica al subir el PDF y Confirmar)</span> </label>
-                                            <input type=" text" class="form-control" id="idProductiveBrains">
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <%- include ("partials/_pbCardPdfPreview.ejs") %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer-Alta-pb d-flex align-items-center justify-content-end"
-                    style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
-                    <a class="btn pb-btnFooter" id="botonGrabar" type="submit"
-                        style="background-color: #880E4F;color:white">
-                        <i class="material-icons right pbicon1">save</i>Grabar
-                    </a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        style="background-color: #0D47A1;color:white;margin-left:10px;">
-                        <i class="material-icons right  pbicon1">cancel</i>
-                        CERRAR
-                    </button>
-                </div>
-        </div>
-        </form>
-    </div>
-</div>
-</div>
-<!-- CSS MODAL -->
-<style>
-    /* Modal Content */
-    .modal-content-Alta-pb {
-        position: relative;
-        /* background-color: #6a946a !important; */
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 80%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
-    }
-
-    .modal-content {
-        background-color: #b3b8b3;
-    }
-
-    .caja {
-        border-radius: 10px;
-        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
-    }
-
-    .caja:hover {
-        border-radius: 10px;
-        box-shadow: 2px 2px 2px 1px rgba(250, 238, 72, 0.9);
-    }
-
-    .pb-CardHeader {
-        border-radius: 10px 10px 0 0;
-        padding-left: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px
-    }
-
-    .pb-bg-alta {
-        background: rgb(5, 82, 34);
-        background: linear-gradient(0deg, rgba(5, 82, 34, 1) 0%, rgba(9, 96, 25, 1) 67%, rgba(101, 219, 100, 1) 100%);
-        color: white;
-    }
-
-    .pb-btnFooter {
-        border-radius: 5px;
-    }
-
-    .pb-btnFooter:hover {
-        border-radius: 10px;
-        color: rgba(242, 255, 4, 0.9);
-        box-shadow: 2px 2px 2px 1px rgba(73, 189, 232, 0.9);
-        font-weight: bold;
-    }
-
-    .modal-header-Alta-pb {
-        padding-left: 20px;
-        padding-bottom: 10px;
-    }
-
-    .modal-body-Alta-pb {
-        padding: 2px 16px;
-    }
-
-    .modal-footer-Alta-pb {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 20px;
-    }
-
-    /* .modal-footer-Alta-pb {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-right: 20px;
-    } */
-</style>
-<!-- BOTONES MODAL -->
-
-
-
-
 <style>
     .boxtitulo {
         border-radius: 20px;
@@ -457,9 +269,6 @@
     var CUITparams = '';
     var PERSONAparams = '';
     $(document).ready(function () {
-
-        // const parametrosrecibidos=windows.location.search;
-        // alert(parametrosrecibodos);
         var parametros = location.search;
         const urlParams = new URLSearchParams(parametros);
         CUITparams = urlParams.get('cuil');
@@ -477,21 +286,19 @@
 
 
         // Carga de pdf en modal
-        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
-            pdfOpenParams: {
-                view: 'Fit'
-            }
-        });
-        $('#idMiFormulario').trigger("reset");
+        // PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
+        //     pdfOpenParams: {
+        //         view: 'Fit'
+        //     }
+        // });
+        // $('#idMiFormulario').trigger("reset");
         $('.tooltipped').tooltip({
             delay: 50
         });
-        // document.getElementById("idFechaSistema").value = GetTodayDateV2();
-        document.getElementById("idFechaSistema").disabled = true;
-        document.getElementById("idnamecuil").value = CUITparams;
-        $("#idDataBase").prop('disabled', true);
-        // Materialize.updateTextFields();
-        // Deshabilitacion de ID`s innecesarios
+
+        // document.getElementById("idFechaSistema").disabled = true;
+        // document.getElementById("idnamecuil").value = CUITparams;
+        // $("#idDataBase").prop('disabled', true);
 
         tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
             ajax: {
@@ -549,7 +356,7 @@
                         "<button class='btn btn-info btn-sm btn_CD_EDITAR'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
                         "<i class='fas fa-pencil-alt'></i>" +
                         "</button>" +
-                        "<button class='btn btn-danger btn-sm btn_CD_BORRAR' data-toggle='tooltip' data-placement='left' title='Borrar Registro'>" +
+                        "<button class='btn btn-danger btn-sm btn_CD_RE_DELETE' data-toggle='tooltip' data-placement='left' title='Borrar Registro'>" +
                         "<i class='fas fa-trash-alt'></i>" +
                         "</button>" +
                         "</div>" +
@@ -903,36 +710,58 @@
             },
         });
 
-
-
-        $(document).on("click", ".btn_Detalle_Persona", function () {
-            $('.modal_Detalle_Persona').modal('show');
-            PersonaDetalleRead(CUITparams);
-        })
-
-        $(document).on("click", "#id_btnAddCartaDocumento", function () {
-             $('.cl_modal_CD_RE_CREATE').modal('show');
-        })
-
-        // Carta Documento Recibidas
-
-        $(document).on("click", ".btn_CD_RE_READ", function () {
-            // alert('mostrar modal');
-             $('.cl_modal_CD_RE_READ').modal('show');
-             mostrarregistro(this) ;
-        })
-
-    })
+    });
 </script>
 
-<!-- Botones -->
-<script>
-    $(document).on("click", ".btn_Add_Audiencia", function () {
-        $('.modal_Add_Audiencia').modal('show');
-        // Deshabilitar todos los inputs
-        toggleFormElements(false);
 
+
+<script>
+    // BOTONES EN PAGINA
+    // STICKY VER DETALLE DE PERSONAS
+    $(document).on("click", ".btn_Detalle_Persona", function () {
+
+        $('.modal_Detalle_Persona').modal('show');
+        PersonaDetalleRead(CUITparams);
     })
+    // AGREGAR CD RECIBIDA
+    $(document).on("click", "#id_btnAddCartaDocumento", function () {
+        $('.cl_modal_CD_RE_CREATE').modal('show');
+        $('#idMiFormulario').trigger("reset");
+        // $('#botonGrabar').show();
+        // Carga de pdf en modal
+        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
+            pdfOpenParams: {
+                view: 'Fit'
+            }
+        });
+    })
+
+
+    //  BOTONES DATATABLE CD RE
+    // VER Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_RE_READ", function () {
+        ShowMODAL_CDRE(this);
+    })
+    // ELIMINAR Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_RE_DELETE", function () {
+        Swal.fire({
+            title: "Desea Borrar Este Registro",
+            html: '<b>esto es irreversible..</b>',
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, BORRARLO!",
+            cancelButtonText: "   No, Cancelar!   ",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fila = $(this).closest("tr");
+                send_ID = fila.find("td:eq(0)").text();
+                BorrarRegistro(send_ID, 'CARTADOCUMENTO');
+            }
+        });
+    })
+
 
 
     // Deshabilitar elementos del formulario parametro a recibir (true/false)
@@ -954,10 +783,25 @@
         //     buttons[i].disabled = bDisabled;
         // }
     }
+</script>
 
-
-
-    </script>
+<!-- FUNCIONES COMUNES -->
+<script>
+    function BorrarRegistro(id, tabla) {
+        const parametros = JSON.stringify({
+            id: id,
+            tabla: tabla
+        })
+        fetch('DB/CD_DLT/' + parametros + '')
+            .then(res => res.json())
+            .then(json => {
+                Swal.fire(
+                    "ARCHIVO BORRADO"
+                );
+                tablaCartaDocumento.ajax.reload(null, false);
+            });
+    };
+</script>
 
 
 

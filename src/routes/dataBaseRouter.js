@@ -20,4 +20,8 @@ routerdataBase.post('/Update_Judiciales', DB_Controller.Update_Judiciales);
 routerdataBase.get('/CD_RE_CUIL/:parametros', DB_Controller.cd_re_cuil);
 
 
+// Borrar registro
+routerdataBase.get('/CD_DLT/:parametros', DB_Controller.CD_DLT);
+
+
 module.exports = routerdataBase;
