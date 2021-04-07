@@ -4,6 +4,7 @@
 <%- include ("READmodules/modal_personas_Detalle") %>
 <%- include ("CREATEmodules/cd_re_Create") %>
 <%- include ("READmodules/cd_re_Read") %>
+<%- include ("UPDATEmodules/cd_re_Update") %>
 
 
 <style>
@@ -353,7 +354,7 @@
                         "<button class='btn btn-warning btn-sm btn_CD_RE_READ'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
                         "<i class='far fa-eye'></i>" +
                         "</button>" +
-                        "<button class='btn btn-info btn-sm btn_CD_EDITAR'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
+                        "<button class='btn btn-info btn-sm btn_CD_RE_UPDATE'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
                         "<i class='fas fa-pencil-alt'></i>" +
                         "</button>" +
                         "<button class='btn btn-danger btn-sm btn_CD_RE_DELETE' data-toggle='tooltip' data-placement='left' title='Borrar Registro'>" +
@@ -742,6 +743,10 @@
     $(document).on("click", ".btn_CD_RE_READ", function () {
         ShowMODAL_CDRE(this);
     })
+    // EDITAR Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_RE_UPDATE", function () {
+        ShowMODAL_CDRE_UPDATE(this);
+    })
     // ELIMINAR Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_RE_DELETE", function () {
         Swal.fire({
@@ -761,6 +766,8 @@
             }
         });
     })
+
+
 
 
 
@@ -801,6 +808,39 @@
                 tablaCartaDocumento.ajax.reload(null, false);
             });
     };
+</script>
+
+<!-- Boton Maximizar -->
+<script>    
+    function fullscreenFUNCTION(DIVPDF) {
+        var MaximizeDiv = DIVPDF;
+        var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
+            (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
+            (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
+            (document.msFullscreenElement && document.msFullscreenElement !== null);
+
+        if (!isInFullScreen) {
+            if (MaximizeDiv.requestFullscreen) {
+                MaximizeDiv.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                MaximizeDiv.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullScreen) {
+                MaximizeDiv.webkitRequestFullScreen();
+            } else if (elem.msRequestFullscreen) {
+                MaximizeDiv.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    }
 </script>
 
 

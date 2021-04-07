@@ -92,6 +92,22 @@ function GetTodayDateV3() {
     fechafinal2 = anioactual  + '-' + mesactual + '-' + diaactual;
     return fechafinal2;
 };
+
+function ConviertoFechaaInput(fecha) {
+    var SistemaFecha = new Date();
+    SistemaFecha=fecha;
+    var diaactual="";
+    var mesactual="";
+    var anioactual= SistemaFecha.getFullYear();
+    if (SistemaFecha.getDate().toString().length < 2){
+        diaactual =  "0" + (SistemaFecha.getDate());
+    }else{diaactual =  SistemaFecha.getDate();}
+    if (SistemaFecha.getMonth().toString().length < 2){
+        mesactual =  "0" + (SistemaFecha.getMonth()+1);
+    }
+    fechafinal2 = anioactual  + '-' + mesactual + '-' + diaactual;
+    return fechafinal2;
+};
 function InicializoFechas_id(idfecha) {
     $(`#${idfecha}`).datepicker({
         firstDay: true,

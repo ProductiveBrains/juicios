@@ -74,7 +74,7 @@
                                     <div class="card">
                                         <div class="card-image">
                                             <div id="divPDFRead" class=""></div>
-                                            <span class="botonFullscreen" onclick="fullscreen2()">Vista Maximizada &nbsp</span>
+                                            <span class="botonFullscreen" onclick="fullscreenFUNCTION(document.getElementById('divPDFRead'))">Vista Maximizada &nbsp</span>
                                         </div>
                                     </div>
                                 </div>
@@ -134,8 +134,8 @@
     }
 
     .pb-bg-ver {
-        background: rgb(5, 49, 82);
-        background: linear-gradient(0deg, rgba(5, 49, 82) 0%, rgb(17, 92, 157) 67%rgb(66, 129, 217) 100%);
+        background: rgb(123, 123, 11);
+        background: linear-gradient(0deg, rgba(123, 123, 11) 0%, rgb(157, 148, 17) 67%rgb(204, 217, 66) 100%);
         color: white;
     }
 
@@ -216,39 +216,7 @@
     }
 </style>
 
-<!-- Boton Maximizar -->
-<script>
-    var elem2 = document.getElementById("divPDFRead");
 
-    function fullscreen2() {
-        var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
-            (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
-            (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
-            (document.msFullscreenElement && document.msFullscreenElement !== null);
-
-        if (!isInFullScreen) {
-            if (elem2.requestFullscreen) {
-                elem2.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) {
-                elem2.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullScreen) {
-                elem2.webkitRequestFullScreen();
-            } else if (elem.msRequestFullscreen) {
-                elem2.msRequestFullscreen();
-            }
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-    }
-</script>
 <style>
     .botonFullscreen {
         color: #fff;
