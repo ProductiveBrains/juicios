@@ -135,11 +135,11 @@ controller.Create_CD_EM = (req, res) => {
 
 controller.Update_CD_EM = (req, res) => {    
     var ID=         req.body['id'];
-    var FECHADOC=   req.body['id_Update_FechaEmision'];
-    var RECLAMO=    req.body['id_Update_TipoReclamo'];
-    var ESTUDIO=    req.body['id_Update_EstudioJuridico'];
-    var COMENTARIO= req.body['id_Update_Comentario'];
-    var LINK1=      req.body['id_Update_Cartellone'];
+    var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
+    var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
+    var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
+    var COMENTARIO= req.body['id_Update_EM_Comentario'];
+    var LINK1=      req.body['id_Update_EM_Cartellone'];
     
     console.log(req.body);
 

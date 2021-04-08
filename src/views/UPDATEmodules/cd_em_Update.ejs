@@ -1,12 +1,12 @@
 <!-- MODAL -->
-<div id="id_Modal_CD_RE_UPDATE" class="modal fade cl_modal_CD_RE_UPDATE" tabindex="-1" role="dialog"
+<div id="id_Modal_CD_EM_UPDATE" class="modal fade cl_modal_CD_EM_UPDATE" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
             <!-- <form action="/test1recibo" method="POST" enctype="multipart/form-data" id="myForm"> -->
-            <form id="idMiFormularioUpdate" name="myForm">
+            <form id="idMiFormularioUpdate_EM" name="myForm">
                 <div class="modal-header-Actualizar-pb pb-bg-Actualizar pb-CardHeader">
-                    <h5 style="margin:0;color: rgb(255, 255, 255)">ACTUALIZAR CARTA DOCUMENTO - RECIBIDA - C.U.I.L. :
+                    <h5 style="margin:0;color: rgb(255, 255, 255)">ACTUALIZAR CARTA DOCUMENTO - EMITIDA - C.U.I.L. :
                         <span class="demo-class-cuil" id="cuilpersona">xxx</span> - <span
                             class="demo-class-apenom">yyy</span>
                     </h5>
@@ -19,19 +19,19 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-danger">flag</i>
-                                        <label for="id_Update_DataBase">ID</label>
-                                        <input type="text" class="form-control validate" required="" aria-required="true" name="id_Update_DataBase" id="id_Update_DataBase" disabled>
+                                        <label for="id_Update_EM_DataBase">ID</label>
+                                        <input type="text" class="form-control validate" required="" aria-required="true" name="id_Update_EM_DataBase" id="id_Update_EM_DataBase" disabled>
                                     </div>
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-danger">today</i>
-                                        <label for="id_Update_FechaSistema">Ingresado en Sistema</label>
-                                        <input type="date" class="form-control" id="id_Update_FechaSistema" disabled>
+                                        <label for="id_Update_EM_FechaSistema">Ingresado en Sistema</label>
+                                        <input type="date" class="form-control" id="id_Update_EM_FechaSistema" disabled>
                                     </div>
 
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-success">today</i>
-                                        <label for="id_Update_FechaEmision">Fecha Emision</label>
-                                        <input id="id_Update_FechaEmision" name="id_Update_FechaEmision" type="date"
+                                        <label for="id_Update_EM_FechaEmision">Fecha Emision</label>
+                                        <input id="id_Update_EM_FechaEmision" name="id_Update_EM_FechaEmision" type="date"
                                             class="form-control validate" required="" aria-required="true">
                                     </div>
                                 </div>
@@ -39,14 +39,14 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-success">event_note</i>
-                                        <label for="id_Update_TipoReclamo">Tipo de Reclamo</label>
-                                        <input id="id_Update_TipoReclamo" name="id_Update_TipoReclamo" type="text"
+                                        <label for="id_Update_EM_TipoReclamo">Tipo de Reclamo</label>
+                                        <input id="id_Update_EM_TipoReclamo" name="id_Update_EM_TipoReclamo" type="text"
                                             class="form-control validate" required="" aria-required="true">
                                     </div>
                                     <div class="form-group col-md-7">
                                         <i class="material-icons prefix text-success">event_note</i>
-                                        <label for="id_Update_EstudioJuridico">Estudio Juridico</label>
-                                        <input id="id_Update_EstudioJuridico" name="id_Update_EstudioJuridico"
+                                        <label for="id_Update_EM_EstudioJuridico">Estudio Juridico</label>
+                                        <input id="id_Update_EM_EstudioJuridico" name="id_Update_EM_EstudioJuridico"
                                             type="text" class="form-control validate" required="" aria-required="true">
                                     </div>
                                 </div>
@@ -54,8 +54,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
-                                        <label for="id_Update_Comentario">Comentario</label>
-                                        <textarea id="id_Update_Comentario" name="id_Update_Comentario"
+                                        <label for="id_Update_EM_Comentario">Comentario</label>
+                                        <textarea id="id_Update_EM_Comentario" name="id_Update_EM_Comentario"
                                             class="form-control" rows="4"
                                             placeholder="Descripcion detallada optativa"></textarea>
                                     </div>
@@ -63,11 +63,11 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">cloud</i>
-                                        <label for="id_Update_Cartellone">Cartellone Cloud
+                                        <label for="id_Update_EM_Cartellone">Cartellone Cloud
                                             <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                                 sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="id_Update_Cartellone"
-                                            name="id_Update_Cartellone">
+                                        <input type="text" class="form-control" id="id_Update_EM_Cartellone"
+                                            name="id_Update_EM_Cartellone">
                                     </div>
                                 </div>
                             </div>
@@ -77,9 +77,9 @@
                                     <div class="form-group col-md-12">
                                         <div class="card">
                                             <div class="card-image">
-                                                <div id="divPDFUpdate" class=""></div>
+                                                <div id="divPDFUpdate_EM" class=""></div>
                                                 <span class="pb_card-title"
-                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDFUpdate'))">Vista
+                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDFUpdate_EM'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
                                             <div class="card-content" style="margin-top:10px;">
@@ -98,7 +98,7 @@
         </div>
         <div class="modal-footer-Actualizar-pb d-flex align-items-center justify-content-end"
             style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
-            <a class="btn pb-btnFooter" id="botonActualizar" type="submit"
+            <a class="btn pb-btnFooter" id="botonActualizar_EM" type="submit"
                 style="background-color: #880E4F;color:white">
                 <i class="material-icons right pbicon1">save</i>Actualizar
             </a>
@@ -172,25 +172,25 @@
 <!-- BOTONES MODAL -->
 
 <script>
-    $("#botonActualizar").click(function (event) {
+    $("#botonActualizar_EM").click(function (event) {
 
         var validaciones = 0;
 
-        if ($("#id_Update_FechaEmision").val() == "") {
+        if ($("#id_Update_EM_FechaEmision").val() == "") {
             alert("Ingrese la Fecha de Emision de la Carta Documento!");
             validaciones = 0;
         } else {
             validaciones = validaciones + 1;
         }
 
-        if ($("#id_Update_TipoReclamo").val() == "") {
+        if ($("#id_Update_EM_TipoReclamo").val() == "") {
             alert("Coloque el Tipo de Reclamo");
             validaciones = 0;
         } else {
             validaciones = validaciones + 1;
         }
 
-        if ($("#id_Update_EstudioJuridico").val() == "") {
+        if ($("#id_Update_EM_EstudioJuridico").val() == "") {
             alert("Coloque el Estudio Juridico del Demandante");
             validaciones = 0;
         } else {
@@ -201,22 +201,22 @@
 
         if (validaciones == 3) {
             // hago invisible el boton grabar para evitar la replicacion de la grabacion
-            $('.cl_modal_CD_RE_UPDATE').modal('hide');
+            $('.cl_modal_CD_EM_UPDATE').modal('hide');
             event.preventDefault(); //stop submit the form, we will post it manually.
-            var form = $('#idMiFormularioUpdate')[0]; // Get form
+            var form = $('#idMiFormularioUpdate_EM')[0]; // Get form
             var data = new FormData(form); // Create an FormData object+
 
-            data.append("id", $("#id_Update_DataBase").val());
-            // data.append("FechaEmision", $("#id_Update_FechaEmision").val());
-            // data.append("TipoReclamo", $("#id_Update_TipoReclamo").val());
-            // data.append("EstudioJuridico", $("#id_Update_EstudioJuridico").val());
-            // data.append("Comentario", $("#id_Update_Comentario").val());
-            // data.append("Cartellone", $("#id_Update_Cartellone").val());
+            data.append("id", $("#id_Update_EM_DataBase").val());
+            // data.append("FechaEmision", $("#id_Update_EM_FechaEmision").val());
+            // data.append("TipoReclamo", $("#id_Update_EM_TipoReclamo").val());
+            // data.append("EstudioJuridico", $("#id_Update_EM_EstudioJuridico").val());
+            // data.append("Comentario", $("#id_Update_EM_Comentario").val());
+            // data.append("Cartellone", $("#id_Update_EM_Cartellone").val());
 
             $.ajax({
                 type: "PUT",
                 enctype: 'multipart/form-data',
-                url: "UPFILE/CD_RE",
+                url: "UPFILE/CD_EM",
                 data: data,
                 processData: false,
                 contentType: false,
@@ -226,7 +226,7 @@
                     console.log("SUCCESS : ", data);
 
 
-                    $('#idMiFormularioUpdate').trigger("reset");
+                    $('#idMiFormularioUpdate_EM').trigger("reset");
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -235,7 +235,7 @@
                         timer: 1500
                     })
                     // Realizar Reload AJAX del listado de Cartas Documentos Recibidas.Para mustreo del ultimo registro ingresado
-                    tablaCartaDocumento.ajax.reload(null, false);
+                    tablaContestaciones.ajax.reload(null, false);
                 },
                 error: function (e) {
                     console.log("ERROR : ", e);
@@ -249,18 +249,18 @@
 
 <!-- Funcion Consultar API y traer los datos del Registro consultado -->
 <script>
-    function ShowMODAL_CDRE_UPDATE(rowregistro) {
-        $('.cl_modal_CD_RE_UPDATE').modal('show');
+    function ShowMODAL_CDEM_UPDATE(rowregistro) {
+        $('.cl_modal_CD_EM_UPDATE').modal('show');
 
         fila = $(rowregistro).closest("tr");
         send_ID = fila.find("td:eq(0)").text();
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('DB/CD_RE_CUIL/' + parametros + '')
+        fetch('DB/CD_EM_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
-                $('#idMiFormularioUpdate').trigger("reset");
+                $('#idMiFormularioUpdate_EM').trigger("reset");
                 console.log(json);
                 console.log(json[0].ID);
                 console.log(json[0].CUIL);
@@ -272,16 +272,16 @@
                 console.log(json[0].LINK1);
                 console.log(json[0].LINK2);
 
-                $("#id_Update_DataBase").val(json[0].ID);
-                $("#id_Update_FechaSistema").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHAING)));
-                $("#id_Update_FechaEmision").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHADOC)));
-                $("#id_Update_TipoReclamo").val(json[0].RECLAMO);
-                $("#id_Update_EstudioJuridico").val(json[0].ESTUDIO);
-                $("#id_Update_Comentario").val(json[0].COMENTARIO);
-                $("#id_Update_Cartellone").val(json[0].LINK1);
+                $("#id_Update_EM_DataBase").val(json[0].ID);
+                $("#id_Update_EM_FechaSistema").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHAING)));
+                $("#id_Update_EM_FechaEmision").val(ConviertoFechaaInput(fecha2 = new Date(json[0].FECHADOC)));
+                $("#id_Update_EM_TipoReclamo").val(json[0].RECLAMO);
+                $("#id_Update_EM_EstudioJuridico").val(json[0].ESTUDIO);
+                $("#id_Update_EM_Comentario").val(json[0].COMENTARIO);
+                $("#id_Update_EM_Cartellone").val(json[0].LINK1);
 
                 const RutaPDF2 = "/uploads/" + json[0].LINK2;
-                PDFObject.embed(RutaPDF2, "#divPDFUpdate", {
+                PDFObject.embed(RutaPDF2, "#divPDFUpdate_EM", {
                     pdfOpenParams: {
                         view: 'Fit'
                     }
@@ -308,7 +308,7 @@
 
 
     function file_changed () {
-        PDFObject.embed(URL.createObjectURL(event.target.files[0]), "#divPDFUpdate", options);
+        PDFObject.embed(URL.createObjectURL(event.target.files[0]), "#divPDFUpdate_EM", options);
         console.log(event.target.files[0]);
 
     };

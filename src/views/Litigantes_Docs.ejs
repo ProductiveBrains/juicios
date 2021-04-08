@@ -10,6 +10,7 @@
 <!-- Carta Documento Emitida -->
 <%- include ("CREATEmodules/cd_em_Create") %>
 <%- include ("READmodules/cd_em_Read") %>
+<%- include ("UPDATEmodules/cd_em_Update") %>
 
 
 <style>
@@ -792,7 +793,7 @@
     // EDITAR Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_EM_UPDATE", function () {
         console.log('Lanzar Modal UPDATE');
-        // ShowMODAL_CDRE_UPDATE(this);
+        ShowMODAL_CDEM_UPDATE(this);
     })
     // ELIMINAR Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_EM_DELETE", function () {
