@@ -4,7 +4,7 @@ const funcionfechas = require('./functionsController.js');
 
 
 
-controller.recibo_CD_RE = (req, res) => {
+controller.Create_CD_RE = (req, res) => {
 
     console.log(req.file);
     console.log(req.body.numerocuil);
@@ -75,7 +75,6 @@ controller.Update_CD_RE = (req, res) => {
         console.log('NOOOO recibi archivo');
 
         req.getConnection((err, conn) => {
-            var LINK2=req.file.filename;
             var actualizo = `UPDATE CARTADOCUMENTO SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}' WHERE ID='${ID}'`;
             conn.query(actualizo, (err, result) => {
                 if (err) {

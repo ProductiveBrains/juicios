@@ -2,6 +2,7 @@
 
 <!-- Modales -->
 <%- include ("READmodules/modal_personas_Detalle") %>
+
 <%- include ("CREATEmodules/cd_re_Create") %>
 <%- include ("READmodules/cd_re_Read") %>
 <%- include ("UPDATEmodules/cd_re_Update") %>
@@ -110,6 +111,7 @@
                                     <th>Fecha Sistema</th>
                                     <th>Fecha Emision</th>
                                     <th>Reclamo</th>
+                                    <th>Estudio Juridico</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -150,6 +152,7 @@
                                     <th>Fecha Sistema</th>
                                     <th>Fecha Emision</th>
                                     <th>Reclamo</th>
+                                    <th>Estudio Juridico</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -284,22 +287,9 @@
         demoClasses1.forEach(element => {
             element.textContent = PERSONAparams;
         });
-
-
-        // Carga de pdf en modal
-        // PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
-        //     pdfOpenParams: {
-        //         view: 'Fit'
-        //     }
-        // });
-        // $('#idMiFormulario').trigger("reset");
         $('.tooltipped').tooltip({
             delay: 50
         });
-
-        // document.getElementById("idFechaSistema").disabled = true;
-        // document.getElementById("idnamecuil").value = CUITparams;
-        // $("#idDataBase").prop('disabled', true);
 
         tablaCartaDocumento = $("#tablaCartaDocumento").DataTable({
             ajax: {
@@ -374,6 +364,9 @@
                 },
                 {
                     data: "RECLAMO"
+                },
+                {
+                    data: "ESTUDIO"
                 }
             ],
             pageLength: 10,
@@ -504,6 +497,9 @@
                 },
                 {
                     data: "RECLAMO"
+                },
+                {
+                    data: "ESTUDIO"
                 }
             ],
             pageLength: 10,
@@ -767,51 +763,13 @@
         });
     })
 
-
-
-
-
-    // Deshabilitar elementos del formulario parametro a recibir (true/false)
-    function toggleFormElements(bDisabled) {
-        var inputs = document.getElementsByTagName("input");
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].disabled = bDisabled;
-        }
-        var selects = document.getElementsByTagName("select");
-        for (var i = 0; i < selects.length; i++) {
-            selects[i].disabled = bDisabled;
-        }
-        var textareas = document.getElementsByTagName("textarea");
-        for (var i = 0; i < textareas.length; i++) {
-            textareas[i].disabled = bDisabled;
-        }
-        // var buttons = document.getElementsByTagName("button");
-        // for (var i = 0; i < buttons.length; i++) {
-        //     buttons[i].disabled = bDisabled;
-        // }
-    }
 </script>
 
-<!-- FUNCIONES COMUNES -->
+
+
+
 <script>
-    function BorrarRegistro(id, tabla) {
-        const parametros = JSON.stringify({
-            id: id,
-            tabla: tabla
-        })
-        fetch('DB/CD_DLT/' + parametros + '')
-            .then(res => res.json())
-            .then(json => {
-                Swal.fire(
-                    "ARCHIVO BORRADO"
-                );
-                tablaCartaDocumento.ajax.reload(null, false);
-            });
-    };
-</script>
-
-<!-- Boton Maximizar -->
-<script>    
+    // Boton Maximizar
     function fullscreenFUNCTION(DIVPDF) {
         var MaximizeDiv = DIVPDF;
         var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
@@ -841,13 +799,40 @@
             }
         }
     }
+    // Deshabilitar elementos del formulario parametro a recibir (true/false)
+    function toggleFormElements(bDisabled) {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].disabled = bDisabled;
+        }
+        var selects = document.getElementsByTagName("select");
+        for (var i = 0; i < selects.length; i++) {
+            selects[i].disabled = bDisabled;
+        }
+        var textareas = document.getElementsByTagName("textarea");
+        for (var i = 0; i < textareas.length; i++) {
+            textareas[i].disabled = bDisabled;
+        }
+    }
+    // FUNCIONES COMUNES 
+    function BorrarRegistro(id, tabla) {
+        const parametros = JSON.stringify({
+            id: id,
+            tabla: tabla
+        })
+        fetch('DB/CD_DLT/' + parametros + '')
+            .then(res => res.json())
+            .then(json => {
+                Swal.fire(
+                    "ARCHIVO BORRADO"
+                );
+                tablaCartaDocumento.ajax.reload(null, false);
+            });
+    };
 </script>
 
 
-
-
 <script src="/js/funcionfechas.js"></script>
-
 
 <script src="js/divPDFscript.js"></script>
 
