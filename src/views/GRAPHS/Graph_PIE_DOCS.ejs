@@ -1,0 +1,70 @@
+<!-- //PREEVER MOSTRAR DATOS DESDE MYSQL -->
+
+<!-- // DATOS A MOSTRAR EN EL Charts -->
+<script>
+    var Opciones_Graph_DOCS_TOT = {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'TOTAL DE LITIGANTES Y ESTADO DE CASOS'
+        },
+        subtitle: {
+            text: 'Desarrollado por: productivebrains.com'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <br>{point.percentage:.1f}%</br>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>TOTAL: {point.y}',
+                }
+            }
+        },
+        series: [{
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Casos Abiertos',
+                y: 61.41,
+                sliced: true,
+                selected: true
+            }, {
+                name: 'Casos Cerrados',
+                y: 11.84
+            }]
+        }],
+
+        colors: [
+            '#DC3545',
+            '#28A745'
+        ]
+    }
+</script>
+
+
+<!-- // Estilo Charts -->
+<style>
+    #Graph_DOCS_TOT {
+        height: 400px;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        chart2 = Highcharts.chart('Graph_DOCS_TOT', Highcharts.merge(Opciones_Graph_DOCS_TOT, darcUnica));
+    });
+</script>
