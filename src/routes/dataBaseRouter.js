@@ -19,6 +19,9 @@ routerdataBase.post('/Update_Judiciales', DB_Controller.Update_Judiciales);
 //Mostrar Carta documento Recibida x Usuario
 routerdataBase.get('/CD_RE_CUIL/:parametros', DB_Controller.cd_re_cuil);
 
+//Mostrar Carta documento Recibida x Usuario
+routerdataBase.get('/CD_EM_CUIL/:parametros', DB_Controller.cd_em_cuil);
+
 
 // Borrar registro
 routerdataBase.get('/CD_DLT/:parametros', DB_Controller.CD_DLT);

@@ -9,6 +9,7 @@
 
 <!-- Carta Documento Emitida -->
 <%- include ("CREATEmodules/cd_em_Create") %>
+<%- include ("READmodules/cd_em_Read") %>
 
 
 <style>
@@ -786,7 +787,7 @@
     // VER Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_EM_READ", function () {
         console.log('Lanzar Modal READ');
-        // ShowMODAL_CDRE(this);
+        ShowMODAL_CDEM(this);
     })
     // EDITAR Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_EM_UPDATE", function () {

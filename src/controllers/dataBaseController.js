@@ -134,6 +134,21 @@ controller.cd_re_cuil = (req, res) => {
     })
 }
 
+//traer CD RE x CUIL
+controller.cd_em_cuil = (req, res) => {
+    const parametrosrecibidos = JSON.parse(req.params.parametros);    
+    const id=parametrosrecibidos.id;    
+    req.getConnection((err, conn) => {
+        if (err) throw err;        
+            conn.query(`SELECT * from CONTESTACIONES WHERE  ID=?`, [id], (err, result, fields) => {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    })
+}
+
+
 // Borrar Registro
 controller.CD_DLT = (req, res) => {
     const parametrosrecibidos = JSON.parse(req.params.parametros);    
