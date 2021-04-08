@@ -477,13 +477,13 @@
                 {
                     defaultContent: "<div class='text-center'>" +
                         "<div class='btn-group'>" +
-                        "<button class='btn btn-warning btn-sm btn_CO_VER'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
+                        "<button class='btn btn-warning btn-sm btn_CD_EM_READ'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
                         "<i class='far fa-eye'></i>" +
                         "</button>" +
-                        "<button class='btn btn-info btn-sm btn_CO_EDITAR'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
+                        "<button class='btn btn-info btn-sm btn_CD_EM_UPDATE'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Registro'>" +
                         "<i class='fas fa-pencil-alt'></i>" +
                         "</button>" +
-                        "<button class='btn btn-danger btn-sm btn_CO_BORRAR' data-toggle='tooltip' data-placement='left' title='Borrar Registro'>" +
+                        "<button class='btn btn-danger btn-sm btn_CD_EM_DELETE' data-toggle='tooltip' data-placement='left' title='Borrar Registro'>" +
                         "<i class='fas fa-trash-alt'></i>" +
                         "</button>" +
                         "</div>" +
@@ -781,6 +781,37 @@
         });
     })
 
+
+    //  BOTONES DATATABLE CD EM
+    // VER Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_EM_READ", function () {
+        console.log('Lanzar Modal READ');
+        // ShowMODAL_CDRE(this);
+    })
+    // EDITAR Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_EM_UPDATE", function () {
+        console.log('Lanzar Modal UPDATE');
+        // ShowMODAL_CDRE_UPDATE(this);
+    })
+    // ELIMINAR Registro de Carta Documuento Recibida
+    $(document).on("click", ".btn_CD_EM_DELETE", function () {
+        Swal.fire({
+            title: "Desea Borrar Este Registro",
+            html: '<b>esto es irreversible..</b>',
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, BORRARLO!",
+            cancelButtonText: "   No, Cancelar!   ",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fila = $(this).closest("tr");
+                send_ID = fila.find("td:eq(0)").text();
+                BorrarRegistro(send_ID, 'CONTESTACIONES');
+            }
+        });
+    })
 </script>
 
 
@@ -845,17 +876,16 @@
                     "ARCHIVO BORRADO"
                 );
                 tablaCartaDocumento.ajax.reload(null, false);
+                tablaContestaciones.ajax.reload(null, false);
+                tablaAudiencias.ajax.reload(null, false);
             });
     };
-   // Cuandp se Pulsa El boton Examinar para cambiar la Previsualizacion del PDF
-   function file_changed_PDFViewer (IddelDiv) {
+    // Cuandp se Pulsa El boton Examinar para cambiar la Previsualizacion del PDF
+    function file_changed_PDFViewer(IddelDiv) {
         PDFObject.embed(URL.createObjectURL(event.target.files[0]), `#${IddelDiv}`, options);
         console.log(event.target.files[0]);
 
     };
-
-
-
 </script>
 
 

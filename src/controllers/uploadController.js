@@ -133,6 +133,50 @@ controller.Create_CD_EM = (req, res) => {
 };
 
 
+controller.Update_CD_EM = (req, res) => {    
+    var ID=         req.body['id'];
+    var FECHADOC=   req.body['id_Update_FechaEmision'];
+    var RECLAMO=    req.body['id_Update_TipoReclamo'];
+    var ESTUDIO=    req.body['id_Update_EstudioJuridico'];
+    var COMENTARIO= req.body['id_Update_Comentario'];
+    var LINK1=      req.body['id_Update_Cartellone'];
+    
+    console.log(req.body);
+
+    if (req.file) {
+        // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
+        console.log('recibi archivo')
+        req.getConnection((err, conn) => {
+
+            var LINK2=req.file.filename;
+
+            var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
+
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION con Modificacion de Archivo');
+            });
+        })
+    } else {
+        // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
+        console.log('NOOOO recibi archivo');
+
+        req.getConnection((err, conn) => {
+            var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}' WHERE ID='${ID}'`;
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION Dejando  el Archivo Existente');
+            });
+        })
+    }
+    res.send(true);
+};
+
+
 
 
 

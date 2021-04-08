@@ -10,6 +10,7 @@ routerupload.put('/CD_RE', UPLOAD_Controller.Update_CD_RE);
 
 
 routerupload.post('/CD_EM', UPLOAD_Controller.Create_CD_EM);
+routerupload.put('/CD_EM', UPLOAD_Controller.Update_CD_EM);
 
 
 
