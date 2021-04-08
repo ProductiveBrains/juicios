@@ -2,7 +2,7 @@ const controller = {};
 const funcionfechas = require('./functionsController.js');
 
 
-
+// CARTAS DOCUMENTO RECIBIDAS
 
 controller.Create_CD_RE = (req, res) => {
 
@@ -86,6 +86,52 @@ controller.Update_CD_RE = (req, res) => {
     }
     res.send(true);
 };
+
+
+
+// CARTAS DOCUMENTOS EMITIDAS
+
+controller.Create_CD_EM = (req, res) => {
+
+    console.log(req.file);
+    console.log(req.body.numerocuil);
+    console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body.idFechaEmision_EM[0]);
+    console.log(req.body.idTipoReclamo_EM[0]);
+    console.log(req.body.idEstudioJuridico_EM[0]);
+    console.log(req.body.idComentario_EM[0]);
+    console.log(req.body.idCartellone_EM[0]);
+    console.log(req.file.filename);
+
+    console.log('***********************************');
+    console.log(req.body);
+    console.log('***********************************');
+
+
+    var CUIL = req.body.numerocuil;
+    var FECHAING = funcionfechas.FechaActual();
+    var FECHADOC = req.body.idFechaEmision_EM[0];
+    var RECLAMO = req.body.idTipoReclamo_EM[0];
+    var ESTUDIO = req.body.idEstudioJuridico_EM[0];
+    var COMENTARIO = req.body.idComentario_EM[0];
+    var LINK1 = req.body.idCartellone_EM[0];
+    var LINK2 = req.file.filename;
+
+
+
+    res.send(true);    
+    req.getConnection((err, conn) => {
+
+        var inserto = `INSERT INTO CONTESTACIONES (CUIL, FECHAING, FECHADOC, RECLAMO, ESTUDIO, COMENTARIO, LINK1, LINK2) VALUES  ('${CUIL}' ,'${FECHAING}','${FECHADOC}','${RECLAMO}','${ESTUDIO}','${COMENTARIO}','${LINK1}','${LINK2}')`;
+        conn.query(inserto, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log('Monitor Servidor : CD - EMITIDA - GRABACION');
+        });
+    })
+};
+
 
 
 

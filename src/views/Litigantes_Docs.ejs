@@ -7,6 +7,9 @@
 <%- include ("READmodules/cd_re_Read") %>
 <%- include ("UPDATEmodules/cd_re_Update") %>
 
+<!-- Carta Documento Emitida -->
+<%- include ("CREATEmodules/cd_em_Create") %>
+
 
 <style>
     .boxtitulo {
@@ -734,6 +737,21 @@
     })
 
 
+    $(document).on("click", "#id_btnAddContestacion", function () {
+        $('.cl_modal_CD_EM_CREATE').modal('show');
+        $('#idMiFormulario_CD_EM').trigger("reset");
+        // $('#botonGrabar').show();
+        // Carga de pdf en modal
+        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
+            pdfOpenParams: {
+                view: 'Fit'
+            }
+        });
+    })
+
+
+
+
     //  BOTONES DATATABLE CD RE
     // VER Registro de Carta Documuento Recibida
     $(document).on("click", ".btn_CD_RE_READ", function () {
@@ -829,6 +847,15 @@
                 tablaCartaDocumento.ajax.reload(null, false);
             });
     };
+   // Cuandp se Pulsa El boton Examinar para cambiar la Previsualizacion del PDF
+   function file_changed_PDFViewer (IddelDiv) {
+        PDFObject.embed(URL.createObjectURL(event.target.files[0]), `#${IddelDiv}`, options);
+        console.log(event.target.files[0]);
+
+    };
+
+
+
 </script>
 
 
