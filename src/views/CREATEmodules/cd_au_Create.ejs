@@ -5,8 +5,9 @@
         <div class="modal-content caja">
             <form id="idMiFormulario_AU_CREATE" name="myForm">
                 <div class="modal-header-Alta-pb pb-bg-alta pb-CardHeader">
-                    <h5 style="margin:0;color: rgb(255, 255, 255)">ALTA AUDIENCIA - C.U.I.L. :
-                        <span class="demo-class-cuil"id="cuilpersona_AU_CRE">xxx</span> - <span class="demo-class-apenom">yyy</span>
+                    <h5 style="margin:0;color: rgb(255, 255, 255)"><i class="fas fa-handshake"></i> ALTA AUDIENCIA - C.U.I.L. :
+                        <span class="demo-class-cuil" id="cuilpersona_AU_CRE">xxx</span> - <span
+                            class="demo-class-apenom">yyy</span>
                     </h5>
                 </div>
                 <br>
@@ -31,57 +32,83 @@
                                         <label for="idFechaEmision_AU_CRE">Fecha Emision</label>
                                         <input id="idFechaEmision_AU_CRE" name="idFechaEmision_AU_CRE" type="date"
                                             class="form-control validate" required="" aria-required="true">
-                                        <input type="text" class=" form-control" name="idnamecuil_AU_CRE" id="idnamecuil_AU_CRE"
-                                            hidden>
+                                        <input type="text" class=" form-control" name="idnamecuil_AU_CRE"
+                                            id="idnamecuil_AU_CRE" hidden>
                                     </div>
                                 </div>
 
+                                
                                 <div class="form-row">
-                                    <div class="form-group col-md-5">
-                                        <i class="material-icons prefix text-success">event_note</i>
-                                        <label for="idTipoReclamo_AU_CRE">Tipo de Reclamo</label>
-                                        <input id="idTipoReclamo_AU_CRE" name="idTipoReclamo_AU_CRE" type="text"
-                                            class="form-control validate" required="" aria-required="true">
+                                    <div class="form-group col-md-4">
+                                        <i class="material-icons prefix text-warning">mode_edit</i>
+                                        <label for="idComentario_AU_lugar">Tipo Audiencia</label>
+                                        <select id="idComentario_AU_lugar" class="form-select form-control validate"
+                                            aria-label="Default select example">
+                                            <option value="1" selected>Presencial</option>
+                                            <option value="2">Virtual</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group col-md-7">
-                                        <i class="material-icons prefix text-success">event_note</i>
-                                        <label for="idEstudioJuridico_AU_CRE">Estudio Juridico</label>
-                                        <input id="idEstudioJuridico_AU_CRE" name="idEstudioJuridico_AU_CRE" type="text"
+                                    <div class="form-group col-md-4">
+                                        <i class="material-icons prefix text-success">today</i>
+                                        <label for="idFechaEmision_AU_CRE">Fecha Audiencia</label>
+                                        <input id="idFechaEmision_AU_CRE" name="idFechaEmision_AU_CRE" type="date"
                                             class="form-control validate" required="" aria-required="true">
+                                        <input type="text" class=" form-control" name="idnamecuil_AU_CRE"
+                                            id="idnamecuil_AU_CRE" hidden>
                                     </div>
+
+                                    
+                                    <div class="form-group col-md-3">
+                                        <i class="material-icons prefix text-warning">mode_edit</i>
+                                        <label for="idComentario_AU_lugar">Hora </label>
+                                        <input id="timepicker" name="hora"class="form-control validate" required="" aria-required="true" />
+                                        
+                                    </div>
+                                    
+
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
                                         <label for="idComentario_AU_CRE">Comentario</label>
-                                        <textarea id="idComentario_AU_CRE" name="idComentario_AU_CRE" class="form-control" rows="4"
-                                            placeholder="Descripcion detallada optativa"></textarea>
+                                        <textarea id="idComentario_AU_CRE" name="idComentario_AU_CRE"
+                                            class="form-control" rows="4"
+                                            placeholder="En Caso de Audiencia Presencial Especifique Ciudad y Lugar"></textarea>
                                     </div>
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">cloud</i>
                                         <label for="idCartellone_AU_CRE">Cartellone Cloud
                                             <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                                 sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="idCartellone_AU_CRE" name="idCartellone_AU_CRE">
+                                        <input type="text" class="form-control" id="idCartellone_AU_CRE"
+                                            name="idCartellone_AU_CRE">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col s12 m6 l6 x6">
                                 <div class="form-row">
-                                    <div class="form-group col-md-12" hidden>
-                                        <i class="material-icons prefix text-danger">cloud</i>
-                                        <label for="idProductiveBrains_AU_CRE">PB Cloud
-                                            <span style="font-size: 12px;color:rgb(12, 9, 211)">(Generacion Automatica
-                                                al subir el PDF y Confirmar)</span> </label>
-                                        <input type=" text" class="form-control" id="idProductiveBrains_AU_CRE"
-                                            name="idProductiveBrains_AU_CRE">
-                                    </div>
                                     <div class="form-group col-md-12">
-                                        <%- include ("../partials/_pbCardPdfPreview.ejs") %>
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <div id="divPDF_Create_AU" class=""></div>
+                                                <span class="pb_card-title"
+                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDF_Create_AU'))">Vista
+                                                    Maximizada &nbsp</span>
+                                            </div>
+                                            <div class="card-content" style="margin-top:10px;">
+                                                <div class="">
+                                                    <input type="file"
+                                                        onchange="file_changed_PDFViewer('divPDF_Create_AU')"
+                                                        name="archivoupload" id="id_file_pdf_AU_CRE" accept=".pdf,.jpg"
+                                                        class="validate" required="" aria-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,6 +131,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#timepicker').timepicker({
+        uiLibrary: 'bootstrap4'
+    });
+</script>
 
 <!-- CSS MODAL -->
 <style>
@@ -186,35 +219,35 @@
 <script>
     $("#botonGrabar_AU_CRE").click(function (event) {
 
-        var validaciones =0;
+        var validaciones = 0;
 
         if ($("#idFechaEmision_AU_CRE").val() == "") {
             alert("Ingrese la Fecha de Emision de la Carta Documento!");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
 
         if ($("#idTipoReclamo_AU_CRE").val() == "") {
             alert("Coloque el Tipo de Reclamo");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
 
         if ($("#idEstudioJuridico_AU_CRE").val() == "") {
             alert("Coloque el Estudio Juridico del Demandante");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
+            validaciones = validaciones + 1;
         }
-        
+
         if ($("#id_file_pdf_AU_CRE").val() == "") {
             alert("Debe Seleccionar el PDF del original");
             validaciones = 0;
         } else {
-            validaciones = validaciones+1;
-        }        
+            validaciones = validaciones + 1;
+        }
 
         if (validaciones == 4) {
             // hago invisible el boton grabar para evitar la replicacion de la grabacion
@@ -222,7 +255,7 @@
             event.preventDefault(); //stop submit the form, we will post it manually.
             var form = $('#idMiFormulario_AU_CREATE')[0]; // Get form
             var data = new FormData(form); // Create an FormData object
-            
+
             data.append("numerocuil", $("#cuilpersona_AU_CRE").text());
             data.append("idFechaEmision", $("#idFechaEmision_AU_CRE").val());
             data.append("idTipoReclamo", $("#idTipoReclamo_AU_CRE").val());
@@ -233,7 +266,7 @@
             $.ajax({
                 type: "POST",
                 enctype: 'multipart/form-data',
-                url: "UPFILE/CD_AU",//CREAR CONTROLADOR
+                url: "UPFILE/CD_AU", //CREAR CONTROLADOR
                 data: data,
                 processData: false,
                 contentType: false,

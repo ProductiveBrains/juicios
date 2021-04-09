@@ -117,7 +117,7 @@
                                     <th>Opciones</th>
                                     <th>CUIL</th>
                                     <th>Fecha Sistema</th>
-                                    <th>Fecha Emision</th>
+                                    <th>Fecha Documento</th>
                                     <th>Reclamo</th>
                                     <th>Estudio Juridico</th>
                                 </tr>
@@ -158,7 +158,7 @@
                                     <th>Opciones</th>
                                     <th>CUIL</th>
                                     <th>Fecha Sistema</th>
-                                    <th>Fecha Emision</th>
+                                    <th>Fecha Documento</th>
                                     <th>Reclamo</th>
                                     <th>Estudio Juridico</th>
                                 </tr>
@@ -200,10 +200,10 @@
                                     <th>Opciones</th>
                                     <th>CUIL</th>
                                     <th>Fecha Sistema</th>
-                                    <th>Fecha Emision</th>
-                                    <th>Fecha Audiciencia</th>
-                                    <th>Hora Audiencia</th>
-                                    <th>Reclamo</th>
+                                    <th>Fecha Documento</th>
+                                    <th>TIPO</th>
+                                    <th>Fecha Audiciencia </th>
+                                    <th>Hora</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -733,8 +733,6 @@
     $(document).on("click", "#id_btnAddCartaDocumento", function () {
         $('.cl_modal_CD_RE_CREATE').modal('show');
         $('#idMiFormulario').trigger("reset");
-        // $('#botonGrabar').show();
-        // Carga de pdf en modal
         PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF", {
             pdfOpenParams: {
                 view: 'Fit'
@@ -746,8 +744,6 @@
     $(document).on("click", "#id_btnAddContestacion", function () {
         $('.cl_modal_CD_EM_CREATE').modal('show');
         $('#idMiFormulario_CD_EM').trigger("reset");
-        // $('#botonGrabar').show();
-        // Carga de pdf en modal
         PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
             pdfOpenParams: {
                 view: 'Fit'
@@ -762,13 +758,11 @@
         // alert('disparar modal audiencia');
         $('.cl_modal_CD_AU_CREATE').modal('show');
         $('#idMiFormulario_AU_CREATE').trigger("reset");
-        // // $('#botonGrabar').show();
-        // // Carga de pdf en modal
-        // PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
-        //     pdfOpenParams: {
-        //         view: 'Fit'
-        //     }
-        // });
+        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_AU", {
+            pdfOpenParams: {
+                view: 'Fit'
+            }
+        });
     })
 
 
