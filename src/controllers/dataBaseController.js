@@ -122,11 +122,11 @@ controller.Update_Judiciales = (req, res) => {
 
 //traer CD RE x CUIL
 controller.cd_re_cuil = (req, res) => {
-    const parametrosrecibidos = JSON.parse(req.params.parametros);    
-    const id=parametrosrecibidos.id;    
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    const id = parametrosrecibidos.id;
     req.getConnection((err, conn) => {
-        if (err) throw err;        
-            conn.query(`SELECT * from CARTADOCUMENTO WHERE  ID=?`, [id], (err, result, fields) => {
+        if (err) throw err;
+        conn.query(`SELECT * from CARTADOCUMENTO WHERE  ID=?`, [id], (err, result, fields) => {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -136,11 +136,11 @@ controller.cd_re_cuil = (req, res) => {
 
 //traer CD RE x CUIL
 controller.cd_em_cuil = (req, res) => {
-    const parametrosrecibidos = JSON.parse(req.params.parametros);    
-    const id=parametrosrecibidos.id;    
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    const id = parametrosrecibidos.id;
     req.getConnection((err, conn) => {
-        if (err) throw err;        
-            conn.query(`SELECT * from CONTESTACIONES WHERE  ID=?`, [id], (err, result, fields) => {
+        if (err) throw err;
+        conn.query(`SELECT * from CONTESTACIONES WHERE  ID=?`, [id], (err, result, fields) => {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -151,15 +151,15 @@ controller.cd_em_cuil = (req, res) => {
 
 // Borrar Registro
 controller.CD_DLT = (req, res) => {
-    const parametrosrecibidos = JSON.parse(req.params.parametros);    
-    const id=parametrosrecibidos.id;   
-    const tabla=parametrosrecibidos.tabla;  
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    const id = parametrosrecibidos.id;
+    const tabla = parametrosrecibidos.tabla;
     console.log('***************************************************************');
     console.log(`Se Borrara el registro : ${id} de la tabla : ${tabla}`);
     console.log('***************************************************************');
     req.getConnection((err, conn) => {
-        if (err) throw err;        
-            conn.query(`DELETE FROM ${tabla} WHERE  ID=${id}`, (err, result, fields) => {
+        if (err) throw err;
+        conn.query(`DELETE FROM ${tabla} WHERE  ID=${id}`, (err, result, fields) => {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -167,6 +167,39 @@ controller.CD_DLT = (req, res) => {
     })
 }
 
+
+
+
+//Consultas para graficas Status3
+controller.res_docs = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`
+        SELECT COUNT(*) as TOTAL FROM CARTADOCUMENTO 
+        UNION
+        SELECT COUNT(*) FROM CONTESTACIONES 
+        UNION
+        SELECT COUNT(*) FROM AUDIENCIAS`, 
+        (err, resultado) => {
+            if (err) throw err;
+            console.log(resultado);
+            res.send(JSON.stringify(resultado));
+        });
+    })
+}
+
+//Consultas para graficas Status3
+controller.res_reclamos = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`SELECT RECLAMO,COUNT(*)as TOTAL FROM CARTADOCUMENTO GROUP BY RECLAMO`, 
+        (err, resultado) => {
+            if (err) throw err;
+            console.log(resultado);
+            res.send(JSON.stringify(resultado));
+        });
+    })
+}
 
 
 

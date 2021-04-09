@@ -10,14 +10,14 @@
 <div class="container-fluid mt-3" id="cuerpo">
     <div class="row mb-2">
         <div class="col-12">
-            <h3 class="text-info">Resumen General </h3>
+            <h3 class="text-info">Listado de Litigantes </h3>
         </div>
     </div>
     <div class="row mb-2">
-        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-            <div id="Graph_DOCS_TOT"></div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            
+        </div> -->
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="col-12" id="datatable">
                 <div class="row animated flipInY">
                     <div class="col-12 py-3" style="background-color: #D3D3D5;">
@@ -41,10 +41,11 @@
     </div>
     <div class="row mb-2">
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div id="grafico1"></div>
+            <div id="Graph_RECL_TOT"></div>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div id="grafico3"></div> <!-- LLAMAR a EJS -->
+            <div id="grafico1" style="  display:none;"></div> <!-- LLAMAR a EJS -->
+            <div id="Graph_DOCS_TOT"></div>
         </div>
     </div>
 </div>
@@ -60,9 +61,6 @@
         height: 400px;
     }
 
-    #grafico3 {
-        height: 412px;
-    }
 
     .highcharts-figure,
     .highcharts-data-table table {
@@ -580,62 +578,7 @@
         ]
     }
 
-
-    var mainOptions3 = {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'TIPOS DE RECLAMOS'
-        },
-        subtitle: {
-            text: 'Desarrollado por: productivebrains.com'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>:<br>{point.percentage:.1f} %<br>TOTAL: {point.y}',
-                }
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Mala Liquidacion',
-                y: 180,
-                sliced: true,
-                selected: true
-            }, {
-                name: 'Accidente',
-                y: 23
-            }, {
-                name: 'Francos',
-                y: 50
-            }, {
-                name: 'Horas Extras',
-                y: 20
-            }, {
-                name: 'Francos Impagos',
-                y: 70
-            }]
-        }]
-    }
-</script>
+    </script>
 
 
 <script>
@@ -648,8 +591,9 @@
         }, null, document.getElementsByTagName('head')[0]);
         chart = Highcharts.chart('grafico1', Highcharts.merge(mainOptions, darcUnica));
         
-        chart3 = Highcharts.chart('grafico3', Highcharts.merge(mainOptions3, darcUnica));
-        
+      
+        CargoGrafico1();
+        CargoGrafico2();
     });
 </script>
 

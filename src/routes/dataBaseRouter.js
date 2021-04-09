@@ -27,4 +27,12 @@ routerdataBase.get('/CD_EM_CUIL/:parametros', DB_Controller.cd_em_cuil);
 routerdataBase.get('/CD_DLT/:parametros', DB_Controller.CD_DLT);
 
 
+//Consultas para graficas Status
+
+routerdataBase.get('/RES_DOCS', DB_Controller.res_docs);
+
+routerdataBase.get('/RES_RECLAMOS', DB_Controller.res_reclamos);
+
+
+
 module.exports = routerdataBase;

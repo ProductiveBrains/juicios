@@ -81,7 +81,7 @@
                     title='Ver: Informacion completa'></span>
             </h3>
             <div class="pbbotonVolver">
-                <button class="btn btn-danger" onclick="history.go(-1);">
+                <button class="btn btn-danger" onclick="window.location=document.referrer;">
                     <b><i class="material-icons left text-white pbicon1">chevron_left</i> Volver </b>
                 </button>
             </div>
@@ -180,7 +180,7 @@
                                     AUDIENCIAS
                                 </h2>
                                 <div class="pbbotonfloat">
-                                    <button type="button " class="btn bg-dark text-white btn_Add_Audiencia"
+                                    <button type="button " class="btn bg-dark text-white " id="id_btn_Add_Audiencia"
                                         data-toggle='tooltip' data-placement='top' title='Agregar: Nueva Audiencia'>
                                         <i class="material-icons left text-success pbicon1">add_circle</i>
                                         Agregar Audiencia
@@ -725,6 +725,7 @@
         $('.modal_Detalle_Persona').modal('show');
         PersonaDetalleRead(CUITparams);
     })
+   
     // AGREGAR CD RECIBIDA
     $(document).on("click", "#id_btnAddCartaDocumento", function () {
         $('.cl_modal_CD_RE_CREATE').modal('show');
@@ -738,7 +739,7 @@
         });
     })
 
-
+    // AGREGAR CD EMITIDA
     $(document).on("click", "#id_btnAddContestacion", function () {
         $('.cl_modal_CD_EM_CREATE').modal('show');
         $('#idMiFormulario_CD_EM').trigger("reset");
@@ -751,6 +752,21 @@
         });
     })
 
+    
+
+    // AGREGAR CD EMITIDA
+    $(document).on("click", "#id_btn_Add_Audiencia", function () {
+        alert('disparar modal audiencia');
+        // $('.cl_modal_CD_EM_CREATE').modal('show');
+        // $('#idMiFormulario_CD_EM').trigger("reset");
+        // // $('#botonGrabar').show();
+        // // Carga de pdf en modal
+        // PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
+        //     pdfOpenParams: {
+        //         view: 'Fit'
+        //     }
+        // });
+    })
 
 
 
