@@ -57,52 +57,6 @@ app.use('/', viewsRouter);
 app.use('/DB', dataBaseRouter);
 app.use('/UPFILE', uploadRouter);
 
-
-
-
-// app.get('/test2', (req, res) => {
-//     res.render('audiencia_Create');
-// });
-// app.get('/pdftest', (req, res) => {
-//     res.render('pdftest');
-// });
-// app.post('/test1recibo', (req, res) => {
-//     console.log(req.file);
-//     // console.log(req.body);
-
-//     // console.log(req.body['ID']);
-//     // console.log(req.body['CUIL']);
-      
-//     console.log(req.body.aver);
-//     console.log(req.body.idFechaEmision[0]);
-//     console.log(req.body.idFechaAudiencia[0]);
-//     console.log(req.body.idHora[0]);
-//     console.log(req.body.idTipoReclamo[0]);
-//     console.log(req.body.idComentario[0]);
-//     console.log(req.body.idCartellone[0]);
-
-//     res.send('Nombre del archivo: ' + req.file.filename);
-// });
-
-// app.post('/recibo_CD_RE', (req, res) => {
-//     console.log(req.file);
-//     console.log(req.body['idDataBase']); // solo en el update
-//     console.log(req.body['idFechaSistema']); // resolver en el server // no mostrar en create
-//     console.log(req.body['idFechaEmision']);
-//     console.log(req.body['idFechaEmision']);
-//     console.log(req.body['idTipoReclamo']);
-//     console.log(req.body['idEstudioJuridico']);
-//     console.log(req.body['idComentario']);
-//     console.log(req.body['idCartellone']);
-//     console.log(req.body['idProductiveBrains']);
-//     console.log(req.file.filename);
-
-//     res.send('Nombre del archivo: ' + req.file.filename);
-// });
-
-
-
-
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 //Iniciando el servidor

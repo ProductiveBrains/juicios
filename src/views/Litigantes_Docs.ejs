@@ -12,6 +12,9 @@
 <%- include ("READmodules/cd_em_Read") %>
 <%- include ("UPDATEmodules/cd_em_Update") %>
 
+<!-- Carta Documento Emitida -->
+<%- include ("CREATEmodules/cd_au_Create") %>
+
 
 <style>
     .boxtitulo {
@@ -756,9 +759,9 @@
 
     // AGREGAR CD EMITIDA
     $(document).on("click", "#id_btn_Add_Audiencia", function () {
-        alert('disparar modal audiencia');
-        // $('.cl_modal_CD_EM_CREATE').modal('show');
-        // $('#idMiFormulario_CD_EM').trigger("reset");
+        // alert('disparar modal audiencia');
+        $('.cl_modal_CD_AU_CREATE').modal('show');
+        $('#idMiFormulario_AU_CREATE').trigger("reset");
         // // $('#botonGrabar').show();
         // // Carga de pdf en modal
         // PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
