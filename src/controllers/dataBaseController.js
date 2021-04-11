@@ -51,6 +51,7 @@ controller.PersonaByCUIL = (req, res) => {
             console.log('***   ' + CUIL);
             console.log('****************************************************************');
             console.log(' ');
+            console.log(DETALLEPERSONA);
         });
     })
 };
@@ -141,6 +142,20 @@ controller.cd_em_cuil = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) throw err;
         conn.query(`SELECT * from CONTESTACIONES WHERE  ID=?`, [id], (err, result, fields) => {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    })
+}
+
+//traer CD RE x CUIL
+controller.cd_au_cuil = (req, res) => {
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    const id = parametrosrecibidos.id;
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`SELECT * from AUDIENCIAS WHERE  ID=?`, [id], (err, result, fields) => {
             if (err) throw err;
             console.log(result);
             res.send(result);

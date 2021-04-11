@@ -22,6 +22,11 @@ routerdataBase.get('/CD_RE_CUIL/:parametros', DB_Controller.cd_re_cuil);
 //Mostrar Carta documento Recibida x Usuario
 routerdataBase.get('/CD_EM_CUIL/:parametros', DB_Controller.cd_em_cuil);
 
+//Mostrar AUDIENCIA x Usuario
+routerdataBase.get('/AU_CUIL/:parametros', DB_Controller.cd_au_cuil);
+
+
+
 
 // Borrar registro
 routerdataBase.get('/CD_DLT/:parametros', DB_Controller.CD_DLT);

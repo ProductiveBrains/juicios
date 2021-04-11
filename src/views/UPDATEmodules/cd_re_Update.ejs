@@ -77,14 +77,14 @@
                                     <div class="form-group col-md-12">
                                         <div class="card">
                                             <div class="card-image">
-                                                <div id="divPDFUpdate" class=""></div>
+                                                <div id="divPDF_Create_CD_RE" class=""></div>
                                                 <span class="pb_card-title"
-                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDFUpdate'))">Vista
+                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDF_Create_CD_RE'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
                                             <div class="card-content" style="margin-top:10px;">
                                                 <div class="">
-                                                    <input type="file" onchange="file_changed()" name="archivoupload" id="id_file_pdf_update"
+                                                    <input type="file" onchange="file_changed_PDFViewer('divPDF_Create_CD_RE')" name="archivoupload" id="id_file_pdf_update"
                                                         accept=".pdf,.jpg" class="validate" required=""
                                                         aria-required="true">
                                                 </div>
@@ -281,7 +281,7 @@
                 $("#id_Update_Cartellone").val(json[0].LINK1);
 
                 const RutaPDF2 = "/uploads/" + json[0].LINK2;
-                PDFObject.embed(RutaPDF2, "#divPDFUpdate", {
+                PDFObject.embed(RutaPDF2, "#divPDF_Create_CD_RE", {
                     pdfOpenParams: {
                         view: 'Fit'
                     }
@@ -307,9 +307,4 @@
     };
 
 
-    function file_changed () {
-        PDFObject.embed(URL.createObjectURL(event.target.files[0]), "#divPDFUpdate", options);
-        console.log(event.target.files[0]);
-
-    };
 </script>

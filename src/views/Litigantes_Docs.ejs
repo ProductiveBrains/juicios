@@ -14,6 +14,7 @@
 
 <!-- Carta Documento Emitida -->
 <%- include ("CREATEmodules/cd_au_Create") %>
+<%- include ("READmodules/cd_au_Read") %>
 
 
 <style>
@@ -203,7 +204,8 @@
                                     <th>Fecha Documento</th>
                                     <th>TIPO</th>
                                     <th>Fecha Audiciencia </th>
-                                    <th>Hora</th>
+                                    <th>Hora Audiciencia</th>
+                                    <th>Comentario</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -320,7 +322,7 @@
                     }
                 }, {
                     bSortable: false,
-                    targets: [1, 3, 4]
+                    targets: [0, 1, 2, 3, 4, 5, 6]
                 },
                 {
                     "width": "30px",
@@ -453,7 +455,7 @@
                     }
                 }, {
                     bSortable: false,
-                    targets: [1, 3, 4]
+                    targets: [0, 1, 2, 3, 4, 5, 6]
                 },
                 {
                     "width": "30px",
@@ -586,13 +588,13 @@
                     }
                 },
                 {
-                    targets: 5,
+                    targets: 6,
                     render: function (data) {
                         return moment(data).format('L');
                     }
                 }, {
                     bSortable: false,
-                    targets: [1, 3, 4]
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8]
                 },
                 {
                     "width": "30px",
@@ -651,13 +653,16 @@
                     data: "FECHADOC"
                 },
                 {
+                    data: "TIPO"
+                },
+                {
                     data: "FECHAAUDI"
                 },
                 {
                     data: "HORAAUDI"
                 },
                 {
-                    data: "RECLAMO"
+                    data: "COMENTARIO"
                 }
             ],
             pageLength: 10,
@@ -728,7 +733,7 @@
         $('.modal_Detalle_Persona').modal('show');
         PersonaDetalleRead(CUITparams);
     })
-   
+
     // AGREGAR CD RECIBIDA
     $(document).on("click", "#id_btnAddCartaDocumento", function () {
         $('.cl_modal_CD_RE_CREATE').modal('show');
@@ -751,7 +756,7 @@
         });
     })
 
-    
+
 
     // AGREGAR CD EMITIDA
     $(document).on("click", "#id_btn_Add_Audiencia", function () {
@@ -828,10 +833,13 @@
         });
     })
 
+
+
     //  BOTONES DATATABLE Audiencias
     // VER Registro de Audiencias
     $(document).on("click", ".btn_AU_VER", function () {
-        alert('LANZO MODAL READ AUDIENCIA');
+        console.log('Lanzar Modal READ');
+        ShowMODAL_AU(this);
     })
 
     $(document).on("click", ".btn_AU_EDITAR", function () {
@@ -839,10 +847,24 @@
     })
 
     $(document).on("click", ".btn_AU_BORRAR", function () {
-        alert('LANZO MODAL BORRAR AUDIENCIA');
+        Swal.fire({
+            title: "Desea Borrar Este Registro",
+            html: '<b>esto es irreversible..</b>',
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, BORRARLO!",
+            cancelButtonText: "   No, Cancelar!   ",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fila = $(this).closest("tr");
+                send_ID = fila.find("td:eq(0)").text();
+                BorrarRegistro(send_ID, 'AUDIENCIAS');
+            }
+        });
     })
-
-    </script>
+</script>
 
 
 

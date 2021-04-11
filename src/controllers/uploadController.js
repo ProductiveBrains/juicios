@@ -178,6 +178,54 @@ controller.Update_CD_EM = (req, res) => {
 
 
 
+// CARTAS AUDIENCIAS
+
+controller.Create_CD_AU = (req, res) => {
+
+    console.log(req.file);
+    console.log(req.body.numerocuil);
+    console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body.idFechaEmision_AU_CRE[0]);
+    console.log(req.body.idTipo_AU_CRE);
+    console.log(req.body.idFechaAudiencia_AU_CRE[0]);
+    console.log(req.body.hora);
+    console.log(req.body.idComentario_AU_CRE[0]);
+    console.log(req.body.idCartellone_AU_CRE[0]);
+    console.log(req.file.filename);
+
+    console.log('***********************************');
+    console.log(req.body);
+    console.log('***********************************');
+
+    var CUIL = req.body.numerocuil;
+    var FECHAING = funcionfechas.FechaActual();
+    var FECHADOC = req.body.idFechaEmision_AU_CRE[0];
+    var TIPO = req.body.idTipo_AU_CRE;
+    var FECHAAUDI = req.body.idFechaAudiencia_AU_CRE[0];
+    var HORAAUDI = req.body.hora;
+    var COMENTARIO = req.body.idComentario_AU_CRE[0];
+    var LINK1 = req.body.idCartellone_AU_CRE[0];
+    var LINK2 = req.file.filename;
+
+
+
+    res.send(true);
+    req.getConnection((err, conn) => {
+
+        var inserto = `INSERT INTO AUDIENCIAS (CUIL, FECHAING, FECHADOC, TIPO, FECHAAUDI, HORAAUDI, COMENTARIO, LINK1, LINK2) VALUES 
+         ('${CUIL}' ,'${FECHAING}','${FECHADOC}','${TIPO}','${FECHAAUDI}','${HORAAUDI}','${COMENTARIO}','${LINK1}','${LINK2}')`;
+        conn.query(inserto, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log('Monitor Servidor : AUDIENCIA - GRABACION');
+        });
+    })
+};
+
+
+
+
 
 
 

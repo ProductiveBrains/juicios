@@ -129,12 +129,12 @@
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
                                         <label for="inicio">Inicio</label>
-                                        <input type="date" class="form-control" id="inicio">
+                                        <input type="text" class="form-control" id="inicio">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
                                         <label for="iniciocovid">Inicio Covid</label>
-                                        <input type="date" class="form-control" id="iniciocovid">
+                                        <input type="text" class="form-control" id="iniciocovid">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
@@ -199,7 +199,7 @@
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
                                         <label for="nacimiento">Fecha Nac.</label>
-                                        <input type="date" class="form-control" id="nacimiento">
+                                        <input type="text" class="form-control" id="nacimiento">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
@@ -224,7 +224,7 @@
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
                                         <label for="altaafip">Alta Afip</label>
-                                        <input type="date" class="form-control" id="altaafip">
+                                        <input type="text" class="form-control" id="altaafip">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <i class="material-icons prefix text-success pbicon1">today</i>
@@ -277,33 +277,58 @@
             url: 'DB/detail_Persona/' + cuitrecibido + '',       
             dataType: 'json',
             success: function (data) {
+                console.log(data);
+                console.log(data[0].inicio);
 
+                // if (data[0].nacimiento === null) {
+                //     $("#nacimiento").val('');
+                // } else {
+                //     $("#nacimiento").val(new Date(data[0].nacimiento).toISOString()
+                //         .substring(0, 10));
+                // };
+
+                // if (data[0].altaafip === null) {
+                //     $("#altaafip").val('');
+                // } else {
+                //     $("#altaafip").val(new Date(data[0].altaafip).toISOString()
+                //         .substring(0, 10));
+                // };
+
+                // if (data[0].inicio === null) {
+                //     $("#inicio").val('');
+                // } else {
+                //     $("#inicio").val(new Date(data[0].inicio).toISOString().substring(0,
+                //         10));
+                // };
+
+                // if (data[0].iniciocovid === null) {
+                //     $("#iniciocovid").val('');
+                // } else {
+                //     $("#iniciocovid").val(new Date(data[0].iniciocovid).toISOString()
+                //         .substring(0, 10));
+                // };
                 if (data[0].nacimiento === null) {
                     $("#nacimiento").val('');
                 } else {
-                    $("#nacimiento").val(new Date(data[0].nacimiento).toISOString()
-                        .substring(0, 10));
+                    $("#nacimiento").val(data[0].nacimiento);
                 };
 
                 if (data[0].altaafip === null) {
                     $("#altaafip").val('');
                 } else {
-                    $("#altaafip").val(new Date(data[0].altaafip).toISOString()
-                        .substring(0, 10));
+                    $("#altaafip").val(data[0].altaafip);
                 };
 
                 if (data[0].inicio === null) {
                     $("#inicio").val('');
                 } else {
-                    $("#inicio").val(new Date(data[0].inicio).toISOString().substring(0,
-                        10));
+                    $("#inicio").val(data[0].inicio);
                 };
 
                 if (data[0].iniciocovid === null) {
                     $("#iniciocovid").val('');
                 } else {
-                    $("#iniciocovid").val(new Date(data[0].iniciocovid).toISOString()
-                        .substring(0, 10));
+                    $("#iniciocovid").val(data[0].iniciocovid);
                 };
 
                 $("#idcode").val(data[0].idcode);

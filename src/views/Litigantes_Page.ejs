@@ -225,8 +225,7 @@
         apellido = fila.find("td:eq(2)").text();
         nombre = fila.find("td:eq(3)").text();
         const persona = apellido + ' ' + nombre;
-        // alert (persona);
-        // alert(cuil);
+        
         window.open('View_Litigantes_Docs?cuil=' + cuil + '&persona=' + persona + '', '_self')
     });
     
