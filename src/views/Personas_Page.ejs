@@ -80,6 +80,9 @@
 <!-- DATATABLE LISTA DE PERSONAS -->
 <script>
     $(document).ready(function () {
+
+        document.getElementById('navlink_personas').style.color= 'YELLOW';
+
         tablaPersonal = $("#tablaPersonal").DataTable({
             ajax: {
                 url: `DB/all_Personas`,

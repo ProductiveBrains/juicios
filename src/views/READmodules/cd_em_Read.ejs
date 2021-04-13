@@ -73,8 +73,8 @@
                                 <div class="form-group col-md-12">
                                     <div class="card">
                                         <div class="card-image">
-                                            <div id="divPDFRead_CD_EM" class=""></div>
-                                            <span class="botonFullscreen" onclick="fullscreenFUNCTION(document.getElementById('divPDFRead_CD_EM'))">Vista Maximizada &nbsp</span>
+                                            <div id="PDF_CONTESTACIONES_READ" class=""></div>
+                                            <span class="botonFullscreen" onclick="fullscreenFUNCTION(document.getElementById('PDF_CONTESTACIONES_READ'))">Vista Maximizada &nbsp</span>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('DB/AU_CUIL/' + parametros + '')
+        fetch('DB/CD_EM_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -128,7 +128,7 @@
                 $("#id_CD_EM_Read_Cartellone").val(json[0].LINK1);
                 
                 const RutaPDF="/uploads/"+json[0].LINK2;
-                PDFObject.embed(RutaPDF, "#divPDFRead_CD_EM", { pdfOpenParams: { view: 'Fit' } });
+                PDFObject.embed(RutaPDF, "#PDF_CONTESTACIONES_READ", { pdfOpenParams: { view: 'Fit' } });
                 
             })
     };
@@ -210,7 +210,7 @@
 
 <!-- Contenedor DIV PDF -->
 <style>
-    #divPDFRead_CD_EM {
+    #PDF_CONTESTACIONES_READ {
         background-color: #DDDDDD;
         height: 450px;
         border-radius: 5px;

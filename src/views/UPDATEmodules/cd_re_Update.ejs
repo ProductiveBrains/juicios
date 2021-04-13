@@ -77,14 +77,14 @@
                                     <div class="form-group col-md-12">
                                         <div class="card">
                                             <div class="card-image">
-                                                <div id="divPDF_Create_CD_RE" class=""></div>
+                                                <div id="PDF_RECIBIDAS_UPDATE" class=""></div>
                                                 <span class="pb_card-title"
-                                                    onclick="fullscreenFUNCTION(document.getElementById('divPDF_Create_CD_RE'))">Vista
+                                                    onclick="fullscreenFUNCTION(document.getElementById('PDF_RECIBIDAS_UPDATE'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
                                             <div class="card-content" style="margin-top:10px;">
                                                 <div class="">
-                                                    <input type="file" onchange="file_changed_PDFViewer('divPDF_Create_CD_RE')" name="archivoupload" id="id_file_pdf_update"
+                                                    <input type="file" onchange="file_changed_PDFViewer('PDF_RECIBIDAS_UPDATE')" name="archivoupload" id="id_file_pdf_update"
                                                         accept=".pdf,.jpg" class="validate" required=""
                                                         aria-required="true">
                                                 </div>
@@ -281,7 +281,7 @@
                 $("#id_Update_Cartellone").val(json[0].LINK1);
 
                 const RutaPDF2 = "/uploads/" + json[0].LINK2;
-                PDFObject.embed(RutaPDF2, "#divPDF_Create_CD_RE", {
+                PDFObject.embed(RutaPDF2, "#PDF_RECIBIDAS_UPDATE", {
                     pdfOpenParams: {
                         view: 'Fit'
                     }

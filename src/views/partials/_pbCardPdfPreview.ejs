@@ -14,11 +14,27 @@
         transform: translateY(-50%);
     }
 
-    #divPDF,#divPDF_Create_CD_RE,
-    #divPDF_Create_CD_EM, #divPDFUpdate_EM,
-    #divPDF_Create_AU {
+    #divPDF,
+    #PDF_RECIBIDAS_UPDATE,
+    #PDF_CONTESTACIONES_CREATE,
+    #PDF_CONTESTACIONES_UPDATE,
+    #PDF_AUDIENCIA_CREATE,
+    #PDF_AUDIENCIA_UPDATE {
         background-color: #DDDDDD;
         height: 390px;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    #PDF_RECIBIDAS_READ {
+        background-color: #DDDDDD;
+        height: 450px;
+        border-radius: 5px;
+        display: flex;
+    }
+    #PDF_AUDIENCIA_READ {
+        background-color: #DDDDDD;
+        height: 430px;
         border-radius: 5px;
         display: flex;
     }
@@ -83,9 +99,10 @@
             <i class="material-icons tooltipped pb_icon " data-position="left" data-tooltip="Maximizar"
                 onclick="fullscreen()">remove_red_eye</i></a> -->
     </div>
-    <div class="card-content"style="margin-top:10px;">
+    <div class="card-content" style="margin-top:10px;">
         <div class="">
-            <input type="file" name="archivoupload" id="id_file_pdf" accept=".pdf,.jpg" class="validate" required="" aria-required="true">
+            <input type="file" name="archivoupload" id="id_file_pdf" accept=".pdf,.jpg" class="validate" required=""
+                aria-required="true">
         </div>
     </div>
 </div>

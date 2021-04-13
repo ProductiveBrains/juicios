@@ -15,6 +15,7 @@
 <!-- Carta Documento Emitida -->
 <%- include ("CREATEmodules/cd_au_Create") %>
 <%- include ("READmodules/cd_au_Read") %>
+<%- include ("UPDATEmodules/cd_au_Update") %>
 
 
 <style>
@@ -749,7 +750,7 @@
     $(document).on("click", "#id_btnAddContestacion", function () {
         $('.cl_modal_CD_EM_CREATE').modal('show');
         $('#idMiFormulario_CD_EM').trigger("reset");
-        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_CD_EM", {
+        PDFObject.embed("/pdf/pdfwait.pdf", "#PDF_CONTESTACIONES_CREATE", {
             pdfOpenParams: {
                 view: 'Fit'
             }
@@ -763,7 +764,7 @@
         // alert('disparar modal audiencia');
         $('.cl_modal_CD_AU_CREATE').modal('show');
         $('#idMiFormulario_AU_CREATE').trigger("reset");
-        PDFObject.embed("/pdf/pdfwait.pdf", "#divPDF_Create_AU", {
+        PDFObject.embed("/pdf/pdfwait.pdf", "#PDF_AUDIENCIA_CREATE", {
             pdfOpenParams: {
                 view: 'Fit'
             }
@@ -843,7 +844,7 @@
     })
 
     $(document).on("click", ".btn_AU_EDITAR", function () {
-        alert('LANZO MODAL UPDATE AUDIENCIA');
+        ShowMODAL_AU_UPDATE(this);
     })
 
     $(document).on("click", ".btn_AU_BORRAR", function () {
