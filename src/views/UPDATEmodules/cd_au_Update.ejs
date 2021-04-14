@@ -116,9 +116,9 @@
                 </div>
                 <div class="modal-footer-Alta-pb d-flex align-items-center justify-content-end"
                     style="text-align: right;background-color: #212121;height:55px;border-radius: 0 0 10px 10px ;">
-                    <a class="btn pb-btnFooter" id="botonGrabar_AU_UPDATE" type="submit"
+                    <a class="btn pb-btnFooter" id="BTN_AU_UPDATE" type="submit"
                         style="background-color: #880E4F;color:white">
-                        <i class="material-icons right pbicon1">save</i>Grabar
+                        <i class="material-icons right pbicon1">save</i>Actualizar
                     </a>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
                         style="background-color: #0D47A1;color:white;margin-left:10px;">
@@ -141,7 +141,7 @@
 <!-- BOTONES MODAL -->
 
 <script>
-    $("#botonGrabar_AU_UPDATE").click(function (event) {
+    $("#BTN_AU_UPDATE").click(function (event) {
 
         var validaciones = 0;
 
@@ -165,21 +165,14 @@
         } else {
             validaciones = validaciones + 1;
         }
-
-        if ($("#id_file_pdf_AU_UPDATE").val() == "") {
-            alert("Debe Seleccionar el PDF del original");
-            validaciones = 0;
-        } else {
-            validaciones = validaciones + 1;
-        }
-
-        if (validaciones == 4) {
+        
+        if (validaciones == 3) {
             // hago invisible el boton grabar para evitar la replicacion de la grabacion
-            $('.cl_modal_CD_AU_UPDATE').modal('hide');
+            $('.cl_modal_AU_UPDATE').modal('hide');
             event.preventDefault(); //stop submit the form, we will post it manually.
             var form = $('#idMiFormulario_AU_UPDATE')[0]; // Get form
             var data = new FormData(form); // Create an FormData object
-
+            
 
             data.append("Audiencia_Update_ID", $("#idDataBase_AU_UPDATE").val());
             data.append("Audiencia_Update_FECHADOC", $("#idFechaEmision_AU_UPDATE").val());
@@ -221,7 +214,7 @@
     });
 </script>
 
-<!-- Funcion Consultar API y traer los datos del Registro consultado -->
+<!-- 1) First Charge of Page --- Funcion Consultar API y traer los datos del Registro consultado -->
 <script>
     function ShowMODAL_AU_UPDATE(rowregistro) {
         $('.cl_modal_AU_UPDATE').modal('show');
@@ -249,7 +242,13 @@
                 $("#idDataBase_AU_UPDATE").val(json[0].ID);
                 $("#idFechaSistema_AU_UPDATE").val(ConviertoFechaaInput(fecha11 = new Date(json[0].FECHAING)));
                 $("#idFechaEmision_AU_UPDATE").val(ConviertoFechaaInput(fecha22 = new Date(json[0].FECHADOC)));
-                $("#idTipo_AU_UPDATE option:selected" ).text(json[0].TIPO);
+                
+                if (json[0].TIPO==='Virtual') {
+                    $("#idTipo_AU_UPDATE").val(2).change();             
+                } else {  
+                    $("#idTipo_AU_UPDATE").val(1).change();             
+                }
+
                 $("#idFechaAudiencia_AU_UPDATE").val(ConviertoFechaaInput(fecha33 = new Date(json[0].FECHAAUDI)));
                 $("#timepicker2").val(json[0].HORAAUDI);
                 $("#idComentario_AU_UPDATE").val(json[0].COMENTARIO);

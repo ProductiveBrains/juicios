@@ -231,8 +231,35 @@ controller.Update_CD_AU = (req, res) => {
     // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
     // var COMENTARIO= req.body['id_Update_EM_Comentario'];
     // var LINK1=      req.body['id_Update_EM_Cartellone'];
+    console.log(req.file);
+    // console.log(req.body.numerocuil);
+    // console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body['Audiencia_Update_FECHADOC']);
+    console.log(req.body['Audiencia_Update_TIPO']);
+    console.log(req.body['Audiencia_Update_FECHAAUDI']);
+    console.log(req.body['Audiencia_Update_HORAAUDI']);
+    console.log(req.body['Audiencia_Update_COMENTARIO']);
+    console.log(req.body['Audiencia_Update_LINK1']);
+    // req.body['Audiencia_Update_FECHADOC'];
+    // console.log(req.body.idTipo_AU_CRE);
+    // console.log(req.body.idFechaAudiencia_AU_CRE[0]);
+    // console.log(req.body.hora);
+    // console.log(req.body.idComentario_AU_CRE[0]);
+    // console.log(req.body.idCartellone_AU_CRE[0]);
+    // console.log(req.file.filename);
+
+
+    //     var ID=         req.body['id'];
+    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
+    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
+    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
+    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
+    // var LINK1=      req.body['id_Update_EM_Cartellone'];
+
+    console.log('***********************************');
     
     console.log(req.body);
+    console.log(req.file);
 
     // if (req.file) {
     //     // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
