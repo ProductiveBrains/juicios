@@ -6,6 +6,7 @@ controller.Query_Select_ListaPersonas = (req, res) => {
     // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
     req.getConnection((err, conn) => {
         conn.query('SELECT * from VIEWPERSONAS', (err, personas) => {
+        // conn.query('SELECT * from PERSONAS', (err, personas) => {
             if (err) {
                 res.json(err);
             }

@@ -36,9 +36,9 @@ app.set('views', path.join(__dirname, 'views'));
 //Middlewares
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-    host: '190.106.132.189',
-    user: 'root',
-    password: 'blackmagic',
+    host: '127.0.0.1',
+    user: 'developer',
+    password: 'ineverstop',
     port: 3306,
     database: 'UTJUICIOS'
 }, 'single'));
@@ -53,12 +53,12 @@ app.use(multer({
 
 
 //Routes
-app.use('/', viewsRouter);
-app.use('/DB', dataBaseRouter);
-app.use('/UPFILE', uploadRouter);
+// app.use('/home', viewsRouter);
+app.use('/utjuicios/DB', dataBaseRouter);
+app.use('/utjuicios/UPFILE', uploadRouter);
 
 // static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/home',express.static(path.join(__dirname, 'public')));
 //Iniciando el servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor activo en puerto 3500');
