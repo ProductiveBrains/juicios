@@ -1,16 +1,14 @@
 
-
-
     <div class="container mt-3" id="cuerpo">
         <div class="row mb-2">
             <div class="col-12">
-                <h3 class="text-info   text-uppercase">Listado de Personas </h3>
+                <h3 class="text-warning text-uppercase">Listado Litigantes </h3>
             </div>
         </div>
         <div class="row animated flipInY">
             <div class="col-12 py-3" style="background-color: #D3D3D5;">
-                <!-- <table id="tablaPersonal" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%"> -->
-                <table id="tablaPersonal" class="display responsive nowrap table-bordered table-striped" width="100%">
+                <!-- <table id="tablaLitigantes" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%"> -->
+                <table id="tablaLitigantes" class="display responsive nowrap table-bordered table-striped" width="100%">
                     <thead>
                         <tr>
                             <th style="padding-left: 90px;">CUIL</th>
@@ -58,15 +56,15 @@
             background-color: #f3f3f3;
         }
 
-        table#tablaPersonal.dataTable thead:hover {
+        table#tablaLitigantes.dataTable thead:hover {
             background-color: #ffa;
         }
 
-        table#tablaPersonal.dataTable td:hover {
+        table#tablaLitigantes.dataTable td:hover {
             background-color: #ffa;
         }
 
-        table#tablaPersonal.dataTable tr:hover {
+        table#tablaLitigantes.dataTable tr:hover {
             background-color: rgb(176, 239, 253);
         }
 
@@ -76,9 +74,9 @@
     <!-- DATATABLE LISTA DE PERSONAS -->
     <script>
         $(document).ready(function() {
-            tablaPersonal = $("#tablaPersonal").DataTable({
+            tablaLitigantes = $("#tablaLitigantes").DataTable({
                 ajax: {
-                    url: `http://sotano.digital/utjuicios/DB/all_Personas`,
+                    url: `http://sotano.digital/utjuicios/DB/all_Litigantes`,
                     dataSrc: "",
                     "processing": true,
                     "serverSide": true,
@@ -88,23 +86,20 @@
                         data: "CUIL"
                     },
                     {
-                        defaultContent: "<div class='text-center'>" +
-                            "<div class='btn-group'>" +
-                            "<button class='btn btn-warning btn-sm btnHacerLitigante mr-3'data-toggle='tooltip' data-placement='top' title='Agregar a Lista de Litigantes'>" +
-                            "<i class='fas fa-balance-scale-right'></i>" +
-                            "</button>" +
-                            "<button class='btn btn-primary btn-sm btnView ml-1'data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
-                            "<i class='far fa-eye'></i>" +
-                            "</button>" +
-                            // "<button class='btn btn-info btn-sm btnEditar ml-1 mr-3'data-toggle='tooltip' data-placement='top' title='Editar: Datos de Persona'>" +
-                            // "<i class='fas fa-pencil-alt'></i>" +
-                            // "</button>" +
-                            // "<button class='btn btn-danger btn-sm btnBorrar' data-toggle='tooltip' data-placement='left' title='Borrar Persona'>" +
-                            // "<i class='fas fa-trash-alt'></i>" +
-                            // "</button>" +
-                            "</div>" +
-                            "</div>",
-                    },
+                    defaultContent: "<div class='text-center'>" +
+                        "<div class='btn-group'>" + // VER POSICION DE TOOLTIP LEFT NO FUNCIONA
+                        "<button class='btn btn-success btn-sm btnDocumentos mr-3' data-toggle='tooltip' data-placement='left' title='Visualizar Documentos'>" +
+                        "<i class='far fa-folder-open'></i>" +
+                        "</button>" +
+                        "<button class='btn btn-warning btn-sm btnQuitarLitigante mr-3' data-toggle='tooltip' data-placement='right' title='Deshacer Litigio'>" +
+                        "<i class='fas fa-undo-alt'></i>" +
+                        "</button>" +
+                        "<button class='btn btn-primary btn-sm btnView' data-toggle='tooltip' data-placement='top' title='Ver: Informacion completa'>" +
+                        "<i class='far fa-eye'></i>" +
+                        "</button>" +
+                        "</div>" +
+                        "</div>",
+                },
 
                     {
                         data: "apellido"
@@ -138,16 +133,16 @@
 
                         orientation: 'landscape',
                         pageSize: 'A4',
-                        messageTop: 'Personal que no realizo reclamos',
+                        messageTop: 'Personal Litigante',
                         messageBottom: 'PDF created by ProductiveBrains.com - developed by SJAS.',
-                        title: 'Personal Obra',
+                        title: 'Personal Litigante',
                     },
                     {
                         extend: 'pdfHtml5',
                         text: ' <i class="far fa-file-pdf text-danger align-middle"></i> PDF',
                         titleAttr: 'Abre en una nueva Pestaña el PDF del filtrado realizado',
-                        title: 'Personal Obra',
-                        messageTop: 'Personal que no realizo reclamos',
+                        title: 'Personal Litigante',
+                        messageTop: 'Personal Litigante',
                         messageBottom: 'PDF created by ProductiveBrains.com - developed by SJAS.',
                     }
                 ],
@@ -158,10 +153,10 @@
         })
     </script>
 
-    <!-- BOTONES -->
+    <!-- BOTONES   BORRRAR y PONER LOS BOTONES QUE CORRESPONDEN -->
     <script>
         //AGREGAR LITIGANTE
-        $(document).on("click", ".btnHacerLitigante", function() {
+        $(document).on("click", ".btnQuitarLitigante", function() {
             // console.log("Litigante Activo");
             fila = $(this).closest("tr");
             cuil = fila.find("td:eq(0)").text();
@@ -169,13 +164,13 @@
             nombre = fila.find("td:eq(3)").text();
 
             Swal.fire({
-                title: "Confirma a esta persona como Litigante?",
+                title: "Desea quitar a esta persona como Litigante?",
                 text: apellido + " " + nombre + " - C.U.I.L.: " + cuil,
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Si, es Litigante!",
+                confirmButtonText: "Si, No es Litigante!",
                 cancelButtonText: "No, Cancelar!",
             }).then((result) => {
                 if (result.isConfirmed) {
@@ -187,25 +182,23 @@
                         async: true,
                         data: {
                             CUIL: cuil,
-                            VALOR: "SI"
+                            VALOR: "NO"
                         },
                         success: function() {
                             // console.log("disparar reload de datatable");
-                            tablaPersonal.ajax.reload(null, false);
                             tablaLitigantes.ajax.reload(null, false);
+                            tablaPersonal.ajax.reload(null, false);
                         }
                     });
                     Swal.fire(
                         apellido + " " + nombre + " - C.U.I.L.: " + cuil,
-                        "Ha sido agregado al Listado de Litigantes.",
+                        "Ha sido quitado del Listado de Litigantes.",
                         "success"
                     );
                     // CntDocNAVBAR(); ver si funciona el reload
-                    // tablaPersonal.ajax.reload(null, false);
+                    // tablaLitigantes.ajax.reload(null, false);
                 }
             });
 
         });
-
-
     </script>

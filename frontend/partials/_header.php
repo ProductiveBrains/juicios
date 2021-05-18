@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.1/sweetalert2.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <!-- HIGHCHARTS -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-3d.js"></script>
@@ -97,34 +97,3 @@
     
 
 </head>
-
-<body>
-        
-    <div class="wrapper">
-
-        
-
-        <!-- Nav Bar Start -->
-        <div class="nav-bar">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-                    <a href="#" class="navbar-brand">MENU</a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto">
-                            <a href="index.html" class="nav-item nav-link active">Principal</a>
-                            <a href="about.html" class="nav-item nav-link">Litigantes</a>
-                            <a href="service.html" class="nav-item nav-link">Personal</a>                                
-                            <a href="contact.html" class="nav-item nav-link">Contacto</a>
-                        </div>
-                        <!-- <div class="ml-auto">
-                            <a class="btn" href="https://htmlcodex.com/law-firm-website-template">Get Appointment</a>
-                        </div> -->
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- Nav Bar End -->

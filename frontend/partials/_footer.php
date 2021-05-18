@@ -290,7 +290,4 @@
 <script src="js/main.js"></script>
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<?php include("partials/_ajaxAnimation.ejs") ?>
-</body>
 
-</html>
