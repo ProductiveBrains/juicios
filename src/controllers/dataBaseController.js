@@ -99,6 +99,27 @@ controller.litigantesAUxCUIT = (req, res) => {
     })
 }
 
+controller.litigantesJUxCUIT = (req, res) => {
+    const CUIL = req.params.cuit;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * from JUICIOS WHERE CUIL= ?', [CUIL], (err, JUxCUIT) => {
+            if (err) {
+                res.json(err);
+                console.log(err);
+            }
+            res.send(JUxCUIT);
+            console.log('Monitor Servidor : LLAMARON API JUICIOS para ver listado');
+        });
+    })
+}
+
+
+
+
+
+
+
+
 // CHANGES STATUS VALUE OF JUDICIALES (SI/No)
 controller.Update_Judiciales = (req, res) => {
     console.log(req.body);
@@ -136,7 +157,7 @@ controller.cd_re_cuil = (req, res) => {
     })
 }
 
-//traer CD RE x CUIL
+//traer CD EM x CUIL
 controller.cd_em_cuil = (req, res) => {
     const parametrosrecibidos = JSON.parse(req.params.parametros);
     const id = parametrosrecibidos.id;
@@ -150,13 +171,27 @@ controller.cd_em_cuil = (req, res) => {
     })
 }
 
-//traer CD RE x CUIL
+//traer CD AU x CUIL
 controller.cd_au_cuil = (req, res) => {
     const parametrosrecibidos = JSON.parse(req.params.parametros);
     const id = parametrosrecibidos.id;
     req.getConnection((err, conn) => {
         if (err) throw err;
         conn.query(`SELECT * from AUDIENCIAS WHERE  ID=?`, [id], (err, result, fields) => {
+            if (err) throw err;
+            console.log(result);
+            res.send(result);
+        });
+    })
+}
+
+//traer CD JU x CUIL
+controller.cd_ju_cuil = (req, res) => {
+    const parametrosrecibidos = JSON.parse(req.params.parametros);
+    const id = parametrosrecibidos.id;
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`SELECT * from JUICIOS WHERE  ID=?`, [id], (err, result, fields) => {
             if (err) throw err;
             console.log(result);
             res.send(result);
@@ -195,7 +230,27 @@ controller.res_docs = (req, res) => {
         UNION
         SELECT COUNT(*) FROM CONTESTACIONES 
         UNION
-        SELECT COUNT(*) FROM AUDIENCIAS`, 
+        SELECT COUNT(*) FROM AUDIENCIAS
+        UNION
+        SELECT COUNT(*) FROM JUICIOS`, 
+        
+        (err, resultado) => {
+            if (err) throw err;
+            console.log(resultado);
+            res.send(JSON.stringify(resultado));
+        });
+    })
+}
+
+//Consultas para graficas personal litigante
+controller.TOTAL_LitVsNoLit = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' 
+        UNION
+        SELECT COUNT(*) FROM PERSONAS where judiciales='SI'`, 
+        
         (err, resultado) => {
             if (err) throw err;
             console.log(resultado);

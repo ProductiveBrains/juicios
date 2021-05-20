@@ -2,6 +2,7 @@
 
 <body>
 
+
     <div class="wrapper" id="cuerpo">
         <!-- Nav Bar Start -->
         <div class="nav-bar">
@@ -13,10 +14,10 @@
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                        <a href="index.html" class="nav-item nav-link active">Principal</a>
-                        <a href="about.html" class="nav-item nav-link">Litigantes</a>
-                        <a href="service.html" class="nav-item nav-link">Personal</a>
-                        <a href="contact.html" class="nav-item nav-link">Contacto</a>
+                        <a href="index.php" class="nav-item nav-link active">Principal</a>
+                        <a href="Litigantes_Docs.php" class="nav-item nav-link">probando</a>
+                        <!-- <a href="service.html" class="nav-item nav-link">Personal</a>
+                        <a href="contact.html" class="nav-item nav-link">Contacto</a> -->
                     </div>
                     <!-- <div class="ml-auto">
                             <a class="btn" href="https://htmlcodex.com/law-firm-website-template">Get Appointment</a>
@@ -114,10 +115,10 @@
 
 
         <!-- Modales -->
-        <?php include("READmodules/modal_personas_Detalle.php") ?>
+        <?php include("READ/modal_personas_Detalle.php") ?>
 
         <!-- Contenido -->
-        <div class="container-fluid" id="cuerpo">
+        <div class="container-fluid" id="cuerpo" style="padding-bottom:50px;">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <?php include("partials/_datatableLitigantes.php") ?>
@@ -128,19 +129,63 @@
             </div>
         </div>
 
-
-        <script>
-            // <!-- // VER DETALLE PERSONA -->
-            $(document).on("click", ".btnView", function() {
-                fila = $(this).closest("tr");
-                cuil = fila.find("td:eq(1)").text();
-                $('.modal_Detalle_Persona').modal('show');
-                PersonaDetalleRead(cuil);
-            });
-        </script>
-
-
+        <!-- Estadisticas -->
+        <div class="container-fluid" id="cuerpo" style="padding-bottom:50px;">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div id="Graph_RECL_TOT"></div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <!-- <div id="grafico1" style="  display:none;"></div> LLAMAR a EJS -->
+                    <div id="Graph_DOCS_TOT"></div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div id="TOTAL_LitVsNoLit"></div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                <div id="TOTAL_ActVsNoAct"></div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            console.log("ready!");
+            reloadgrafico();
+        });
+        // <!-- // VER DETALLE PERSONA -->
+        $(document).on("click", ".btnView", function() {
+            fila = $(this).closest("tr");
+            cuil = fila.find("td:eq(0)").text();
+            $('.modal_Detalle_Persona').modal('show');
+            PersonaDetalleRead(cuil);
+        });
+
+        $(document).on("click", ".btnDocumentos", function() {
+            // alert('hola');
+            fila = $(this).closest("tr");
+            cuil = fila.find("td:eq(0)").text();
+            apellido = fila.find("td:eq(2)").text();
+            nombre = fila.find("td:eq(3)").text();
+            const persona = apellido + ' ' + nombre;
+
+            window.open('Litigantes_Docs.php?cuil=' + cuil + '&persona=' + persona + '', '_self')
+        });
+
+        function reloadgrafico() {
+            CargoGrafico4();
+            CargoGrafico3();
+            CargoGrafico2();
+            CargoGrafico1();            
+        }
+    </script>
+
+
+
+    <?php include("stadistics/Graph_PIE_DOCS.php") ?>
 
     <?php include("partials/_footer.php") ?>
 

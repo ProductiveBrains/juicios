@@ -193,7 +193,7 @@
     }
 </style>
 
-<footer class="footer-section mt-5" id="about">
+<footer class="footer-section" id="about">
     <div class="container">
         <div class="footer-cta pt-5 pb-5">
             <div class="row">

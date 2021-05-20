@@ -296,6 +296,124 @@ controller.Update_CD_AU = (req, res) => {
 
 
 
+// CARTAS JUICIOS
+
+controller.Create_CD_JU = (req, res) => {
+
+    console.log(req.file);
+    console.log(req.body.numerocuil);
+    console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body.idFechaEmision_JU_CRE[0]);
+    console.log(req.body.idTipo_JU_CRE);
+    console.log(req.body.idFechaAudiencia_JU_CRE[0]);
+    console.log(req.body.hora);
+    console.log(req.body.idComentario_JU_CRE[0]);
+    console.log(req.body.idCartellone_JU_CRE[0]);
+    console.log(req.file.filename);
+
+    console.log('***********************************');
+    console.log(req.body);
+    console.log('***********************************');
+
+    var CUIL = req.body.numerocuil;
+    var FECHAING = funcionfechas.FechaActual();
+    var FECHADOC = req.body.idFechaEmision_JU_CRE[0];
+    var TIPO = req.body.idTipo_JU_CRE;
+    var FECHAJUI = req.body.idFechaAudiencia_JU_CRE[0];
+    var HORAJUI = req.body.hora;
+    var COMENTARIO = req.body.idComentario_JU_CRE[0];
+    var LINK1 = req.body.idCartellone_JU_CRE[0];
+    var LINK2 = req.file.filename;
+
+
+
+    res.send(true);
+    req.getConnection((err, conn) => {
+
+        var inserto = `INSERT INTO JUICIOS (CUIL, FECHAING, FECHADOC, TIPO, FECHAJUI, HORAJUI, COMENTARIO, LINK1, LINK2) VALUES 
+         ('${CUIL}' ,'${FECHAING}','${FECHADOC}','${TIPO}','${FECHAJUI}','${HORAJUI}','${COMENTARIO}','${LINK1}','${LINK2}')`;
+        conn.query(inserto, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log('Monitor Servidor : JUICIOS - GRABACION');
+        });
+    })
+};
+
+
+controller.Update_CD_JU = (req, res) => {    
+    // var ID=         req.body['id'];
+    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
+    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
+    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
+    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
+    // var LINK1=      req.body['id_Update_EM_Cartellone'];
+    console.log(req.file);
+    // console.log(req.body.numerocuil);
+    // console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body['Juicio_Update_FECHADOC']);
+    console.log(req.body['Juicio_Update_TIPO']);
+    console.log(req.body['Juicio_Update_FECHAJUI']);
+    console.log(req.body['Juicio_Update_HORAJUI']);
+    console.log(req.body['Juicio_Update_COMENTARIO']);
+    console.log(req.body['Juicio_Update_LINK1']);
+    // req.body['Audiencia_Update_FECHADOC'];
+    // console.log(req.body.idTipo_AU_CRE);
+    // console.log(req.body.idFechaAudiencia_AU_CRE[0]);
+    // console.log(req.body.hora);
+    // console.log(req.body.idComentario_AU_CRE[0]);
+    // console.log(req.body.idCartellone_AU_CRE[0]);
+    // console.log(req.file.filename);
+
+
+    //     var ID=         req.body['id'];
+    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
+    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
+    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
+    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
+    // var LINK1=      req.body['id_Update_EM_Cartellone'];
+
+    console.log('***********************************');
+    
+    console.log(req.body);
+    console.log(req.file);
+
+    // if (req.file) {
+    //     // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
+    //     console.log('recibi archivo')
+    //     req.getConnection((err, conn) => {
+
+    //         var LINK2=req.file.filename;
+
+    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
+
+    //         conn.query(actualizo, (err, result) => {
+    //             if (err) {
+    //                 console.log(err);
+    //             }
+    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION con Modificacion de Archivo');
+    //         });
+    //     })
+    // } else {
+    //     // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
+    //     console.log('NOOOO recibi archivo');
+
+    //     req.getConnection((err, conn) => {
+    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}' WHERE ID='${ID}'`;
+    //         conn.query(actualizo, (err, result) => {
+    //             if (err) {
+    //                 console.log(err);
+    //             }
+    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION Dejando  el Archivo Existente');
+    //         });
+    //     })
+    // }
+    res.send(true);
+};
+
+
+
 
 
 

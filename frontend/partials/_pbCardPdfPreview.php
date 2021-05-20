@@ -19,7 +19,9 @@
     #PDF_CONTESTACIONES_CREATE,
     #PDF_CONTESTACIONES_UPDATE,
     #PDF_AUDIENCIA_CREATE,
-    #PDF_AUDIENCIA_UPDATE {
+    #PDF_AUDIENCIA_UPDATE,
+    #PDF_JUICIO_CREATE,
+    #PDF_JUICIO_UPDATE {
         background-color: #DDDDDD;
         height: 390px;
         border-radius: 5px;
@@ -33,6 +35,13 @@
         display: flex;
     }
     #PDF_AUDIENCIA_READ {
+        background-color: #DDDDDD;
+        height: 430px;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    #PDF_JUICIO_READ {
         background-color: #DDDDDD;
         height: 430px;
         border-radius: 5px;

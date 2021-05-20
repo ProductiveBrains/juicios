@@ -1,13 +1,13 @@
 <!-- MODAL -->
-<div id="id_Modal_CD_AU_READ" class="modal fade cl_modal_CD_AU_READ" tabindex="-1" role="dialog"
+<div id="id_Modal_CD_JU_READ" class="modal fade cl_modal_CD_JU_READ" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" style="max-width: 90%!important;margin-top:2px!important;" role="document">
         <div class="modal-content caja">
-            <form id="idMiFormulario_AU_READ" name="myForm">
+            <form id="idMiFormulario_JU_READ" name="myForm">
                 <div class="modal-header-Ver-pb pb-bg-ver pb-CardHeader">
-                    <h5 style="margin:0;color: rgb(255, 255, 255)"><i class="fas fa-handshake"></i> DETALLE AUDIENCIA -
+                    <h5 style="margin:0;color: rgb(255, 255, 255)"><i class="fas fa-handshake"></i> DETALLE JUICIO -
                         C.U.I.L. :
-                        <span class="demo-class-cuil" id="cuilpersona_AU_READ">xxx</span> - <span
+                        <span class="demo-class-cuil" id="cuilpersona_JU_READ">xxx</span> - <span
                             class="demo-class-apenom">yyy</span>
                     </h5>
                 </div>
@@ -19,22 +19,22 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-2" >
                                         <i class="material-icons prefix text-danger">flag</i>
-                                        <label for="idDataBase_AU_READ">ID</label>
-                                        <input type="text" class="form-control" id="idDataBase_AU_READ" disabled>
+                                        <label for="idDataBase_JU_READ">ID</label>
+                                        <input type="text" class="form-control" id="idDataBase_JU_READ" disabled>
                                     </div>
                                     <div class="form-group col-md-5" >
                                         <i class="material-icons prefix text-danger">today</i>
-                                        <label for="idFechaSistema_AU_READ">Ingresado en Sistema</label>
-                                        <input type="text" class="form-control" id="idFechaSistema_AU_READ" disabled>
+                                        <label for="idFechaSistema_JU_READ">Ingresado en Sistema</label>
+                                        <input type="text" class="form-control" id="idFechaSistema_JU_READ" disabled>
                                     </div>
 
                                     <div class="form-group col-md-5">
                                         <i class="material-icons prefix text-success">today</i>
-                                        <label for="idFechaEmision_AU_READ">Fecha Emision</label>
-                                        <input id="idFechaEmision_AU_READ" name="idFechaEmision_AU_READ" type="text"
+                                        <label for="idFechaEmision_JU_READ">Fecha Emision</label>
+                                        <input id="idFechaEmision_JU_READ" name="idFechaEmision_JU_READ" type="text"
                                             class="form-control " disabled>
-                                        <input type="text" class=" form-control" name="idnamecuil_AU_READ"
-                                            id="idnamecuil_AU_READ" hidden>
+                                        <input type="text" class=" form-control" name="idnamecuil_JU_READ"
+                                            id="idnamecuil_JU_READ" hidden>
                                     </div>
                                 </div>
 
@@ -42,8 +42,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
-                                        <label for="idTipo_AU_READ">Tipo Audiencia</label>
-                                        <select id="idTipo_AU_READ" class="form-select form-control "
+                                        <label for="idTipo_JU_READ">Tipo Juicio</label>
+                                        <select id="idTipo_JU_READ" class="form-select form-control "
                                             aria-label="Default select example" disabled>
                                             <option value="1" selected>Presencial</option>
                                             <option value="2">Virtual</option>
@@ -51,11 +51,11 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <i class="material-icons prefix text-success">today</i>
-                                        <label for="idFechaAudiencia_AU_READ">Fecha Audiencia</label>
-                                        <input id="idFechaAudiencia_AU_READ" name="idFechaAudiencia_AU_READ" type="text"
+                                        <label for="idFechaAudiencia_JU_READ">Fecha Juicio</label>
+                                        <input id="idFechaAudiencia_JU_READ" name="idFechaAudiencia_JU_READ" type="text"
                                             class="form-control " disabled>
-                                        <input type="text" class=" form-control" name="idnamecuil_AU_READ"
-                                            id="idnamecuil_AU_READ" hidden>
+                                        <input type="text" class=" form-control" name="idnamecuil_JU_READ"
+                                            id="idnamecuil_JU_READ" hidden>
                                     </div>
 
 
@@ -72,8 +72,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">mode_edit</i>
-                                        <label for="idComentario_AU_READ">Comentario</label>
-                                        <textarea id="idComentario_AU_READ" name="idComentario_AU_READ"
+                                        <label for="idComentario_JU_READ">Comentario</label>
+                                        <textarea id="idComentario_JU_READ" name="idComentario_JU_READ"
                                             class="form-control" rows="4"
                                             placeholder="En Caso de Audiencia Presencial Especifique Ciudad y Lugar"disabled></textarea>
                                     </div>
@@ -82,11 +82,11 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <i class="material-icons prefix text-warning">cloud</i>
-                                        <label for="idCartellone_AU_READ">Cartellone Cloud
+                                        <label for="idCartellone_JU_READ">Cartellone Cloud
                                             <span style="font-size: 12px;color:rgb(12, 9, 211)">(Ingrese el link de
                                                 sus hosting en la nube)</span> </label>
-                                        <input type="text" class="form-control" id="idCartellone_AU_READ"
-                                            name="idCartellone_AU_READ" disabled>
+                                        <input type="text" class="form-control" id="idCartellone_JU_READ"
+                                            name="idCartellone_JU_READ" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -96,16 +96,16 @@
                                     <div class="form-group col-md-12">
                                         <div class="card">
                                             <div class="card-image">
-                                                <div id="PDF_AUDIENCIA_READ" class=""></div>
+                                                <div id="PDF_JUICIO_READ" class=""></div>
                                                 <span class="botonFullscreen"
-                                                    onclick="fullscreenFUNCTION(document.getElementById('PDF_AUDIENCIA_READ'))">Vista
+                                                    onclick="fullscreenFUNCTION(document.getElementById('PDF_JUICIO_READ'))">Vista
                                                     Maximizada &nbsp</span>
                                             </div>
                                             <!-- <div class="card-content" style="margin-top:10px;">
                                                 <div class="">
                                                     <input type="file"
-                                                        onchange="file_changed_PDFViewer('PDF_AUDIENCIA_READ')"
-                                                        name="archivoupload" id="id_file_pdf_AU_READ" accept=".pdf,.jpg"
+                                                        onchange="file_changed_PDFViewer('PDF_JUICIO_READ')"
+                                                        name="archivoupload" id="id_file_pdf_JU_READ" accept=".pdf,.jpg"
                                                         class=""disabled >
                                                 </div>
                                             </div> -->
@@ -133,15 +133,15 @@
 
 
 <script>
-    function ShowMODAL_AU(rowregistro) {
-        $('.cl_modal_CD_AU_READ').modal('show');
+    function ShowMODAL_JU(rowregistro) {
+        $('.cl_modal_CD_JU_READ').modal('show');
 
         fila = $(rowregistro).closest("tr");
         send_ID = fila.find("td:eq(0)").text();
         const parametros = JSON.stringify({
             id: send_ID
         })
-        fetch('DB/AU_CUIL/' + parametros + '')
+        fetch('http://sotano.digital/utjuicios/DB/JU_CUIL/' + parametros + '')
             .then(res => res.json())
             .then(json => {
                 console.log(json);
@@ -150,25 +150,28 @@
                 console.log(json[0].FECHAING);
                 console.log(json[0].FECHADOC);
                 console.log(json[0].TIPO);
-                console.log(json[0].FECHAAUDI);
-                console.log(json[0].HORAAUDI);
+                console.log(json[0].FECHAJUI);
+                console.log(json[0].HORAJUI);
                 console.log(json[0].COMENTARIO);
                 console.log(json[0].LINK1);
                 console.log(json[0].LINK2);
 
-                $("#idDataBase_AU_READ").val(json[0].ID);
-                $("#idFechaSistema_AU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
-                $("#idFechaEmision_AU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
-                $("#idTipo_AU_READ option:selected" ).text(json[0].TIPO);
-                // $("#idFechaAudiencia_AU_READ").val(json[0].FECHAAUDI );
-                $("#idFechaAudiencia_AU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAAUDI)));
+                $("#idDataBase_JU_READ").val(json[0].ID);
+                // $("#idFechaSistema_JU_READ").val(FechaConvertString(fecha1 = new Date(json[0].FECHAING)));
+                // $("#idFechaEmision_JU_READ").val(FechaConvertString(fecha2 = new Date(json[0].FECHADOC)));
+                $("#idFechaSistema_JU_READ").val(json[0].FECHAING);
+                $("#idFechaEmision_JU_READ").val(json[0].FECHADOC);
+                $("#idTipo_JU_READ option:selected" ).text(json[0].TIPO);
+                // $("#idFechaAudiencia_JU_READ").val(json[0].FECHAAUDI );
+                // $("#idFechaAudiencia_JU_READ").val(FechaConvertString(fecha3 = new Date(json[0].FECHAAUDI)));
+                $("#idFechaAudiencia_JU_READ").val(json[0].FECHAJUI);
                 // $("#hora").val(json[0].HORAAUDI  );
-                $("#hora" ).val(json[0].HORAAUDI);
-                $("#idComentario_AU_READ").val(json[0].COMENTARIO);
-                $("#idCartellone_AU_READ").val(json[0].LINK1);
+                $("#hora" ).val(json[0].HORAJUI);
+                $("#idComentario_JU_READ").val(json[0].COMENTARIO);
+                $("#idCartellone_JU_READ").val(json[0].LINK1);
 
-                const RutaPDF = "/uploads/" + json[0].LINK2;
-                PDFObject.embed(RutaPDF, "#PDF_AUDIENCIA_READ", {
+                const RutaPDF = "http://sotano.digital/utpdf/" + json[0].LINK2;
+                PDFObject.embed(RutaPDF, "#PDF_JUICIO_READ", {
                     pdfOpenParams: {
                         view: 'Fit'
                     }

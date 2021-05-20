@@ -58,7 +58,8 @@ app.use('/utjuicios/DB', dataBaseRouter);
 app.use('/utjuicios/UPFILE', uploadRouter);
 
 // static files
-app.use('/home',express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
+
 //Iniciando el servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor activo en puerto 3500');

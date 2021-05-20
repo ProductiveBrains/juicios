@@ -12,6 +12,7 @@ routerdataBase.get('/detail_Persona/:cuit', DB_Controller.PersonaByCUIL);
 routerdataBase.get('/litigantesCDxCUIT/:cuit', DB_Controller.litigantesCDxCUIT);
 routerdataBase.get('/litigantesCOxCUIT/:cuit', DB_Controller.litigantesCOxCUIT);
 routerdataBase.get('/litigantesAUxCUIT/:cuit', DB_Controller.litigantesAUxCUIT);
+routerdataBase.get('/litigantesJUxCUIT/:cuit', DB_Controller.litigantesJUxCUIT);
 
 //Cambio de Estado
 routerdataBase.post('/Update_Judiciales', DB_Controller.Update_Judiciales);
@@ -25,6 +26,9 @@ routerdataBase.get('/CD_EM_CUIL/:parametros', DB_Controller.cd_em_cuil);
 //Mostrar AUDIENCIA x Usuario
 routerdataBase.get('/AU_CUIL/:parametros', DB_Controller.cd_au_cuil);
 
+//Mostrar JUICIO x Usuario
+routerdataBase.get('/JU_CUIL/:parametros', DB_Controller.cd_ju_cuil);
+
 
 
 
@@ -37,6 +41,8 @@ routerdataBase.get('/CD_DLT/:parametros', DB_Controller.CD_DLT);
 routerdataBase.get('/RES_DOCS', DB_Controller.res_docs);
 
 routerdataBase.get('/RES_RECLAMOS', DB_Controller.res_reclamos);
+
+routerdataBase.get('/TOTAL_LitVsNoLit', DB_Controller.TOTAL_LitVsNoLit);
 
 
 
