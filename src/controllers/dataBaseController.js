@@ -259,6 +259,26 @@ controller.TOTAL_LitVsNoLit = (req, res) => {
     })
 }
 
+controller.TOTAL_ActvsNoAct = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' && bajasino='NO'
+        UNION
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='NO'
+        UNION
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' && bajasino='SI'
+        UNION
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='SI' `, 
+        
+        (err, resultado) => {
+            if (err) throw err;
+            console.log(resultado);
+            res.send(JSON.stringify(resultado));
+        });
+    })
+}
+
 //Consultas para graficas Status3
 controller.res_reclamos = (req, res) => {
     req.getConnection((err, conn) => {

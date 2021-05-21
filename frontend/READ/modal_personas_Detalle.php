@@ -214,7 +214,7 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-2">
+                                <div class="col-4">
                                     <label for="altaafip">Alta Afip</label>
                                     <input type="text" class="form-control" id="altaafip">
                                 </div>
@@ -222,7 +222,7 @@
                                     <label for="categoria">Categoria</label>
                                     <input type="text" class="form-control" id="categoria">
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <label for="convenio">Convenio</label>
                                     <input type="text" class="form-control" id="convenio">
                                 </div>
@@ -236,6 +236,16 @@
                                 <div class="col-4">
                                     <label for="judiciales">Judiciales</label>
                                     <input type="text" class="form-control" id="judiciales">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-4">
+                                    <label for="fechadebaja">Fecha de baja</label>
+                                    <input type="text" class="form-control" id="fechadebaja">
+                                </div>
+                                <div class="col-8">
+                                    <label for="metododebaja">Metodo de baja</label>
+                                    <input type="text" class="form-control" id="metododebaja">
                                 </div>
                             </div>
 
@@ -348,6 +358,8 @@
                 $("#convenio").val(data[0].convenio);
                 $("#obrasocial").val(data[0].obrasocial);
                 $("#judiciales").val(data[0].judiciales);
+                $("#fechadebaja").val(data[0].Fecha_de_baja);
+                $("#metododebaja").val(data[0].Metodo_de_baja);
 
                 // Apellido y CUIL en HEADER del modal
                 $("#demo-class-cuil").val(data[0].apellido);

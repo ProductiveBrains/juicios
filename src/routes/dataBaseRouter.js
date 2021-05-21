@@ -44,6 +44,8 @@ routerdataBase.get('/RES_RECLAMOS', DB_Controller.res_reclamos);
 
 routerdataBase.get('/TOTAL_LitVsNoLit', DB_Controller.TOTAL_LitVsNoLit);
 
+routerdataBase.get('/TOTAL_ActvsNoAct', DB_Controller.TOTAL_ActvsNoAct);
+
 
 
 module.exports = routerdataBase;

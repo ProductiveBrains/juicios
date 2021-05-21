@@ -639,16 +639,16 @@
 
     function CargoGrafico4() {
 
-        // Declaration  of  variables for change  dinamic the graph
-        var TOT_LITIGANTE;
-        var TOT_NOLITIGANTE;
+
 
         // Extract the  data  from  DataBase
-        fetch('http://sotano.digital/utjuicios/DB/TOTAL_LitVsNoLit')
+        fetch('http://sotano.digital/utjuicios/DB/TOTAL_ActvsNoAct')
             .then(response => response.json())
             .then(data => {
-                TOT_NOLITIGANTE = data[0].TOTAL;
-                TOT_LITIGANTE = data[1].TOTAL;
+                var ACT_JUD_NO = data[0].TOTAL;
+                var ACT_JUD_SI= data[1].TOTAL;
+                var NO_ACT_JUD_NO = data[2].TOTAL;
+                var NO_ACT_JUD_SI = data[3].TOTAL;
 
                 var Opciones_Graph_DOCS_TOT = {
                     chart: {
@@ -663,11 +663,11 @@
                     },
 
                     title: {
-                        text: 'Total fruit consumption, grouped by gender'
+                        text: 'Activos vs Baja (Litigantes vs NoLitigantes)'
                     },
 
                     xAxis: {
-                        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
+                        categories: ['Activos', 'Baja'],
                         labels: {
                             skew3d: true,
                             style: {
@@ -687,7 +687,7 @@
 
                     tooltip: {
                         headerFormat: '<b>{point.key}</b><br>',
-                        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+                        pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} '
                     },
 
                     plotOptions: {
@@ -698,22 +698,24 @@
                     },
 
                     series: [{
-                        name: 'John',
-                        data: [5, 3, 4, 7, 2],
-                        stack: 'male'
+                        name: 'No Litigantes',
+                        data: [ACT_JUD_NO, NO_ACT_JUD_NO],
+                        stack: 'activo'
                     }, {
-                        name: 'Joe',
-                        data: [3, 4, 4, 2, 5],
-                        stack: 'male'
+                        name: 'Litigante',
+                        data: [ACT_JUD_SI, NO_ACT_JUD_SI],
+                        stack: 'Litigante'
                     }, {
-                        name: 'Jane',
-                        data: [2, 5, 6, 2, 1],
-                        stack: 'female'
-                    }, {
-                        name: 'Janet',
-                        data: [3, 0, 4, 4, 3],
-                        stack: 'female'
-                    }]
+                        name: 'Total',
+                        data: [ACT_JUD_NO+ACT_JUD_SI, NO_ACT_JUD_NO+NO_ACT_JUD_SI],
+                        stack: 'total'
+                    }],
+
+                    colors: [
+                        '#28A745', //verde
+                        '#ff004c', // rojo                        
+                        '#ffb300' //naranja
+                    ]
                 }
 
                 Torta1 = Highcharts.chart('TOTAL_ActVsNoAct', Highcharts.merge(Opciones_Graph_DOCS_TOT, Estilo1));
