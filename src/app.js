@@ -37,10 +37,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
     host: '127.0.0.1',
-    user: 'developer',
-    password: 'ineverstop',
+    user: '',
+    password: '',
     port: 3306,
-    database: 'UTJUICIOS'
+    database: ''
 }, 'single'));
 app.use(express.urlencoded({ extends: false }));//permite entender los datos que vienen de formulario
 app.use(express.json());//escucho jsons
