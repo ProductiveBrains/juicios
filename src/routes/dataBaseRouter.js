@@ -46,6 +46,8 @@ routerdataBase.get('/TOTAL_LitVsNoLit', DB_Controller.TOTAL_LitVsNoLit);
 
 routerdataBase.get('/TOTAL_ActvsNoAct', DB_Controller.TOTAL_ActvsNoAct);
 
+routerdataBase.get('/ACT_FORANEOLOCAL', DB_Controller.ACT_FORANEOLOCAL);
 
+routerdataBase.get('/BAJA_FORANEOLOCAL', DB_Controller.BAJA_FORANEOLOCAL);
 
 module.exports = routerdataBase;

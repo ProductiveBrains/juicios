@@ -6,7 +6,7 @@ controller.Query_Select_ListaPersonas = (req, res) => {
     // res.send('Servidor Remoto : Consultando Base de datos para cargar AJAX del Datatable');
     req.getConnection((err, conn) => {
         conn.query('SELECT * from VIEWPERSONAS', (err, personas) => {
-        // conn.query('SELECT * from PERSONAS', (err, personas) => {
+            // conn.query('SELECT * from PERSONAS', (err, personas) => {
             if (err) {
                 res.json(err);
             }
@@ -61,7 +61,8 @@ controller.PersonaByCUIL = (req, res) => {
 controller.litigantesCDxCUIT = (req, res) => {
     const CUIL = req.params.cuit;
     req.getConnection((err, conn) => {
-        conn.query('SELECT * from CARTADOCUMENTO WHERE CUIL= ?', [CUIL], (err, CDxCUIT) => {
+        // conn.query('SELECT * from CARTADOCUMENTO WHERE CUIL= ?', [CUIL], (err, CDxCUIT) => {
+        conn.query('SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,RECLAMO,ESTUDIO FROM `CARTADOCUMENTO` WHERE CUIL=? ORDER BY FECHADOC ASC', [CUIL], (err, CDxCUIT) => {
             if (err) {
                 res.json(err);
             }
@@ -232,13 +233,13 @@ controller.res_docs = (req, res) => {
         UNION
         SELECT COUNT(*) FROM AUDIENCIAS
         UNION
-        SELECT COUNT(*) FROM JUICIOS`, 
-        
-        (err, resultado) => {
-            if (err) throw err;
-            console.log(resultado);
-            res.send(JSON.stringify(resultado));
-        });
+        SELECT COUNT(*) FROM JUICIOS`,
+
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
     })
 }
 
@@ -249,13 +250,13 @@ controller.TOTAL_LitVsNoLit = (req, res) => {
         conn.query(`
         SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' 
         UNION
-        SELECT COUNT(*) FROM PERSONAS where judiciales='SI'`, 
-        
-        (err, resultado) => {
-            if (err) throw err;
-            console.log(resultado);
-            res.send(JSON.stringify(resultado));
-        });
+        SELECT COUNT(*) FROM PERSONAS where judiciales='SI'`,
+
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
     })
 }
 
@@ -269,26 +270,58 @@ controller.TOTAL_ActvsNoAct = (req, res) => {
         UNION
         SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' && bajasino='SI'
         UNION
-        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='SI' `, 
-        
-        (err, resultado) => {
-            if (err) throw err;
-            console.log(resultado);
-            res.send(JSON.stringify(resultado));
-        });
+        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='SI' `,
+
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
     })
 }
+
+controller.ACT_FORANEOLOCAL = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`
+			SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE bajasino='NO' && condicion='LOCAL'
+			UNION
+			SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE bajasino='NO' && condicion='FORANEO' `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
+    })
+}
+
+controller.BAJA_FORANEOLOCAL = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(`
+			SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE bajasino='SI' && condicion='LOCAL'
+			UNION
+			SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE bajasino='SI' && condicion='FORANEO' `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
+    })
+}
+
+
 
 //Consultas para graficas Status3
 controller.res_reclamos = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) throw err;
-        conn.query(`SELECT RECLAMO,COUNT(*)as TOTAL FROM CARTADOCUMENTO GROUP BY RECLAMO`, 
-        (err, resultado) => {
-            if (err) throw err;
-            console.log(resultado);
-            res.send(JSON.stringify(resultado));
-        });
+        conn.query(`SELECT RECLAMO,COUNT(*)as TOTAL FROM CARTADOCUMENTO GROUP BY RECLAMO`,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            });
     })
 }
 
