@@ -79,7 +79,7 @@ controller.litigantesCDxCUIT = (req, res) => {
     req.getConnection((err, conn) => {
         // conn.query('SELECT * from CARTADOCUMENTO WHERE CUIL= ?', [CUIL], (err, CDxCUIT) => {
         conn.query(
-            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,RECLAMO,ESTUDIO FROM `CARTADOCUMENTO` WHERE CUIL=?', [CUIL],
+            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC_order,RECLAMO , ESTUDIO FROM `CARTADOCUMENTO` WHERE CUIL=? ORDER BY `FECHADOC` ASC', [CUIL],
             (err, CDxCUIT) => {
                 if (err) {
                     res.json(err);
@@ -98,7 +98,7 @@ controller.litigantesCOxCUIT = (req, res) => {
     req.getConnection((err, conn) => {
         // conn.query('SELECT * from CONTESTACIONES WHERE CUIL= ?', [CUIL], (err, COxCUIT) => {
         conn.query(
-            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,RECLAMO,ESTUDIO FROM `CONTESTACIONES` WHERE CUIL=?', [CUIL],
+            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC_order,RECLAMO , ESTUDIO FROM `CONTESTACIONES` WHERE CUIL=? ORDER BY `FECHADOC` ASC ', [CUIL],
             (err, COxCUIT) => {
                 if (err) {
                     res.json(err);
@@ -119,7 +119,7 @@ controller.litigantesAUxCUIT = (req, res) => {
         // conn.query(
         //     "SELECT * from AUDIENCIAS WHERE CUIL= ?", [CUIL],
         conn.query(
-            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,TIPO,DATE_FORMAT(FECHAAUDI, "%d/%m/%Y")as FECHAAUDI,TIME_FORMAT(HORAAUDI, "%H %i") as HORAAUDI , COMENTARIO FROM `AUDIENCIAS` WHERE CUIL=?', [CUIL],
+            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,TIPO,DATE_FORMAT(FECHAAUDI, "%d/%m/%Y")as FECHAAUDI_order,TIME_FORMAT(HORAAUDI, "%H %i") as HORAAUDI , COMENTARIO FROM `AUDIENCIAS` WHERE CUIL=? ORDER BY `FECHAAUDI` ASC ', [CUIL],
             (err, AUxCUIT) => {
                 if (err) {
                     res.json(err);
@@ -139,7 +139,7 @@ controller.litigantesJUxCUIT = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query(
             // "SELECT * from JUICIOS WHERE CUIL= ?", [CUIL],
-            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,TIPO,DATE_FORMAT(FECHAJUI, "%d/%m/%Y")as FECHAJUI, TIME_FORMAT(HORAJUI, "%H %i") as HORAJUI, COMENTARIO FROM `JUICIOS` WHERE CUIL=?', [CUIL],
+            'SELECT ID,CUIL,DATE_FORMAT(FECHAING, "%d/%m/%Y") as FECHAING,DATE_FORMAT(FECHADOC, "%d/%m/%Y")as FECHADOC,TIPO,DATE_FORMAT(FECHAJUI, "%d/%m/%Y")as FECHAJUI_order,TIME_FORMAT(HORAJUI, "%H %i") as HORAJUI , COMENTARIO FROM `JUICIOS` WHERE CUIL=? ORDER BY `FECHAJUI` ASC ', [CUIL],
             (err, JUxCUIT) => {
                 if (err) {
                     res.json(err);
