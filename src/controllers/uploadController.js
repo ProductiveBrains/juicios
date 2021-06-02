@@ -30,7 +30,7 @@ controller.Create_CD_RE = (req, res) => {
     var LINK1 = req.body.idCartellone[0];
     var LINK2 = req.file.filename;
 
-    res.send(true);    
+    res.send(true);
     req.getConnection((err, conn) => {
 
         var inserto = `INSERT INTO CARTADOCUMENTO (CUIL, FECHAING, FECHADOC, RECLAMO, ESTUDIO, COMENTARIO, LINK1, LINK2) VALUES  ('${CUIL}' ,'${FECHAING}','${FECHADOC}','${RECLAMO}','${ESTUDIO}','${COMENTARIO}','${LINK1}','${LINK2}')`;
@@ -44,14 +44,14 @@ controller.Create_CD_RE = (req, res) => {
 };
 
 
-controller.Update_CD_RE = (req, res) => {    
-    var ID=         req.body['id'];
-    var FECHADOC=   req.body['id_Update_FechaEmision'];
-    var RECLAMO=    req.body['id_Update_TipoReclamo'];
-    var ESTUDIO=    req.body['id_Update_EstudioJuridico'];
-    var COMENTARIO= req.body['id_Update_Comentario'];
-    var LINK1=      req.body['id_Update_Cartellone'];
-    
+controller.Update_CD_RE = (req, res) => {
+    var ID = req.body['id'];
+    var FECHADOC = req.body['id_Update_FechaEmision'];
+    var RECLAMO = req.body['id_Update_TipoReclamo'];
+    var ESTUDIO = req.body['id_Update_EstudioJuridico'];
+    var COMENTARIO = req.body['id_Update_Comentario'];
+    var LINK1 = req.body['id_Update_Cartellone'];
+
     console.log(req.body);
 
     if (req.file) {
@@ -59,7 +59,7 @@ controller.Update_CD_RE = (req, res) => {
         console.log('recibi archivo')
         req.getConnection((err, conn) => {
 
-            var LINK2=req.file.filename;
+            var LINK2 = req.file.filename;
 
             var actualizo = `UPDATE CARTADOCUMENTO SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
 
@@ -119,7 +119,7 @@ controller.Create_CD_EM = (req, res) => {
 
 
 
-    res.send(true);    
+    res.send(true);
     req.getConnection((err, conn) => {
 
         var inserto = `INSERT INTO CONTESTACIONES (CUIL, FECHAING, FECHADOC, RECLAMO, ESTUDIO, COMENTARIO, LINK1, LINK2) VALUES  ('${CUIL}' ,'${FECHAING}','${FECHADOC}','${RECLAMO}','${ESTUDIO}','${COMENTARIO}','${LINK1}','${LINK2}')`;
@@ -133,14 +133,14 @@ controller.Create_CD_EM = (req, res) => {
 };
 
 
-controller.Update_CD_EM = (req, res) => {    
-    var ID=         req.body['id'];
-    var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
-    var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
-    var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
-    var COMENTARIO= req.body['id_Update_EM_Comentario'];
-    var LINK1=      req.body['id_Update_EM_Cartellone'];
-    
+controller.Update_CD_EM = (req, res) => {
+    var ID = req.body['id'];
+    var FECHADOC = req.body['id_Update_EM_FechaEmision'];
+    var RECLAMO = req.body['id_Update_EM_TipoReclamo'];
+    var ESTUDIO = req.body['id_Update_EM_EstudioJuridico'];
+    var COMENTARIO = req.body['id_Update_EM_Comentario'];
+    var LINK1 = req.body['id_Update_EM_Cartellone'];
+
     console.log(req.body);
 
     if (req.file) {
@@ -148,7 +148,7 @@ controller.Update_CD_EM = (req, res) => {
         console.log('recibi archivo')
         req.getConnection((err, conn) => {
 
-            var LINK2=req.file.filename;
+            var LINK2 = req.file.filename;
 
             var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
 
@@ -224,73 +224,71 @@ controller.Create_CD_AU = (req, res) => {
 };
 
 
-controller.Update_CD_AU = (req, res) => {    
-    // var ID=         req.body['id'];
-    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
-    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
-    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
-    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
-    // var LINK1=      req.body['id_Update_EM_Cartellone'];
+controller.Update_CD_AU = (req, res) => {
     console.log(req.file);
-    // console.log(req.body.numerocuil);
-    // console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body['Audiencia_Update_ID']);
     console.log(req.body['Audiencia_Update_FECHADOC']);
     console.log(req.body['Audiencia_Update_TIPO']);
     console.log(req.body['Audiencia_Update_FECHAAUDI']);
-    console.log(req.body['Audiencia_Update_HORAAUDI']);
+    console.log(req.body['Audiencia_Update_HORAAUDI'][0]);
     console.log(req.body['Audiencia_Update_COMENTARIO']);
     console.log(req.body['Audiencia_Update_LINK1']);
-    // req.body['Audiencia_Update_FECHADOC'];
-    // console.log(req.body.idTipo_AU_CRE);
-    // console.log(req.body.idFechaAudiencia_AU_CRE[0]);
-    // console.log(req.body.hora);
-    // console.log(req.body.idComentario_AU_CRE[0]);
-    // console.log(req.body.idCartellone_AU_CRE[0]);
-    // console.log(req.file.filename);
 
+    var ID = req.body['Audiencia_Update_ID']; //ok
+    var FECHADOC = req.body['Audiencia_Update_FECHADOC']; //ok
+    var TIPO = req.body['Audiencia_Update_TIPO']; //ok
+    var FECHAAUDI = req.body['Audiencia_Update_FECHAAUDI']; //ok
+    var HORAAUDI = req.body['Audiencia_Update_HORAAUDI'][0]; //ok
+    var COMENTARIO = req.body['Audiencia_Update_COMENTARIO']; //ok
+    var LINK1 = req.body['Audiencia_Update_LINK1']; //ok
 
-    //     var ID=         req.body['id'];
-    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
-    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
-    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
-    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
-    // var LINK1=      req.body['id_Update_EM_Cartellone'];
-
-    console.log('***********************************');
-    
     console.log(req.body);
-    console.log(req.file);
 
-    // if (req.file) {
-    //     // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
-    //     console.log('recibi archivo')
-    //     req.getConnection((err, conn) => {
+    if (req.file) {
+        // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
+        console.log('recibi archivo')
+        req.getConnection((err, conn) => {
 
-    //         var LINK2=req.file.filename;
+            var LINK2 = req.file.filename; //ok
 
-    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
+            var actualizo = `UPDATE AUDIENCIAS SET 
+            FECHADOC='${FECHADOC}', 
+            TIPO='${TIPO}', 
+            FECHAAUDI='${FECHAAUDI}',
+            HORAAUDI='${HORAAUDI}',
+            COMENTARIO='${COMENTARIO}',
+            LINK1='${LINK1}', 
+            LINK2='${LINK2}' 
+            WHERE ID='${ID}'`;
 
-    //         conn.query(actualizo, (err, result) => {
-    //             if (err) {
-    //                 console.log(err);
-    //             }
-    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION con Modificacion de Archivo');
-    //         });
-    //     })
-    // } else {
-    //     // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
-    //     console.log('NOOOO recibi archivo');
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : AUDIENCIA - ACTUALIZACION con Modificacion de Archivo');
+            });
+        })
+    } else {
+        // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
+        console.log('NOOOO recibi archivo');
 
-    //     req.getConnection((err, conn) => {
-    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}' WHERE ID='${ID}'`;
-    //         conn.query(actualizo, (err, result) => {
-    //             if (err) {
-    //                 console.log(err);
-    //             }
-    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION Dejando  el Archivo Existente');
-    //         });
-    //     })
-    // }
+        req.getConnection((err, conn) => {
+            var actualizo = `UPDATE AUDIENCIAS SET
+            FECHADOC='${FECHADOC}', 
+            TIPO='${TIPO}', 
+            FECHAAUDI='${FECHAAUDI}',
+            HORAAUDI='${HORAAUDI}',
+            COMENTARIO='${COMENTARIO}',
+            LINK1='${LINK1}'
+            WHERE ID='${ID}'`;
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : AUDIENCIA - ACTUALIZACION Dejando  el Archivo Existente');
+            });
+        })
+    }
     res.send(true);
 };
 
@@ -341,74 +339,72 @@ controller.Create_CD_JU = (req, res) => {
     })
 };
 
-
-controller.Update_CD_JU = (req, res) => {    
-    // var ID=         req.body['id'];
-    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
-    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
-    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
-    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
-    // var LINK1=      req.body['id_Update_EM_Cartellone'];
+controller.Update_CD_JU = (req, res) => {
     console.log(req.file);
-    // console.log(req.body.numerocuil);
-    // console.log(funcionfechas.FechaActual() + ' ** Fecha actual BACKEND');
+    console.log(req.body['Juicio_Update_ID']);
     console.log(req.body['Juicio_Update_FECHADOC']);
     console.log(req.body['Juicio_Update_TIPO']);
     console.log(req.body['Juicio_Update_FECHAJUI']);
-    console.log(req.body['Juicio_Update_HORAJUI']);
+    console.log(req.body['Juicio_Update_HORAJUI'][0]);
     console.log(req.body['Juicio_Update_COMENTARIO']);
     console.log(req.body['Juicio_Update_LINK1']);
-    // req.body['Audiencia_Update_FECHADOC'];
-    // console.log(req.body.idTipo_AU_CRE);
-    // console.log(req.body.idFechaAudiencia_AU_CRE[0]);
-    // console.log(req.body.hora);
-    // console.log(req.body.idComentario_AU_CRE[0]);
-    // console.log(req.body.idCartellone_AU_CRE[0]);
-    // console.log(req.file.filename);
 
+    var ID = req.body['Juicio_Update_ID']; //ok
+    var FECHADOC = req.body['Juicio_Update_FECHADOC']; //ok
+    var TIPO = req.body['Juicio_Update_TIPO']; //ok
+    var FECHAJUI = req.body['Juicio_Update_FECHAJUI']; //ok
+    var HORAJUI = req.body['Juicio_Update_HORAJUI']; //ok
+    var COMENTARIO = req.body['Juicio_Update_COMENTARIO']; //ok
+    var LINK1 = req.body['Juicio_Update_LINK1']; //ok
 
-    //     var ID=         req.body['id'];
-    // var FECHADOC=   req.body['id_Update_EM_FechaEmision'];
-    // var RECLAMO=    req.body['id_Update_EM_TipoReclamo'];
-    // var ESTUDIO=    req.body['id_Update_EM_EstudioJuridico'];
-    // var COMENTARIO= req.body['id_Update_EM_Comentario'];
-    // var LINK1=      req.body['id_Update_EM_Cartellone'];
-
-    console.log('***********************************');
-    
     console.log(req.body);
-    console.log(req.file);
+    console.log(req.body['Juicio_Update_HORAJUI']);
 
-    // if (req.file) {
-    //     // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
-    //     console.log('recibi archivo')
-    //     req.getConnection((err, conn) => {
+    if (req.file) {
+        // Esto Se Ejecuta cuando Se Recibe un nuevo archivo
+        console.log('recibi archivo')
+        req.getConnection((err, conn) => {
 
-    //         var LINK2=req.file.filename;
+            var LINK2 = req.file.filename; //ok
 
-    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}', LINK2='${LINK2}' WHERE ID='${ID}'`;
+            var actualizo = `UPDATE JUICIOS SET 
+            FECHADOC='${FECHADOC}', 
+            TIPO='${TIPO}', 
+            FECHAJUI='${FECHAJUI}',
+            HORAJUI='${HORAJUI}',
+            COMENTARIO='${COMENTARIO}',
+            LINK1='${LINK1}', 
+            LINK2='${LINK2}' 
+            WHERE ID='${ID}'`;
 
-    //         conn.query(actualizo, (err, result) => {
-    //             if (err) {
-    //                 console.log(err);
-    //             }
-    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION con Modificacion de Archivo');
-    //         });
-    //     })
-    // } else {
-    //     // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
-    //     console.log('NOOOO recibi archivo');
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : JUICIO - ACTUALIZACION con Modificacion de Archivo');
+            });
+        })
+    } else {
+        // Esto Se Ejecuta cuando Se Mantiene  el Mismo Archivo
+        console.log('NOOOO recibi archivo');
 
-    //     req.getConnection((err, conn) => {
-    //         var actualizo = `UPDATE CONTESTACIONES SET FECHADOC='${FECHADOC}', RECLAMO='${RECLAMO}', ESTUDIO='${ESTUDIO}', COMENTARIO='${COMENTARIO}', LINK1='${LINK1}' WHERE ID='${ID}'`;
-    //         conn.query(actualizo, (err, result) => {
-    //             if (err) {
-    //                 console.log(err);
-    //             }
-    //             console.log('Monitor Servidor : CD - EMITIDA - ACTUALIZACION Dejando  el Archivo Existente');
-    //         });
-    //     })
-    // }
+        req.getConnection((err, conn) => {
+            var actualizo = `UPDATE JUICIOS SET
+            FECHADOC='${FECHADOC}', 
+            TIPO='${TIPO}', 
+            FECHAJUI='${FECHAJUI}',
+            HORAJUI='${HORAJUI}',
+            COMENTARIO='${COMENTARIO}',
+            LINK1='${LINK1}'
+            WHERE ID='${ID}'`;
+            conn.query(actualizo, (err, result) => {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('Monitor Servidor : JUICIO - ACTUALIZACION Dejando  el Archivo Existente');
+            });
+        })
+    }
     res.send(true);
 };
 
