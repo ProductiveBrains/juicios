@@ -158,6 +158,14 @@ controller.Update_Judiciales = (req, res) => {
     const CUIL = req.body.CUIL;
     const VALOR = req.body.VALOR;
 
+    var CASOABIERTO;
+
+    if (VALOR == 'SI') {
+        CASOABIERTO = 'SI';
+    } else {
+        CASOABIERTO = 'NO';
+    }
+
     res.send(
         "Servidor Remoto: He Recibido estos datos -> " +
         req.body.CUIL +
@@ -169,7 +177,7 @@ controller.Update_Judiciales = (req, res) => {
         // Nose puede el send en GET
         // res.send('Servidor Remoto : Grabacion... Cambie Estado de Judiciales a SI');
         conn.query(
-            "UPDATE PERSONAS SET judiciales = ? WHERE CUIL= ?  ", [VALOR, CUIL],
+            "UPDATE PERSONAS SET judiciales = ? , CASOABIERTO = ? WHERE CUIL= ?  ", [VALOR, CASOABIERTO, CUIL],
             (err, personas) => {
                 if (err) {
                     res.json(err);
@@ -321,15 +329,7 @@ controller.TOTAL_LitVsNoLit = (req, res) => {
 controller.TOTAL_ActvsNoAct = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) throw err;
-        conn.query(
-            `
-        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' && bajasino='NO'
-        UNION
-        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='NO'
-        UNION
-        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='NO' && bajasino='SI'
-        UNION
-        SELECT COUNT(*) as TOTAL FROM PERSONAS where judiciales='SI' && bajasino='SI' `,
+        conn.query(` SELECT * FROM GRAFICO4 `,
 
             (err, resultado) => {
                 if (err) throw err;
@@ -388,5 +388,251 @@ controller.res_reclamos = (req, res) => {
         );
     });
 };
+
+//Audiencias que falta mas de 7 dias
+controller.audienciaspersonasMore7days = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAAUDI, "%d/%m/%Y")as FECHAAUDI,             
+            tabla1.HORAAUDI
+            FROM AUDIENCIAS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && FECHAAUDI > DATE(NOW()+ interval 7 day) 
+            ORDER BY FECHAAUDI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+//Audiencias en estos 7 dias inclusive fecha actual
+controller.audienciaspersonas7daysandToday = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAAUDI, "%d/%m/%Y")as FECHAAUDI,             
+            tabla1.HORAAUDI
+            FROM AUDIENCIAS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && 
+            FECHAAUDI >= DATE(NOW()) && 
+            FECHAAUDI <= DATE(NOW()+ interval 7 day) 
+            ORDER BY FECHAAUDI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+//Audiencias Vencidas
+controller.audienciaspersonasTimeOut = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAAUDI, "%d/%m/%Y")as FECHAAUDI,             
+            tabla1.HORAAUDI
+            FROM AUDIENCIAS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && 
+            FECHAAUDI < DATE(NOW()) 
+            ORDER BY FECHAAUDI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+
+//Juicios que falta mas de 7 dias
+controller.juiciospersonasMore7days = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAJUI, "%d/%m/%Y")as FECHAJUI,             
+            tabla1.HORAJUI 
+            FROM JUICIOS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && FECHAJUI > DATE(NOW()+ interval 7 day) 
+            ORDER BY FECHAJUI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+//Juicios en estos 7 dias inclusive fecha actual
+controller.juiciospersonas7daysandToday = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAJUI, "%d/%m/%Y")as FECHAJUI,             
+            tabla1.HORAJUI
+            FROM JUICIOS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && 
+            FECHAJUI >= DATE(NOW()) && 
+            FECHAJUI <= DATE(NOW()+ interval 7 day) 
+            ORDER BY FECHAJUI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+//Juicios Vencidas
+controller.juiciospersonasTimeOut = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `SELECT
+            tabla1.ID,
+            tabla2.CUIL,
+            tabla2.APELLIDO,
+            tabla2.NOMBRE,
+            tabla1.TIPO,
+            DATE_FORMAT(tabla1.FECHAJUI, "%d/%m/%Y")as FECHAJUI,             
+            tabla1.HORAJUI
+            FROM JUICIOS tabla1
+            INNER JOIN PERSONAS tabla2 
+            ON tabla1.CUIL = tabla2.CUIL && 
+            FECHAJUI < DATE(NOW()) 
+            ORDER BY FECHAJUI ASC `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+
+
+//Estadisticas 1
+controller.estadisticas1 = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `select (select count(0) AS TOTAL from CARTADOCUMENTO) AS CD,
+             (select count(0) AS TOTAL from CONTESTACIONES) AS CO,
+             (select count(0) AS TOTAL from AUDIENCIAS) AS AU, 
+             (select count(0) AS TOTAL from JUICIOS) AS JU,
+             (select count(0) AS TOTAL from PERSONAS where ((PERSONAS.judiciales = 'NO') and (PERSONAS.bajasino = 'NO'))) AS ACT_NOLIT,
+             (select count(0) AS TOTAL from PERSONAS where ((PERSONAS.judiciales = 'SI') and (PERSONAS.bajasino = 'NO'))) AS ACT_LIT,
+             (select count(0) AS TOTAL from PERSONAS where ((PERSONAS.judiciales = 'NO') and (PERSONAS.bajasino = 'SI'))) AS NOACT_NOLIT,
+             (select count(0) AS TOTAL from PERSONAS where ((PERSONAS.judiciales = 'SI') and (PERSONAS.bajasino = 'SI'))) AS NOACT_LIT
+              `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+controller.estadisticas2 = (req, res) => {
+    req.getConnection((err, conn) => {
+        if (err) throw err;
+        conn.query(
+            `select
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS ) AS    'TOTALPERSONAL',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE judiciales = 'SI') AS 'TOTALLITIGANTES',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE CASOABIERTO = 'SI') AS 'TOTALCASOSABIERTOS',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='LOCAL'  ))) AS    'LOCALES_ACTIVOS',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='FORANEO'))) AS    'FORANEOS_ACTIVOS' ,
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='LOCAL'  ))) AS    'LOCALES_BAJAS',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='FORANEO'))) AS    'FORANEOS_BAJAS',
+            
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='LOCAL'  ) && judiciales = 'SI')) AS 'LOCALES_ACTIVOS_LIT',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='FORANEO') && judiciales = 'SI')) AS 'FORANEOS_ACTIVOS_LIT' ,
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='LOCAL'  ) && judiciales = 'SI')) AS 'LOCALES_BAJAS_LIT',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='FORANEO') && judiciales = 'SI')) AS 'FORANEOS_BAJAS_LIT',
+            
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='LOCAL'  ) && judiciales = 'SI' && CASOABIERTO = 'SI')) AS 'LOCALES_ACTIVOS_LIT_ABIERTO',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='NO') && (condicion='FORANEO') && judiciales = 'SI' && CASOABIERTO = 'SI')) AS 'FORANEOS_ACTIVOS_LIT_ABIERTO' ,
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='LOCAL'  ) && judiciales = 'SI' && CASOABIERTO = 'SI')) AS 'LOCALES_BAJAS_LIT_ABIERTO',
+            (SELECT COUNT(*) AS TOTAL FROM PERSONAS WHERE ((bajasino='SI') && (condicion='FORANEO') && judiciales = 'SI' && CASOABIERTO = 'SI')) AS 'FORANEOS_BAJAS_LIT_ABIERTO'
+              `,
+            (err, resultado) => {
+                if (err) throw err;
+                console.log(resultado);
+                res.send(JSON.stringify(resultado));
+            }
+        );
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = controller;

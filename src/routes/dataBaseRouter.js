@@ -1,4 +1,4 @@
-const express = require ('express');
+const express = require('express');
 const routerdataBase = express.Router();
 
 const DB_Controller = require('../controllers/dataBaseController.js');
@@ -49,5 +49,25 @@ routerdataBase.get('/TOTAL_ActvsNoAct', DB_Controller.TOTAL_ActvsNoAct);
 routerdataBase.get('/ACT_FORANEOLOCAL', DB_Controller.ACT_FORANEOLOCAL);
 
 routerdataBase.get('/BAJA_FORANEOLOCAL', DB_Controller.BAJA_FORANEOLOCAL);
+
+routerdataBase.get('/AUDIENCIASPERSONASMORE7DAYS', DB_Controller.audienciaspersonasMore7days);
+
+routerdataBase.get('/AUDIENCIASPERSONASTIMEOUT', DB_Controller.audienciaspersonasTimeOut);
+
+routerdataBase.get('/AUDIENCIASPERSONAS7DAYSANDTODAY', DB_Controller.audienciaspersonas7daysandToday);
+
+routerdataBase.get('/JUICIOSPERSONASMORE7DAYS', DB_Controller.juiciospersonasMore7days);
+
+routerdataBase.get('/JUICIOSPERSONASTIMEOUT', DB_Controller.juiciospersonasTimeOut);
+
+routerdataBase.get('/JUICIOSPERSONAS7DAYSANDTODAY', DB_Controller.juiciospersonas7daysandToday);
+
+routerdataBase.get('/ESTADISTICAS1', DB_Controller.estadisticas1);
+
+routerdataBase.get('/ESTADISTICAS2', DB_Controller.estadisticas2);
+
+
+
+
 
 module.exports = routerdataBase;
